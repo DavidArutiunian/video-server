@@ -1,0 +1,51 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "ab0a832e0803898f3b0044d5f67b8f4d",
+    "packages": [
+        {
+            "name": "adlogix/symfony-1.4",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/adlogix/symfony-1.4.git",
+                "reference": "ed7d3e20c98a1a6fd1e1e65ff0c74fecca2dc311"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/adlogix/symfony-1.4/zipball/ed7d3e20c98a1a6fd1e1e65ff0c74fecca2dc311",
+                "reference": "ed7d3e20c98a1a6fd1e1e65ff0c74fecca2dc311",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Toni Van de Voorde",
+                    "email": "toni.vdv@gmail.com"
+                }
+            ],
+            "description": "Fork of symfony 1.4",
+            "time": "2017-03-07T14:26:01+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "adlogix/symfony-1.4": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

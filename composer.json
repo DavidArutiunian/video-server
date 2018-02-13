@@ -1,0 +1,5 @@
+{
+  "require": {
+    "adlogix/symfony-1.4": "dev-master"
+  }
+}
