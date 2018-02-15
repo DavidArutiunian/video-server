@@ -1,0 +1,9 @@
+propel:
+  videofile:
+    id:           ~
+    type:         { type: varchar(255) }
+    url:          { type: varchar(255) }
+    title:        { type: varchar(255) }
+    description:  { type: longvarchar, required: true }
+    created_at:   ~
+    updated_at:   ~
