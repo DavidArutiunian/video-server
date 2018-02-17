@@ -11,11 +11,11 @@ DROP TABLE IF EXISTS `videofile`;
 
 CREATE TABLE `videofile`
 (
-  `id`          INTEGER NOT NULL AUTO_INCREMENT,
+  `id`          INTEGER(11) NOT NULL AUTO_INCREMENT,
   `type`        VARCHAR(255),
   `url`         VARCHAR(255),
   `title`       VARCHAR(255),
-  `description` TEXT    NOT NULL,
+  `description` TEXT        NOT NULL,
   `created_at`  DATETIME,
   `updated_at`  DATETIME,
   PRIMARY KEY (`id`)

@@ -1,5 +1,5 @@
 {
   "require": {
-    "adlogix/symfony-1.4": "dev-master"
+    "vadimdol/symfony1": "1.1"
   }
 }

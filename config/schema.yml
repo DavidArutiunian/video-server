@@ -1,9 +1,13 @@
 propel:
+  _attributes:
+    package: lib.model
+    defaultIdMethod: native
   videofile:
-    id:           ~
-    type:         { type: varchar(255) }
-    url:          { type: varchar(255) }
-    title:        { type: varchar(255) }
-    description:  { type: longvarchar, required: true }
-    created_at:   ~
-    updated_at:   ~
+    _attributes: { phpName: Videofile }
+    id: { phpName: Id, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    type: { phpName: Type, type: VARCHAR, size: '255', required: false }
+    url: { phpName: Url, type: VARCHAR, size: '255', required: false }
+    title: { phpName: Title, type: VARCHAR, size: '255', required: false }
+    description: { phpName: Description, type: LONGVARCHAR, required: true }
+    created_at: { phpName: CreatedAt, type: TIMESTAMP, required: false }
+    updated_at: { phpName: UpdatedAt, type: TIMESTAMP, required: false }

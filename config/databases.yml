@@ -14,7 +14,7 @@ all:
       classname: PropelPDO
       dsn: 'mysql:host=localhost;dbname=video-server'
       username: root
-      password: null
+      password: root
       encoding: utf8
       persistent: true
       pooling: true

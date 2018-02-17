@@ -4,7 +4,24 @@
 # default rules
 homepage:
   url:   /
-  param: { module: default, action: index }
+  param: { module: videofile, action: index }
+
+videofile_new:
+  url: /videofile/:type/:title/:description
+  class: sfRequestRoute
+  options: { model: Videofile, type: object }
+  param: { module: videofile, action: new }
+  requirements:
+    sf_method: [post]
+
+
+videofile_show:
+  url: /videofile/:id
+  class: sfRequestRoute
+  param: { module: videofile, action: show }
+  options: { model: Videofile, type: object }
+  requirements:
+    sf_method: [get]
 
 # generic rules
 # please, remove them by adding more specific rules
