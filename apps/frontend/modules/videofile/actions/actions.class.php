@@ -18,7 +18,7 @@ class videofileActions extends sfActions
     public function executeShow(sfWebRequest $request)
     {
         $this->VideoFile = VideofilePeer::retrieveByPk($request->getParameter('id'));
-        $this->forward404Unless($this->VideoFile);
+//        $this->forward404Unless($this->VideoFile);
     }
 
     public function executeNew(sfWebRequest $request)
@@ -35,6 +35,8 @@ class videofileActions extends sfActions
         $this->processForm($request, $this->form);
 
         $this->setTemplate('new');
+
+        $this->redirect($this->generateUrl('homepage'));
     }
 
     protected function processForm(sfWebRequest $request, sfForm $form)

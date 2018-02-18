@@ -1,3 +1,5 @@
+<?php use_stylesheet('main.css') ?>
+
 <table>
     <tbody>
     <tr>
@@ -34,5 +36,5 @@
 <hr/>
 
 <a href="<?php echo url_for('videofile/edit?id=' . $VideoFile->getId()) ?>">Edit</a>
-&nbsp;
-<a href="<?php echo url_for('videofile/index') ?>">List</a>
+<br>
+<a href="<?php echo url_for('homepage') ?>">List</a>

@@ -15,3 +15,10 @@
 #     password: changeme
 #     name:     Kris Wallsmith
 #     email:    kris.wallsmith@symfony-project.com
+
+Videofile:
+  videofile:
+    type: mp4
+    url: http://test.url
+    title: TEST_VIDEO
+    description: TEST_VIDEO_DESCRIPTION

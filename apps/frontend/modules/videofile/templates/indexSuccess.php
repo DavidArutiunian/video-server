@@ -1,27 +1,29 @@
-<h1>VideoFiles List</h1>
-
+<h1>Videos</h1>
+<br>
 <table>
     <thead>
     <tr>
-        <th>Url</th>
+        <th>Type</th>
         <th>Title</th>
         <th>Description</th>
+        <th>URL</th>
     </tr>
     </thead>
     <tbody>
     <?php foreach ($VideoFiles as $VideoFile): ?>
         <tr>
-            <td>
-                <a href="<?php echo url_for('videofile_show', $VideoFile) ?>">
-                    <?php echo $VideoFile->getTitle() ?>
-                </a>
-            </td>
-            <td><?php echo $VideoFile->getUrl() ?></td>
+            <td><?php echo $VideoFile->getType() ?></td>
             <td><?php echo $VideoFile->getTitle() ?></td>
             <td><?php echo $VideoFile->getDescription() ?></td>
+            <td>
+                <a href="<?php echo $VideoFile->getUrl() ?>" target="_blank">
+                    <?php echo $VideoFile->getUrl() ?>
+                </a>
+            </td>
         </tr>
     <?php endforeach; ?>
     </tbody>
 </table>
+<br>
 
-<a href="<?php echo url_for('videofile/new') ?>">New video</a>
+<a href="<?php echo url_for('videofile/new') ?>">Upload video</a>

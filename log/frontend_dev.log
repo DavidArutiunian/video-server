@@ -272,3 +272,19 @@ Query Time: 0.001
 2018-02-17 11:13:46.605345 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
 2018-02-17 11:13:46.606148 symfony [info] {sfWebDebugLogger} Configuration 6.49 ms (5)
 2018-02-17 11:13:46.606208 symfony [info] {sfWebDebugLogger} Factories 21.89 ms (1)
+2018-02-18 11:22:31.019540 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /videofile with parameters array (  'module' => 'videofile',  'action' => 'index',)
+2018-02-18 11:22:31.183664 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+2018-02-18 11:22:31.183757 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+2018-02-18 11:22:31.183906 symfony [info] {videofileActions} Call "videofileActions->executeIndex()"
+2018-02-18 11:22:31.247109 symfony [debug] {sfPropelLogger} time:  0.001 sec | slow:  NO | mem:    4.0 MB | mempeak:    4.0 MB | memdelta:      0.0 B | SET NAMES 'utf8'
+Query Time: 0.001
+2018-02-18 11:22:31.251477 symfony [debug] {sfPropelLogger} SELECT videofile.ID, videofile.TYPE, videofile.URL, videofile.TITLE, videofile.DESCRIPTION, videofile.CREATED_AT, videofile.UPDATED_AT FROM `videofile`
+Query Time: 0.002
+2018-02-18 11:22:31.274781 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/indexSuccess.php"
+2018-02-18 11:22:31.283375 symfony [err] {InvalidArgumentException} The "/videofile/new/:type/:title/:description" route has some missing mandatory parameters (:type, :title, :description).
+2018-02-18 11:22:31.331717 symfony [info] {sfWebResponse} Send status "HTTP/1.1 500 Internal Server Error"
+2018-02-18 11:22:31.331815 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+2018-02-18 11:22:31.348150 symfony [info] {sfWebDebugLogger} Configuration 226.95 ms (9)
+2018-02-18 11:22:31.348227 symfony [info] {sfWebDebugLogger} Factories 230.61 ms (1)
+2018-02-18 11:22:31.348272 symfony [info] {sfWebDebugLogger} Action "videofile/index" 67.72 ms (1)
+2018-02-18 11:22:31.348313 symfony [info] {sfWebDebugLogger} View "Success" for "videofile/index" 96.48 ms (1)
