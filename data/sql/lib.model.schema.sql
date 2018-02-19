@@ -3,13 +3,13 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
 #-----------------------------------------------------------------------------
-#-- videofile
+#-- video_file
 #-----------------------------------------------------------------------------
 
-DROP TABLE IF EXISTS `videofile`;
+DROP TABLE IF EXISTS `video_file`;
 
 
-CREATE TABLE `videofile`
+CREATE TABLE `video_file`
 (
   `id`          INTEGER(11) NOT NULL AUTO_INCREMENT,
   `type`        VARCHAR(255),

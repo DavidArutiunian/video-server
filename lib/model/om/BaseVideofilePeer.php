@@ -1,21 +1,21 @@
 <?php
 
-abstract class BaseVideofilePeer
+abstract class BaseVideoFilePeer
 {
     /** the default database name for this class */
     const DATABASE_NAME = 'propel';
 
     /** the table name for this class */
-    const TABLE_NAME = 'videofile';
+    const TABLE_NAME = 'VideoFile';
 
     /** the related Propel class for this table */
-    const OM_CLASS = 'Videofile';
+    const OM_CLASS = 'VideoFile';
 
     /** A class that can be returned by this peer. */
-    const CLASS_DEFAULT = 'lib.model.Videofile';
+    const CLASS_DEFAULT = 'lib.model.VideoFile';
 
     /** the related TableMap class for this table */
-    const TM_CLASS = 'VideofileTableMap';
+    const TM_CLASS = 'VideoFileTableMap';
 
     /** The total number of columns. */
     const NUM_COLUMNS = 7;
@@ -24,31 +24,31 @@ abstract class BaseVideofilePeer
     const NUM_LAZY_LOAD_COLUMNS = 0;
 
     /** the column name for the ID field */
-    const ID = 'videofile.ID';
+    const ID = 'video_file.ID';
 
     /** the column name for the TYPE field */
-    const TYPE = 'videofile.TYPE';
+    const TYPE = 'video_file.TYPE';
 
     /** the column name for the URL field */
-    const URL = 'videofile.URL';
+    const URL = 'video_file.URL';
 
     /** the column name for the TITLE field */
-    const TITLE = 'videofile.TITLE';
+    const TITLE = 'video_file.TITLE';
 
     /** the column name for the DESCRIPTION field */
-    const DESCRIPTION = 'videofile.DESCRIPTION';
+    const DESCRIPTION = 'video_file.DESCRIPTION';
 
     /** the column name for the CREATED_AT field */
-    const CREATED_AT = 'videofile.CREATED_AT';
+    const CREATED_AT = 'video_file.CREATED_AT';
 
     /** the column name for the UPDATED_AT field */
-    const UPDATED_AT = 'videofile.UPDATED_AT';
+    const UPDATED_AT = 'video_file.UPDATED_AT';
 
     /**
      * An identiy map to hold any loaded instances of Videofile objects.
      * This must be public so that other peer classes can access this when hydrating from JOIN
      * queries.
-     * @var        array Videofile[]
+     * @var        array VideoFile[]
      */
     public static $instances = array();
 
@@ -112,8 +112,8 @@ abstract class BaseVideofilePeer
      *                      One of the class type constants BasePeer::TYPE_PHPNAME, BasePeer::TYPE_STUDLYPHPNAME
      *                      BasePeer::TYPE_COLNAME, BasePeer::TYPE_FIELDNAME, BasePeer::TYPE_NUM
      * @return     array A list of field names
+     * @throws PropelException
      */
-
     static public function getFieldNames($type = BasePeer::TYPE_PHPNAME)
     {
         if (!array_key_exists($type, self::$fieldNames)) {
@@ -131,12 +131,12 @@ abstract class BaseVideofilePeer
      *        $c->addJoin(TablePeer::alias("alias1", TablePeer::PRIMARY_KEY_COLUMN), TablePeer::PRIMARY_KEY_COLUMN);
      * </code>
      * @param      string $alias The alias for the current table.
-     * @param      string $column The column name for current table. (i.e. VideofilePeer::COLUMN_NAME).
+     * @param      string $column The column name for current table. (i.e. VideoFilePeer::COLUMN_NAME).
      * @return     string
      */
     public static function alias($alias, $column)
     {
-        return str_replace(VideofilePeer::TABLE_NAME . '.', $alias . '.', $column);
+        return str_replace(VideoFilePeer::TABLE_NAME . '.', $alias . '.', $column);
     }
 
     /**
@@ -152,13 +152,13 @@ abstract class BaseVideofilePeer
      */
     public static function addSelectColumns(Criteria $criteria)
     {
-        $criteria->addSelectColumn(VideofilePeer::ID);
-        $criteria->addSelectColumn(VideofilePeer::TYPE);
-        $criteria->addSelectColumn(VideofilePeer::URL);
-        $criteria->addSelectColumn(VideofilePeer::TITLE);
-        $criteria->addSelectColumn(VideofilePeer::DESCRIPTION);
-        $criteria->addSelectColumn(VideofilePeer::CREATED_AT);
-        $criteria->addSelectColumn(VideofilePeer::UPDATED_AT);
+        $criteria->addSelectColumn(VideoFilePeer::ID);
+        $criteria->addSelectColumn(VideoFilePeer::TYPE);
+        $criteria->addSelectColumn(VideoFilePeer::URL);
+        $criteria->addSelectColumn(VideoFilePeer::TITLE);
+        $criteria->addSelectColumn(VideoFilePeer::DESCRIPTION);
+        $criteria->addSelectColumn(VideoFilePeer::CREATED_AT);
+        $criteria->addSelectColumn(VideoFilePeer::UPDATED_AT);
     }
 
     /**
@@ -168,6 +168,7 @@ abstract class BaseVideofilePeer
      * @param      boolean $distinct Whether to select only distinct columns; deprecated: use Criteria->setDistinct() instead.
      * @param      PropelPDO $con
      * @return     int Number of matching rows.
+     * @throws PropelException
      */
     public static function doCount(Criteria $criteria, $distinct = false, PropelPDO $con = null)
     {
@@ -177,24 +178,24 @@ abstract class BaseVideofilePeer
         // We need to set the primary table name, since in the case that there are no WHERE columns
         // it will be impossible for the BasePeer::createSelectSql() method to determine which
         // tables go into the FROM clause.
-        $criteria->setPrimaryTableName(VideofilePeer::TABLE_NAME);
+        $criteria->setPrimaryTableName(VideoFilePeer::TABLE_NAME);
 
         if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
             $criteria->setDistinct();
         }
 
         if (!$criteria->hasSelectClause()) {
-            VideofilePeer::addSelectColumns($criteria);
+            VideoFilePeer::addSelectColumns($criteria);
         }
 
         $criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
         $criteria->setDbName(self::DATABASE_NAME); // Set the correct dbName
 
         if ($con === null) {
-            $con = Propel::getConnection(VideofilePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+            $con = Propel::getConnection(VideoFilePeer::DATABASE_NAME, Propel::CONNECTION_READ);
         }
         foreach (sfMixer::getCallables(self::getMixerPreSelectHook(__FUNCTION__)) as $sf_hook) {
-            call_user_func($sf_hook, 'BaseVideofilePeer', $criteria, $con);
+            call_user_func($sf_hook, 'BaseVideoFilePeer', $criteria, $con);
         }
 
         // BasePeer returns a PDOStatement
@@ -214,7 +215,7 @@ abstract class BaseVideofilePeer
      *
      * @param      Criteria $criteria object used to create the SELECT statement.
      * @param      PropelPDO $con
-     * @return     Videofile
+     * @return     VideoFile
      * @throws     PropelException Any exceptions caught during processing will be
      *         rethrown wrapped into a PropelException.
      */
@@ -222,7 +223,7 @@ abstract class BaseVideofilePeer
     {
         $critcopy = clone $criteria;
         $critcopy->setLimit(1);
-        $objects = VideofilePeer::doSelect($critcopy, $con);
+        $objects = VideoFilePeer::doSelect($critcopy, $con);
         if ($objects) {
             return $objects[0];
         }
@@ -234,13 +235,13 @@ abstract class BaseVideofilePeer
      *
      * @param      Criteria $criteria The Criteria object used to build the SELECT statement.
      * @param      PropelPDO $con
-     * @return     Videofile[] Array of selected Objects
+     * @return     VideoFile[] Array of selected Objects
      * @throws     PropelException Any exceptions caught during processing will be
      *         rethrown wrapped into a PropelException.
      */
     public static function doSelect(Criteria $criteria, PropelPDO $con = null)
     {
-        return VideofilePeer::populateObjects(VideofilePeer::doSelectStmt($criteria, $con));
+        return VideoFilePeer::populateObjects(VideoFilePeer::doSelectStmt($criteria, $con));
     }
 
     /**
@@ -259,12 +260,12 @@ abstract class BaseVideofilePeer
     public static function doSelectStmt(Criteria $criteria, PropelPDO $con = null)
     {
         if ($con === null) {
-            $con = Propel::getConnection(VideofilePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+            $con = Propel::getConnection(VideoFilePeer::DATABASE_NAME, Propel::CONNECTION_READ);
         }
 
         if (!$criteria->hasSelectClause()) {
             $criteria = clone $criteria;
-            VideofilePeer::addSelectColumns($criteria);
+            VideoFilePeer::addSelectColumns($criteria);
         }
 
         // Set the correct dbName
@@ -279,6 +280,7 @@ abstract class BaseVideofilePeer
      * @param string $column
      * @param PropelPDO $con the connection to use
      * @return array
+     * @throws PropelException
      */
     public static function doSelectColumn(Criteria $criteria, $column, PropelPDO $con = null)
     {
@@ -300,10 +302,10 @@ abstract class BaseVideofilePeer
      * to the cache in order to ensure that the same objects are always returned by doSelect*()
      * and retrieveByPK*() calls.
      *
-     * @param      Videofile $value A Videofile object.
+     * @param VideoFile $obj
      * @param      string $key (optional) key to use for instance map (for performance boost if key was already calculated externally).
      */
-    public static function addInstanceToPool(Videofile $obj, $key = null)
+    public static function addInstanceToPool(VideoFile $obj, $key = null)
     {
         if (Propel::isInstancePoolingEnabled()) {
             if ($key === null) {
@@ -321,12 +323,13 @@ abstract class BaseVideofilePeer
      * methods in your stub classes -- you may need to explicitly remove objects
      * from the cache in order to prevent returning objects that no longer exist.
      *
-     * @param      mixed $value A Videofile object or a primary key value.
+     * @param      mixed $value A VideoFile object or a primary key value.
+     * @throws PropelException
      */
     public static function removeInstanceFromPool($value)
     {
         if (Propel::isInstancePoolingEnabled() && $value !== null) {
-            if (is_object($value) && $value instanceof Videofile) {
+            if (is_object($value) && $value instanceof VideoFile) {
                 $key = (string)$value->getId();
             } elseif (is_scalar($value)) {
                 // assume we've been passed a primary key
@@ -347,7 +350,7 @@ abstract class BaseVideofilePeer
      * a multi-column primary key, a serialize()d version of the primary key will be returned.
      *
      * @param      string $key The key (@see getPrimaryKeyHash()) for this instance.
-     * @return     Videofile Found object or NULL if 1) no instance exists for specified key or 2) instance pooling has been disabled.
+     * @return     VideoFile Found object or NULL if 1) no instance exists for specified key or 2) instance pooling has been disabled.
      * @see        getPrimaryKeyHash()
      */
     public static function getInstanceFromPool($key)
@@ -371,7 +374,7 @@ abstract class BaseVideofilePeer
     }
 
     /**
-     * Method to invalidate the instance pool of all tables related to videofile
+     * Method to invalidate the instance pool of all tables related to video_file
      * by a foreign key with ON DELETE CASCADE
      */
     public static function clearRelatedInstancePool()
@@ -401,19 +404,20 @@ abstract class BaseVideofilePeer
      * The returned array will contain objects of the default type or
      * objects that inherit from the default.
      *
-     * @throws     PropelException Any exceptions caught during processing will be
      *         rethrown wrapped into a PropelException.
+     * @param PDOStatement $stmt
+     * @return array
      */
     public static function populateObjects(PDOStatement $stmt)
     {
         $results = array();
 
         // set the class once to avoid overhead in the loop
-        $cls = VideofilePeer::getOMClass(false);
+        $cls = VideoFilePeer::getOMClass(false);
         // populate the object(s)
         while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-            $key = VideofilePeer::getPrimaryKeyHashFromRow($row, 0);
-            if (null !== ($obj = VideofilePeer::getInstanceFromPool($key))) {
+            $key = VideoFilePeer::getPrimaryKeyHashFromRow($row, 0);
+            if (null !== ($obj = VideoFilePeer::getInstanceFromPool($key))) {
                 // We no longer rehydrate the object, since this can cause data loss.
                 // See http://propel.phpdb.org/trac/ticket/509
                 // $obj->hydrate($row, 0, true); // rehydrate
@@ -422,7 +426,7 @@ abstract class BaseVideofilePeer
                 $obj = new $cls();
                 $obj->hydrate($row);
                 $results[] = $obj;
-                VideofilePeer::addInstanceToPool($obj, $key);
+                VideoFilePeer::addInstanceToPool($obj, $key);
             } // if key exists
         }
         $stmt->closeCursor();
@@ -440,12 +444,12 @@ abstract class BaseVideofilePeer
     public static function exists(Criteria $criteria, PropelPDO $con = null)
     {
         if ($con === null) {
-            $con = Propel::getConnection(VideofilePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+            $con = Propel::getConnection(VideoFilePeer::DATABASE_NAME, Propel::CONNECTION_READ);
         }
 
         if (!$criteria->hasSelectClause()) {
             $criteria = clone $criteria;
-            VideofilePeer::addSelectColumns($criteria);
+            VideoFilePeer::addSelectColumns($criteria);
         }
 
         $criteria->setDbName(self::DATABASE_NAME);
@@ -487,6 +491,7 @@ abstract class BaseVideofilePeer
      * @param int $pk the primary key.
      * @param PropelPDO $con the connection to use
      * @return bool
+     * @throws PropelException
      */
     public static function existsByPK($pk, PropelPDO $con = null)
     {
@@ -503,7 +508,7 @@ abstract class BaseVideofilePeer
         }
 
         $criteria = new Criteria(self::DATABASE_NAME);
-        $criteria->add(VideofilePeer::ID, $pk);
+        $criteria->add(VideoFilePeer::ID, $pk);
 
         return self::exists($criteria, $con);
     }
@@ -522,12 +527,13 @@ abstract class BaseVideofilePeer
 
     /**
      * Add a TableMap instance to the database for this peer class.
+     * @throws PropelException
      */
     public static function buildTableMap()
     {
-        $dbMap = Propel::getDatabaseMap(BaseVideofilePeer::DATABASE_NAME);
-        if (!$dbMap->hasTable(BaseVideofilePeer::TABLE_NAME)) {
-            $dbMap->addTableObject(new VideofileTableMap());
+        $dbMap = Propel::getDatabaseMap(BaseVideoFilePeer::DATABASE_NAME);
+        if (!$dbMap->hasTable(BaseVideoFilePeer::TABLE_NAME)) {
+            $dbMap->addTableObject(new VideoFileTableMap());
         }
     }
 
@@ -544,7 +550,7 @@ abstract class BaseVideofilePeer
      */
     public static function getOMClass($withPrefix = true)
     {
-        return $withPrefix ? VideofilePeer::CLASS_DEFAULT : VideofilePeer::OM_CLASS;
+        return $withPrefix ? VideoFilePeer::CLASS_DEFAULT : VideoFilePeer::OM_CLASS;
     }
 
     /**
@@ -558,14 +564,14 @@ abstract class BaseVideofilePeer
      */
     public static function doInsert($values, PropelPDO $con = null)
     {
-        foreach (sfMixer::getCallables('BaseVideofilePeer:doInsert:pre') as $sf_hook) {
-            if (false !== $sf_hook_retval = call_user_func($sf_hook, 'BaseVideofilePeer', $values, $con)) {
+        foreach (sfMixer::getCallables('BaseVideoFilePeer:doInsert:pre') as $sf_hook) {
+            if (false !== $sf_hook_retval = call_user_func($sf_hook, 'BaseVideoFilePeer', $values, $con)) {
                 return $sf_hook_retval;
             }
         }
 
         if ($con === null) {
-            $con = Propel::getConnection(VideofilePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+            $con = Propel::getConnection(VideoFilePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
         }
 
         if ($values instanceof Criteria) {
@@ -574,8 +580,8 @@ abstract class BaseVideofilePeer
             $criteria = $values->buildCriteria(); // build Criteria from Videofile object
         }
 
-        if ($criteria->containsKey(VideofilePeer::ID) && $criteria->keyContainsValue(VideofilePeer::ID)) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key (' . VideofilePeer::ID . ')');
+        if ($criteria->containsKey(VideoFilePeer::ID) && $criteria->keyContainsValue(VideoFilePeer::ID)) {
+            throw new PropelException('Cannot insert a value for auto-increment primary key (' . VideoFilePeer::ID . ')');
         }
 
         // Set the correct dbName
@@ -592,16 +598,16 @@ abstract class BaseVideofilePeer
             throw $e;
         }
 
-        foreach (sfMixer::getCallables('BaseVideofilePeer:doInsert:post') as $sf_hook) {
-            call_user_func($sf_hook, 'BaseVideofilePeer', $values, $con, $pk);
+        foreach (sfMixer::getCallables('BaseVideoFilePeer:doInsert:post') as $sf_hook) {
+            call_user_func($sf_hook, 'BaseVideoFilePeer', $values, $con, $pk);
         }
         return $pk;
     }
 
     /**
-     * Method perform an UPDATE on the database, given a Videofile or Criteria object.
+     * Method perform an UPDATE on the database, given a VideoFile or Criteria object.
      *
-     * @param      mixed $values Criteria or Videofile object containing data that is used to create the UPDATE statement.
+     * @param      mixed $values Criteria or VideoFile object containing data that is used to create the UPDATE statement.
      * @param      PropelPDO $con The connection to use (specify PropelPDO connection object to exert more control over transactions).
      * @return     int The number of affected rows (if supported by underlying database driver).
      * @throws     PropelException Any exceptions caught during processing will be
@@ -609,14 +615,14 @@ abstract class BaseVideofilePeer
      */
     public static function doUpdate($values, PropelPDO $con = null)
     {
-        foreach (sfMixer::getCallables('BaseVideofilePeer:doUpdate:pre') as $sf_hook) {
-            if (false !== $sf_hook_retval = call_user_func($sf_hook, 'BaseVideofilePeer', $values, $con)) {
+        foreach (sfMixer::getCallables('BaseVideoFilePeer:doUpdate:pre') as $sf_hook) {
+            if (false !== $sf_hook_retval = call_user_func($sf_hook, 'BaseVideoFilePeer', $values, $con)) {
                 return $sf_hook_retval;
             }
         }
 
         if ($con === null) {
-            $con = Propel::getConnection(VideofilePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+            $con = Propel::getConnection(VideoFilePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
         }
 
         $selectCriteria = new Criteria(self::DATABASE_NAME);
@@ -624,8 +630,8 @@ abstract class BaseVideofilePeer
         if ($values instanceof Criteria) {
             $criteria = clone $values; // rename for clarity
 
-            $comparison = $criteria->getComparison(VideofilePeer::ID);
-            $selectCriteria->add(VideofilePeer::ID, $criteria->remove(VideofilePeer::ID), $comparison);
+            $comparison = $criteria->getComparison(VideoFilePeer::ID);
+            $selectCriteria->add(VideoFilePeer::ID, $criteria->remove(VideoFilePeer::ID), $comparison);
 
         } else { // $values is Videofile object
             $criteria = $values->buildCriteria(); // gets full criteria
@@ -636,34 +642,36 @@ abstract class BaseVideofilePeer
         $criteria->setDbName(self::DATABASE_NAME);
 
         $ret = BasePeer::doUpdate($selectCriteria, $criteria, $con);
-        foreach (sfMixer::getCallables('BaseVideofilePeer:doUpdate:post') as $sf_hook) {
-            call_user_func($sf_hook, 'BaseVideofilePeer', $values, $con, $ret);
+        foreach (sfMixer::getCallables('BaseVideoFilePeer:doUpdate:post') as $sf_hook) {
+            call_user_func($sf_hook, 'BaseVideoFilePeer', $values, $con, $ret);
         }
 
         return $ret;
     }
 
     /**
-     * Method to DELETE all rows from the videofile table.
+     * Method to DELETE all rows from the video_file table.
      *
+     * @param null $con
      * @return     int The number of affected rows (if supported by underlying database driver).
+     * @throws PropelException
      */
     public static function doDeleteAll($con = null)
     {
         if ($con === null) {
-            $con = Propel::getConnection(VideofilePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+            $con = Propel::getConnection(VideoFilePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
         }
         $affectedRows = 0; // initialize var to track total num of affected rows
         try {
             // use transaction because $criteria could contain info
             // for more than one table or we could emulating ON DELETE CASCADE, etc.
             $con->beginTransaction();
-            $affectedRows += BasePeer::doDeleteAll(VideofilePeer::TABLE_NAME, $con);
+            $affectedRows += BasePeer::doDeleteAll(VideoFilePeer::TABLE_NAME, $con);
             // Because this db requires some delete cascade/set null emulation, we have to
             // clear the cached instance *after* the emulation has happened (since
             // instances get re-added by the select statement contained therein).
-            VideofilePeer::clearInstancePool();
-            VideofilePeer::clearRelatedInstancePool();
+            VideoFilePeer::clearInstancePool();
+            VideoFilePeer::clearRelatedInstancePool();
             $con->commit();
             return $affectedRows;
         } catch (PropelException $e) {
@@ -673,9 +681,9 @@ abstract class BaseVideofilePeer
     }
 
     /**
-     * Method perform a DELETE on the database, given a Videofile or Criteria object OR a primary key value.
+     * Method perform a DELETE on the database, given a VideoFile or Criteria object OR a primary key value.
      *
-     * @param      mixed $values Criteria or Videofile object or primary key or array of primary keys
+     * @param      mixed $values Criteria or VideoFile object or primary key or array of primary keys
      *              which is used to create the DELETE statement
      * @param      PropelPDO $con the connection to use
      * @return     int     The number of affected rows (if supported by underlying database driver).  This includes CASCADE-related rows
@@ -686,30 +694,30 @@ abstract class BaseVideofilePeer
     public static function doDelete($values, PropelPDO $con = null)
     {
         if ($con === null) {
-            $con = Propel::getConnection(VideofilePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+            $con = Propel::getConnection(VideoFilePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
         }
 
         if ($values instanceof Criteria) {
             // invalidate the cache for all objects of this type, since we have no
             // way of knowing (without running a query) what objects should be invalidated
             // from the cache based on this Criteria.
-            VideofilePeer::clearInstancePool();
+            VideoFilePeer::clearInstancePool();
 
             // rename for clarity
             $criteria = clone $values;
-        } elseif ($values instanceof Videofile) {
+        } elseif ($values instanceof VideoFile) {
             // invalidate the cache for this single object
-            VideofilePeer::removeInstanceFromPool($values);
+            VideoFilePeer::removeInstanceFromPool($values);
             // create criteria based on pk values
             $criteria = $values->buildPkeyCriteria();
         } else {
             // it must be the primary key
             $criteria = new Criteria(self::DATABASE_NAME);
-            $criteria->add(VideofilePeer::ID, (array)$values, Criteria::IN);
+            $criteria->add(VideoFilePeer::ID, (array)$values, Criteria::IN);
 
             foreach ((array)$values as $singleval) {
                 // we can invalidate the cache for this single object
-                VideofilePeer::removeInstanceFromPool($singleval);
+                VideoFilePeer::removeInstanceFromPool($singleval);
             }
         }
 
@@ -724,7 +732,7 @@ abstract class BaseVideofilePeer
             $con->beginTransaction();
 
             $affectedRows += BasePeer::doDelete($criteria, $con);
-            VideofilePeer::clearRelatedInstancePool();
+            VideoFilePeer::clearRelatedInstancePool();
             $con->commit();
             return $affectedRows;
         } catch (PropelException $e) {
@@ -734,24 +742,25 @@ abstract class BaseVideofilePeer
     }
 
     /**
-     * Validates all modified columns of given Videofile object.
+     * Validates all modified columns of given VideoFile object.
      * If parameter $columns is either a single column name or an array of column names
      * than only those columns are validated.
      *
      * NOTICE: This does not apply to primary or foreign keys for now.
      *
-     * @param      Videofile $obj The object to validate.
+     * @param      VideoFile $obj The object to validate.
      * @param      mixed $cols Column name or array of column names.
      *
      * @return     mixed TRUE if all columns are valid or the error message of the first invalid column.
+     * @throws PropelException
      */
-    public static function doValidate(Videofile $obj, $cols = null)
+    public static function doValidate(VideoFile $obj, $cols = null)
     {
         $columns = array();
 
         if ($cols) {
-            $dbMap = Propel::getDatabaseMap(VideofilePeer::DATABASE_NAME);
-            $tableMap = $dbMap->getTable(VideofilePeer::TABLE_NAME);
+            $dbMap = Propel::getDatabaseMap(VideoFilePeer::DATABASE_NAME);
+            $tableMap = $dbMap->getTable(VideoFilePeer::TABLE_NAME);
 
             if (!is_array($cols)) {
                 $cols = array($cols);
@@ -763,11 +772,9 @@ abstract class BaseVideofilePeer
                     $columns[$colName] = $obj->$get();
                 }
             }
-        } else {
-
         }
 
-        return BasePeer::doValidate(VideofilePeer::DATABASE_NAME, VideofilePeer::TABLE_NAME, $columns);
+        return BasePeer::doValidate(VideoFilePeer::DATABASE_NAME, VideoFilePeer::TABLE_NAME, $columns);
     }
 
     /**
@@ -775,11 +782,12 @@ abstract class BaseVideofilePeer
      *
      * @param      int $pk the primary key.
      * @param      PropelPDO $con the connection to use
-     * @return     Videofile
+     * @return     VideoFile
+     * @throws PropelException
      */
     public static function retrieveByPK($pk, PropelPDO $con = null)
     {
-        if (null !== ($obj = VideofilePeer::getInstanceFromPool((string)$pk))) {
+        if (null !== ($obj = VideoFilePeer::getInstanceFromPool((string)$pk))) {
             return $obj;
         }
 
@@ -788,13 +796,13 @@ abstract class BaseVideofilePeer
         }
 
         if ($con === null) {
-            $con = Propel::getConnection(VideofilePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+            $con = Propel::getConnection(VideoFilePeer::DATABASE_NAME, Propel::CONNECTION_READ);
         }
 
-        $criteria = new Criteria(VideofilePeer::DATABASE_NAME);
-        $criteria->add(VideofilePeer::ID, $pk);
+        $criteria = new Criteria(VideoFilePeer::DATABASE_NAME);
+        $criteria->add(VideoFilePeer::ID, $pk);
 
-        $v = VideofilePeer::doSelect($criteria, $con);
+        $v = VideoFilePeer::doSelect($criteria, $con);
 
         return !empty($v) > 0 ? $v[0] : null;
     }
@@ -804,22 +812,23 @@ abstract class BaseVideofilePeer
      *
      * @param      array $pks List of primary keys
      * @param      PropelPDO $con the connection to use
+     * @return array|null|VideoFile[]
      * @throws     PropelException Any exceptions caught during processing will be
      *         rethrown wrapped into a PropelException.
      */
     public static function retrieveByPKs($pks, PropelPDO $con = null)
     {
         if ($con === null) {
-            $con = Propel::getConnection(VideofilePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+            $con = Propel::getConnection(VideoFilePeer::DATABASE_NAME, Propel::CONNECTION_READ);
         }
 
         $objs = null;
         if (empty($pks)) {
             $objs = array();
         } else {
-            $criteria = new Criteria(VideofilePeer::DATABASE_NAME);
-            $criteria->add(VideofilePeer::ID, $pks, Criteria::IN);
-            $objs = VideofilePeer::doSelect($criteria, $con);
+            $criteria = new Criteria(VideoFilePeer::DATABASE_NAME);
+            $criteria->add(VideoFilePeer::ID, $pks, Criteria::IN);
+            $objs = VideoFilePeer::doSelect($criteria, $con);
         }
         return $objs;
     }
@@ -846,7 +855,7 @@ abstract class BaseVideofilePeer
     static private function getMixerPreSelectHook($method)
     {
         if (preg_match('/^do(Select|Count)(Join(All(Except)?)?|Stmt)?/', $method, $match)) {
-            return sprintf('BaseVideofilePeer:%s:%1$s', 'Count' == $match[1] ? 'doCount' : $match[0]);
+            return sprintf('BaseVideoFilePeer:%s:%1$s', 'Count' == $match[1] ? 'doCount' : $match[0]);
         }
 
         throw new LogicException(sprintf('Unrecognized function "%s"', $method));
@@ -854,5 +863,9 @@ abstract class BaseVideofilePeer
 }
 
 // This is the static code needed to register the TableMap for this table with the main Propel class.
-BaseVideofilePeer::buildTableMap();
+try {
+    BaseVideoFilePeer::buildTableMap();
+} catch (PropelException $e) {
+    echo "Error: " . $e->getMessage();
+}
 

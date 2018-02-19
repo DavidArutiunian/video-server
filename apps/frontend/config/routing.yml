@@ -9,7 +9,7 @@ homepage:
 videofile_new:
   url: /videofile/new/:type/:title/:description
   class: sfRequestRoute
-  options: { model: Videofile, type: object }
+  options: { model: VideoFile, type: object }
   param: { module: videofile, action: new }
   requirements:
     sf_method: [post]
@@ -19,7 +19,7 @@ videofile_show:
   url: /videofile/show/:id
   class: sfRequestRoute
   param: { module: videofile, action: show }
-  options: { model: Videofile, type: object }
+  options: { model: Videoile, type: object }
   requirements:
     sf_method: [get]
 

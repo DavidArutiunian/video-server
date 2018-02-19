@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Videofile filter form base class.
+ * VideoFile filter form base class.
  *
  * @package    video-server
  * @subpackage filter
- * @author     Your name here
+ * @author     David Arutiunian
  * @version    SVN: $Id: sfPropelFormFilterGeneratedTemplate.php 24171 2009-11-19 16:37:50Z Kris.Wallsmith $
  */
-abstract class BaseVideofileFormFilter extends BaseFormFilterPropel
+abstract class BaseVideoFileFormFilter extends BaseFormFilterPropel
 {
     public function setup()
     {
@@ -30,7 +30,7 @@ abstract class BaseVideofileFormFilter extends BaseFormFilterPropel
             'updated_at' => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDate(array('required' => false)))),
         ));
 
-        $this->widgetSchema->setNameFormat('videofile_filters[%s]');
+        $this->widgetSchema->setNameFormat('video_file_filters[%s]');
 
         $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
@@ -39,7 +39,7 @@ abstract class BaseVideofileFormFilter extends BaseFormFilterPropel
 
     public function getModelName()
     {
-        return 'Videofile';
+        return 'VideoFile';
     }
 
     public function getFields()

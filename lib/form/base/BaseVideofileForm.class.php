@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Videofile form base class.
+ * VideoFile form base class.
  *
- * @method Videofile getObject() Returns the current form's model object
+ * @method VideoFile getObject() Returns the current form's model object
  *
  * @package    video-server
  * @subpackage form
- * @author     Your name here
+ * @author     David Arutiunian
  * @version    SVN: $Id: sfPropelFormGeneratedTemplate.php 24171 2009-11-19 16:37:50Z Kris.Wallsmith $
  */
-abstract class BaseVideofileForm extends BaseFormPropel
+abstract class BaseVideoFileForm extends BaseFormPropel
 {
     public function setup()
     {
@@ -25,7 +25,7 @@ abstract class BaseVideofileForm extends BaseFormPropel
         ));
 
         $this->setValidators(array(
-            'id' => new sfValidatorPropelChoice(array('model' => 'Videofile', 'column' => 'id', 'required' => false)),
+            'id' => new sfValidatorPropelChoice(array('model' => 'VideoFile', 'column' => 'id', 'required' => false)),
             'type' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
             'url' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
             'title' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
@@ -34,7 +34,7 @@ abstract class BaseVideofileForm extends BaseFormPropel
             'updated_at' => new sfValidatorDateTime(array('required' => false)),
         ));
 
-        $this->widgetSchema->setNameFormat('videofile[%s]');
+        $this->widgetSchema->setNameFormat('video_file[%s]');
 
         $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
@@ -43,7 +43,7 @@ abstract class BaseVideofileForm extends BaseFormPropel
 
     public function getModelName()
     {
-        return 'Videofile';
+        return 'VideoFile';
     }
 
 

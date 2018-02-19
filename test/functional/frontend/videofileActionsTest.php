@@ -8,7 +8,7 @@ $browser->
 get('/videofile/index')->
 
 with('request')->begin()->
-isParameter('module', 'videofile')->
+isParameter('module', 'VideoFile')->
 isParameter('action', 'index')->
 end()->
 

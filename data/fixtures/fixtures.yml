@@ -16,9 +16,9 @@
 #     name:     Kris Wallsmith
 #     email:    kris.wallsmith@symfony-project.com
 
-Videofile:
-  videofile:
+VideoFile:
+  video_file:
     type: mp4
-    url: http://test.url
+    url: http://test-video.com/file.mp4
     title: TEST_VIDEO
     description: TEST_VIDEO_DESCRIPTION

@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var $VideoFiles VideoFile[]
+ */
+?>
 <h1>Videos</h1>
 <br>
 <table>
@@ -10,14 +15,14 @@
     </tr>
     </thead>
     <tbody>
-    <?php foreach ($VideoFiles as $VideoFile): ?>
+    <?php foreach ($VideoFiles as $videoFile): ?>
         <tr>
-            <td><?php echo $VideoFile->getType() ?></td>
-            <td><?php echo $VideoFile->getTitle() ?></td>
-            <td><?php echo $VideoFile->getDescription() ?></td>
+            <td><?php echo $videoFile->getType() ?></td>
+            <td><?php echo $videoFile->getTitle() ?></td>
+            <td><?php echo $videoFile->getDescription() ?></td>
             <td>
-                <a href="<?php echo $VideoFile->getUrl() ?>" target="_blank">
-                    <?php echo $VideoFile->getUrl() ?>
+                <a href="<?php echo $videoFile->getUrl() ?>" target="_blank">
+                    <?php echo $videoFile->getUrl() ?>
                 </a>
             </td>
         </tr>

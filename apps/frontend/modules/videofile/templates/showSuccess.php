@@ -1,4 +1,8 @@
-<?php use_stylesheet('main.css') ?>
+<?php
+/**
+ * @var $VideoFile VideoFile
+ */
+?>
 
 <table>
     <tbody>
@@ -24,17 +28,23 @@
     </tr>
     <tr>
         <th>Created at:</th>
-        <td><?php echo $VideoFile->getCreatedAt() ?></td>
+        <td><?php try {
+                echo $VideoFile->getCreatedAt();
+            } catch (PropelException $e) {
+                echo "Error: " . $e->getMessage();
+            } ?></td>
     </tr>
     <tr>
         <th>Updated at:</th>
-        <td><?php echo $VideoFile->getUpdatedAt() ?></td>
+        <td><?php try {
+                echo $VideoFile->getUpdatedAt();
+            } catch (PropelException $e) {
+                echo "Error: " . $e->getMessage();
+            } ?></td>
     </tr>
     </tbody>
 </table>
-
-<hr/>
-
+<br>
 <a href="<?php echo url_for('videofile/edit?id=' . $VideoFile->getId()) ?>">Edit</a>
 <br>
 <a href="<?php echo url_for('homepage') ?>">List</a>

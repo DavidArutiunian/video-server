@@ -1,6 +1,6 @@
 <?php
 
-class VideofilePeer extends BaseVideofilePeer
+class VideoFilePeer extends BaseVideoFilePeer
 {
 
 }

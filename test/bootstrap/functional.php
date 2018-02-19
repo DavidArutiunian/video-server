@@ -19,7 +19,11 @@ if (!isset($app)) {
 
 require_once dirname(__FILE__) . '/../../config/ProjectConfiguration.class.php';
 $configuration = ProjectConfiguration::getApplicationConfiguration($app, 'test', isset($debug) ? $debug : true);
-sfContext::createInstance($configuration);
+try {
+    sfContext::createInstance($configuration);
+} catch (sfFactoryException $e) {
+    echo "Error: " . $e->getMessage();
+}
 
 // remove all cache
 sfToolkit::clearDirectory(sfConfig::get('sf_app_cache_dir'));

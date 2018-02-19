@@ -1,290 +1,152 @@
-2018-02-17 10:53:39.264358 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\vendor\vadimdol\symfony1\lib\request\sfWebRequest.class.php on line 257 (Undefined index: QUERY_STRING)
-2018-02-17 10:53:39.268188 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\vendor\vadimdol\symfony1\lib\request\sfWebRequest.class.php on line 257 (Undefined index: QUERY_STRING)
-2018-02-17 10:53:39.313740 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\vendor\vadimdol\symfony1\lib\request\sfWebRequest.class.php on line 257 (Undefined index: QUERY_STRING)
-2018-02-17 10:53:39.316288 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'default',  'action' => 'index',)
-2018-02-17 10:53:39.401174 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
-2018-02-17 10:53:39.401310 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-2018-02-17 10:53:39.401452 symfony [info] {defaultActions} Call "defaultActions->executeIndex()"
-2018-02-17 10:53:39.428929 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\vendor\vadimdol\symfony1\lib/controller/default/templates/indexSuccess.php"
-2018-02-17 10:53:39.437293 symfony [info] {sfPHPView} Decorate content with "C:\Users\DavidOS\PhpstormProjects\video-server\vendor\vadimdol\symfony1\lib\controller\default\templates/defaultLayout.php"
-2018-02-17 10:53:39.437874 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\vendor\vadimdol\symfony1\lib\controller\default\templates/defaultLayout.php"
-2018-02-17 10:53:39.439049 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
-2018-02-17 10:53:39.439210 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
-2018-02-17 10:53:39.439392 symfony [info] {sfWebDebugLogger} Configuration 190.03 ms (10)
-2018-02-17 10:53:39.439588 symfony [info] {sfWebDebugLogger} Factories 134.76 ms (1)
-2018-02-17 10:53:39.439686 symfony [info] {sfWebDebugLogger} Action "default/index" 0.13 ms (1)
-2018-02-17 10:53:39.439765 symfony [info] {sfWebDebugLogger} View "Success" for "default/index" 36.81 ms (1)
-2018-02-17 10:53:39.447793 symfony [info] {sfWebResponse} Send content (45862 o)
-2018-02-17 10:53:56.848670 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /videofile with parameters array (  'module' => 'videofile',  'action' => 'index',)
-2018-02-17 10:53:56.940201 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
-2018-02-17 10:53:56.940294 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-2018-02-17 10:53:56.940377 symfony [info] {videofileActions} Call "videofileActions->executeIndex()"
-2018-02-17 10:53:56.956674 symfony [debug] {sfPropelLogger} time:  0.001 sec | slow:  NO | mem:    4.0 MB | mempeak:    4.0 MB | memdelta:      0.0 B | SET NAMES 'utf8'
+2018-02-19 19:16:30.954449 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\vendor\vadimdol\symfony1\lib\request\sfWebRequest.class.php on line 257 (Undefined index: QUERY_STRING)
+2018-02-19 19:16:30.960866 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\vendor\vadimdol\symfony1\lib\request\sfWebRequest.class.php on line 257 (Undefined index: QUERY_STRING)
+2018-02-19 19:16:31.012676 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\vendor\vadimdol\symfony1\lib\request\sfWebRequest.class.php on line 257 (Undefined index: QUERY_STRING)
+2018-02-19 19:16:31.013689 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'videofile',  'action' => 'index',)
+2018-02-19 19:16:31.256366 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+2018-02-19 19:16:31.256535 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+2018-02-19 19:16:31.256825 symfony [info] {VideoFileActions} Call "VideoFileActions->executeIndex()"
+2018-02-19 19:16:31.323143 symfony [debug] {sfPropelLogger} time:  0.001 sec | slow:  NO | mem:    6.0 MB | mempeak:    6.0 MB | memdelta:      0.0 B | SET NAMES 'utf8'
 Query Time: 0.001
-2018-02-17 10:53:56.960202 symfony [debug] {sfPropelLogger} SELECT videofile.ID, videofile.TYPE, videofile.URL, videofile.TITLE, videofile.DESCRIPTION, videofile.CREATED_AT, videofile.UPDATED_AT FROM `videofile`
+2018-02-19 19:16:31.326577 symfony [debug] {sfPropelLogger} SELECT video_file.ID, video_file.TYPE, video_file.URL, video_file.TITLE, video_file.DESCRIPTION, video_file.CREATED_AT, video_file.UPDATED_AT FROM `video_file`
 Query Time: 0.001
-2018-02-17 10:53:56.987544 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/indexSuccess.php"
-2018-02-17 10:53:56.996458 symfony [info] {sfPHPView} Decorate content with "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
-2018-02-17 10:53:56.996926 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
-2018-02-17 10:53:56.997848 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
-2018-02-17 10:53:56.997941 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
-2018-02-17 10:53:56.998028 symfony [info] {sfWebDebugLogger} Configuration 99.71 ms (10)
-2018-02-17 10:53:56.998078 symfony [info] {sfWebDebugLogger} Factories 25.95 ms (1)
-2018-02-17 10:53:56.998191 symfony [info] {sfWebDebugLogger} Action "videofile/index" 20.01 ms (1)
-2018-02-17 10:53:56.998235 symfony [info] {sfWebDebugLogger} View "Success" for "videofile/index" 36.87 ms (1)
-2018-02-17 10:53:57.003530 symfony [info] {sfWebResponse} Send content (64890 o)
-2018-02-17 10:54:03.562432 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /videofile/new with parameters array (  'module' => 'videofile',  'action' => 'new',)
-2018-02-17 10:54:03.583265 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
-2018-02-17 10:54:03.583381 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-2018-02-17 10:54:03.583515 symfony [info] {videofileActions} Call "videofileActions->executeNew()"
-2018-02-17 10:54:03.604151 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/newSuccess.php"
-2018-02-17 10:56:47.185790 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /videofile with parameters array (  'module' => 'videofile',  'action' => 'index',)
-2018-02-17 10:56:47.212405 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
-2018-02-17 10:56:47.212490 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-2018-02-17 10:56:47.212572 symfony [info] {videofileActions} Call "videofileActions->executeIndex()"
-2018-02-17 10:56:47.226479 symfony [debug] {sfPropelLogger} time:  0.001 sec | slow:  NO | mem:    4.0 MB | mempeak:    4.0 MB | memdelta:      0.0 B | SET NAMES 'utf8'
-Query Time: 0.001
-2018-02-17 10:56:47.230767 symfony [debug] {sfPropelLogger} SELECT videofile.ID, videofile.TYPE, videofile.URL, videofile.TITLE, videofile.DESCRIPTION, videofile.CREATED_AT, videofile.UPDATED_AT FROM `videofile`
+2018-02-19 19:16:31.361571 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/indexSuccess.php"
+2018-02-19 19:16:31.371110 symfony [info] {sfPHPView} Decorate content with "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
+2018-02-19 19:16:31.371550 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
+2018-02-19 19:16:31.372531 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+2018-02-19 19:16:31.372618 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+2018-02-19 19:16:31.372703 symfony [info] {sfWebDebugLogger} Configuration 369.91 ms (9)
+2018-02-19 19:16:31.372771 symfony [info] {sfWebDebugLogger} Factories 301.07 ms (1)
+2018-02-19 19:16:31.372836 symfony [info] {sfWebDebugLogger} Action "videofile/index" 72.51 ms (1)
+2018-02-19 19:16:31.372879 symfony [info] {sfWebDebugLogger} View "Success" for "videofile/index" 42.65 ms (1)
+2018-02-19 19:16:31.405950 symfony [info] {sfWebResponse} Send content (65630 o)
+2018-02-19 19:17:09.895276 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\vendor\vadimdol\symfony1\lib\request\sfWebRequest.class.php on line 257 (Undefined index: QUERY_STRING)
+2018-02-19 19:17:09.902759 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\vendor\vadimdol\symfony1\lib\request\sfWebRequest.class.php on line 257 (Undefined index: QUERY_STRING)
+2018-02-19 19:17:09.910335 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\vendor\vadimdol\symfony1\lib\request\sfWebRequest.class.php on line 257 (Undefined index: QUERY_STRING)
+2018-02-19 19:17:09.911036 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'videofile',  'action' => 'index',)
+2018-02-19 19:17:09.955681 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+2018-02-19 19:17:09.955859 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+2018-02-19 19:17:09.956020 symfony [info] {VideoFileActions} Call "VideoFileActions->executeIndex()"
+2018-02-19 19:17:09.978986 symfony [debug] {sfPropelLogger} time:  0.002 sec | slow:  NO | mem:    2.0 MB | mempeak:    2.0 MB | memdelta:      0.0 B | SET NAMES 'utf8'
 Query Time: 0.002
-2018-02-17 10:56:47.235209 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/indexSuccess.php"
-2018-02-17 10:56:47.244473 symfony [info] {sfPHPView} Decorate content with "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
-2018-02-17 10:56:47.244966 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
-2018-02-17 10:56:47.246038 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
-2018-02-17 10:56:47.246171 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
-2018-02-17 10:56:47.246268 symfony [info] {sfWebDebugLogger} Configuration 11.00 ms (9)
-2018-02-17 10:56:47.246316 symfony [info] {sfWebDebugLogger} Factories 31.73 ms (1)
-2018-02-17 10:56:47.246359 symfony [info] {sfWebDebugLogger} Action "videofile/index" 18.35 ms (1)
-2018-02-17 10:56:47.246397 symfony [info] {sfWebDebugLogger} View "Success" for "videofile/index" 14.52 ms (1)
-2018-02-17 10:56:47.253266 symfony [info] {sfWebResponse} Send content (64889 o)
-2018-02-17 10:57:43.720068 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /videofile with parameters array (  'module' => 'videofile',  'action' => 'index',)
-2018-02-17 10:57:43.734793 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
-2018-02-17 10:57:43.734884 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-2018-02-17 10:57:43.734955 symfony [info] {videofileActions} Call "videofileActions->executeIndex()"
-2018-02-17 10:57:43.746591 symfony [debug] {sfPropelLogger} time:  0.001 sec | slow:  NO | mem:    2.0 MB | mempeak:    2.0 MB | memdelta:      0.0 B | SET NAMES 'utf8'
+2018-02-19 19:17:09.983443 symfony [debug] {sfPropelLogger} SELECT video_file.ID, video_file.TYPE, video_file.URL, video_file.TITLE, video_file.DESCRIPTION, video_file.CREATED_AT, video_file.UPDATED_AT FROM `video_file`
 Query Time: 0.001
-2018-02-17 10:57:43.749212 symfony [debug] {sfPropelLogger} SELECT videofile.ID, videofile.TYPE, videofile.URL, videofile.TITLE, videofile.DESCRIPTION, videofile.CREATED_AT, videofile.UPDATED_AT FROM `videofile`
+2018-02-19 19:17:09.993329 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/indexSuccess.php"
+2018-02-19 19:17:10.002562 symfony [info] {sfPHPView} Decorate content with "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
+2018-02-19 19:17:10.003118 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
+2018-02-19 19:17:10.004422 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+2018-02-19 19:17:10.004570 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+2018-02-19 19:17:10.004709 symfony [info] {sfWebDebugLogger} Configuration 20.77 ms (9)
+2018-02-19 19:17:10.004807 symfony [info] {sfWebDebugLogger} Factories 56.81 ms (1)
+2018-02-19 19:17:10.004894 symfony [info] {sfWebDebugLogger} Action "videofile/index" 31.68 ms (1)
+2018-02-19 19:17:10.004961 symfony [info] {sfWebDebugLogger} View "Success" for "videofile/index" 16.04 ms (1)
+2018-02-19 19:17:10.014650 symfony [info] {sfWebResponse} Send content (65662 o)
+2018-02-19 19:17:11.296889 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\vendor\vadimdol\symfony1\lib\request\sfWebRequest.class.php on line 257 (Undefined index: QUERY_STRING)
+2018-02-19 19:17:11.300594 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\vendor\vadimdol\symfony1\lib\request\sfWebRequest.class.php on line 257 (Undefined index: QUERY_STRING)
+2018-02-19 19:17:11.303634 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\vendor\vadimdol\symfony1\lib\request\sfWebRequest.class.php on line 257 (Undefined index: QUERY_STRING)
+2018-02-19 19:17:11.304022 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'videofile',  'action' => 'index',)
+2018-02-19 19:17:11.320806 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+2018-02-19 19:17:11.320898 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+2018-02-19 19:17:11.320976 symfony [info] {VideoFileActions} Call "VideoFileActions->executeIndex()"
+2018-02-19 19:17:11.333122 symfony [debug] {sfPropelLogger} time:  0.001 sec | slow:  NO | mem:    2.0 MB | mempeak:    2.0 MB | memdelta:      0.0 B | SET NAMES 'utf8'
 Query Time: 0.001
-2018-02-17 10:57:43.751940 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/indexSuccess.php"
-2018-02-17 10:57:43.757441 symfony [info] {sfPHPView} Decorate content with "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
-2018-02-17 10:57:43.758047 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
-2018-02-17 10:57:43.759123 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
-2018-02-17 10:57:43.759216 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
-2018-02-17 10:57:43.759294 symfony [info] {sfWebDebugLogger} Configuration 5.11 ms (9)
-2018-02-17 10:57:43.759340 symfony [info] {sfWebDebugLogger} Factories 18.54 ms (1)
-2018-02-17 10:57:43.759380 symfony [info] {sfWebDebugLogger} Action "videofile/index" 14.39 ms (1)
-2018-02-17 10:57:43.759418 symfony [info] {sfWebDebugLogger} View "Success" for "videofile/index" 9.25 ms (1)
-2018-02-17 10:57:43.765242 symfony [info] {sfWebResponse} Send content (64900 o)
-2018-02-17 10:57:44.673558 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /videofile with parameters array (  'module' => 'videofile',  'action' => 'index',)
-2018-02-17 10:57:44.688191 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
-2018-02-17 10:57:44.688312 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-2018-02-17 10:57:44.688424 symfony [info] {videofileActions} Call "videofileActions->executeIndex()"
-2018-02-17 10:57:44.701555 symfony [debug] {sfPropelLogger} time:  0.001 sec | slow:  NO | mem:    2.0 MB | mempeak:    2.0 MB | memdelta:      0.0 B | SET NAMES 'utf8'
+2018-02-19 19:17:11.337169 symfony [debug] {sfPropelLogger} SELECT video_file.ID, video_file.TYPE, video_file.URL, video_file.TITLE, video_file.DESCRIPTION, video_file.CREATED_AT, video_file.UPDATED_AT FROM `video_file`
 Query Time: 0.001
-2018-02-17 10:57:44.704468 symfony [debug] {sfPropelLogger} SELECT videofile.ID, videofile.TYPE, videofile.URL, videofile.TITLE, videofile.DESCRIPTION, videofile.CREATED_AT, videofile.UPDATED_AT FROM `videofile`
+2018-02-19 19:17:11.342030 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/indexSuccess.php"
+2018-02-19 19:17:11.347827 symfony [info] {sfPHPView} Decorate content with "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
+2018-02-19 19:17:11.348200 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
+2018-02-19 19:17:11.349107 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+2018-02-19 19:17:11.349208 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+2018-02-19 19:17:11.349342 symfony [info] {sfWebDebugLogger} Configuration 8.88 ms (9)
+2018-02-19 19:17:11.349414 symfony [info] {sfWebDebugLogger} Factories 22.21 ms (1)
+2018-02-19 19:17:11.349487 symfony [info] {sfWebDebugLogger} Action "videofile/index" 18.40 ms (1)
+2018-02-19 19:17:11.349569 symfony [info] {sfWebDebugLogger} View "Success" for "videofile/index" 9.20 ms (1)
+2018-02-19 19:17:11.356564 symfony [info] {sfWebResponse} Send content (65659 o)
+2018-02-19 19:17:31.891720 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\cache\frontend\dev\config\config_core_compile.yml.php on line 2513 (Undefined index: QUERY_STRING)
+2018-02-19 19:17:31.892558 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\cache\frontend\dev\config\config_core_compile.yml.php on line 2513 (Undefined index: QUERY_STRING)
+2018-02-19 19:17:31.896837 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\cache\frontend\dev\config\config_core_compile.yml.php on line 2513 (Undefined index: QUERY_STRING)
+2018-02-19 19:17:31.898166 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'videofile',  'action' => 'index',)
+2018-02-19 19:17:31.922554 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+2018-02-19 19:17:31.922662 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+2018-02-19 19:17:31.922740 symfony [info] {VideoFileActions} Call "VideoFileActions->executeIndex()"
+2018-02-19 19:17:31.947012 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/indexSuccess.php"
+2018-02-19 19:17:31.956988 symfony [info] {sfPHPView} Decorate content with "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
+2018-02-19 19:17:31.957171 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
+2018-02-19 19:17:31.958699 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+2018-02-19 19:17:31.958879 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+2018-02-19 19:17:31.966641 symfony [info] {sfWebResponse} Send content (49444 o)
+2018-02-19 19:17:33.936742 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\cache\frontend\dev\config\config_core_compile.yml.php on line 2513 (Undefined index: QUERY_STRING)
+2018-02-19 19:17:33.937669 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\cache\frontend\dev\config\config_core_compile.yml.php on line 2513 (Undefined index: QUERY_STRING)
+2018-02-19 19:17:33.941039 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\cache\frontend\dev\config\config_core_compile.yml.php on line 2513 (Undefined index: QUERY_STRING)
+2018-02-19 19:17:33.941485 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'videofile',  'action' => 'index',)
+2018-02-19 19:17:33.951688 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+2018-02-19 19:17:33.951771 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+2018-02-19 19:17:33.951855 symfony [info] {VideoFileActions} Call "VideoFileActions->executeIndex()"
+2018-02-19 19:17:33.971121 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/indexSuccess.php"
+2018-02-19 19:17:33.977163 symfony [info] {sfPHPView} Decorate content with "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
+2018-02-19 19:17:33.977272 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
+2018-02-19 19:17:33.978087 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+2018-02-19 19:17:33.978168 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+2018-02-19 19:17:33.983935 symfony [info] {sfWebResponse} Send content (49444 o)
+2018-02-19 19:17:48.407573 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\vendor\vadimdol\symfony1\lib\request\sfWebRequest.class.php on line 257 (Undefined index: QUERY_STRING)
+2018-02-19 19:17:48.412697 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\vendor\vadimdol\symfony1\lib\request\sfWebRequest.class.php on line 257 (Undefined index: QUERY_STRING)
+2018-02-19 19:17:48.417790 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\vendor\vadimdol\symfony1\lib\request\sfWebRequest.class.php on line 257 (Undefined index: QUERY_STRING)
+2018-02-19 19:17:48.418418 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'videofile',  'action' => 'index',)
+2018-02-19 19:17:48.451447 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+2018-02-19 19:17:48.451601 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+2018-02-19 19:17:48.451739 symfony [info] {VideoFileActions} Call "VideoFileActions->executeIndex()"
+2018-02-19 19:17:48.477055 symfony [debug] {sfPropelLogger} time:  0.001 sec | slow:  NO | mem:    2.0 MB | mempeak:    2.0 MB | memdelta:      0.0 B | SET NAMES 'utf8'
 Query Time: 0.001
-2018-02-17 10:57:44.707329 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/indexSuccess.php"
-2018-02-17 10:57:44.714401 symfony [info] {sfPHPView} Decorate content with "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
-2018-02-17 10:57:44.715291 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
-2018-02-17 10:57:44.716412 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
-2018-02-17 10:57:44.716514 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
-2018-02-17 10:57:44.716600 symfony [info] {sfWebDebugLogger} Configuration 5.50 ms (9)
-2018-02-17 10:57:44.716651 symfony [info] {sfWebDebugLogger} Factories 17.94 ms (1)
-2018-02-17 10:57:44.716697 symfony [info] {sfWebDebugLogger} Action "videofile/index" 16.20 ms (1)
-2018-02-17 10:57:44.716741 symfony [info] {sfWebDebugLogger} View "Success" for "videofile/index" 11.31 ms (1)
-2018-02-17 10:57:44.725054 symfony [info] {sfWebResponse} Send content (64901 o)
-2018-02-17 11:00:22.156147 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /videofile with parameters array (  'module' => 'videofile',  'action' => 'index',)
-2018-02-17 11:00:22.184477 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
-2018-02-17 11:00:22.184601 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-2018-02-17 11:00:22.184757 symfony [info] {videofileActions} Call "videofileActions->executeIndex()"
-2018-02-17 11:00:22.201940 symfony [debug] {sfPropelLogger} time:  0.001 sec | slow:  NO | mem:    2.0 MB | mempeak:    2.0 MB | memdelta:      0.0 B | SET NAMES 'utf8'
+2018-02-19 19:17:48.483329 symfony [debug] {sfPropelLogger} SELECT video_file.ID, video_file.TYPE, video_file.URL, video_file.TITLE, video_file.DESCRIPTION, video_file.CREATED_AT, video_file.UPDATED_AT FROM `video_file`
+Query Time: 0.003
+2018-02-19 19:17:48.492955 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/indexSuccess.php"
+2018-02-19 19:17:48.501581 symfony [info] {sfPHPView} Decorate content with "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
+2018-02-19 19:17:48.502176 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
+2018-02-19 19:17:48.503931 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+2018-02-19 19:17:48.504091 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+2018-02-19 19:17:48.504224 symfony [info] {sfWebDebugLogger} Configuration 17.89 ms (9)
+2018-02-19 19:17:48.504311 symfony [info] {sfWebDebugLogger} Factories 37.84 ms (1)
+2018-02-19 19:17:48.504390 symfony [info] {sfWebDebugLogger} Action "videofile/index" 35.64 ms (1)
+2018-02-19 19:17:48.504472 symfony [info] {sfWebDebugLogger} View "Success" for "videofile/index" 15.81 ms (1)
+2018-02-19 19:17:48.516671 symfony [info] {sfWebResponse} Send content (65662 o)
+2018-02-19 19:18:01.977817 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\vendor\vadimdol\symfony1\lib\request\sfWebRequest.class.php on line 257 (Undefined index: QUERY_STRING)
+2018-02-19 19:18:01.981591 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\vendor\vadimdol\symfony1\lib\request\sfWebRequest.class.php on line 257 (Undefined index: QUERY_STRING)
+2018-02-19 19:18:01.984345 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\vendor\vadimdol\symfony1\lib\request\sfWebRequest.class.php on line 257 (Undefined index: QUERY_STRING)
+2018-02-19 19:18:01.984733 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'videofile',  'action' => 'index',)
+2018-02-19 19:18:02.000093 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+2018-02-19 19:18:02.000175 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+2018-02-19 19:18:02.000247 symfony [info] {VideoFileActions} Call "VideoFileActions->executeIndex()"
+2018-02-19 19:18:02.013519 symfony [debug] {sfPropelLogger} time:  0.001 sec | slow:  NO | mem:    2.0 MB | mempeak:    2.0 MB | memdelta:      0.0 B | SET NAMES 'utf8'
 Query Time: 0.001
-2018-02-17 11:00:22.205677 symfony [debug] {sfPropelLogger} SELECT videofile.ID, videofile.TYPE, videofile.URL, videofile.TITLE, videofile.DESCRIPTION, videofile.CREATED_AT, videofile.UPDATED_AT FROM `videofile`
+2018-02-19 19:18:02.016772 symfony [debug] {sfPropelLogger} SELECT video_file.ID, video_file.TYPE, video_file.URL, video_file.TITLE, video_file.DESCRIPTION, video_file.CREATED_AT, video_file.UPDATED_AT FROM `video_file`
 Query Time: 0.001
-2018-02-17 11:00:22.210334 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/indexSuccess.php"
-2018-02-17 11:00:22.217988 symfony [info] {sfPHPView} Decorate content with "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
-2018-02-17 11:00:22.218380 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
-2018-02-17 11:00:22.219209 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
-2018-02-17 11:00:22.219321 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
-2018-02-17 11:00:22.219417 symfony [info] {sfWebDebugLogger} Configuration 12.53 ms (9)
-2018-02-17 11:00:22.219460 symfony [info] {sfWebDebugLogger} Factories 29.06 ms (1)
-2018-02-17 11:00:22.219501 symfony [info] {sfWebDebugLogger} Action "videofile/index" 21.08 ms (1)
-2018-02-17 11:00:22.219540 symfony [info] {sfWebDebugLogger} View "Success" for "videofile/index" 12.94 ms (1)
-2018-02-17 11:00:22.226511 symfony [info] {sfWebResponse} Send content (64920 o)
-2018-02-17 11:00:23.308743 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /videofile/new with parameters array (  'module' => 'videofile',  'action' => 'new',)
-2018-02-17 11:00:23.322797 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
-2018-02-17 11:00:23.322880 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-2018-02-17 11:00:23.322951 symfony [info] {videofileActions} Call "videofileActions->executeNew()"
-2018-02-17 11:00:23.340945 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/newSuccess.php"
-2018-02-17 11:01:25.554646 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /videofile/new with parameters array (  'module' => 'videofile',  'action' => 'new',)
-2018-02-17 11:01:25.581701 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
-2018-02-17 11:01:25.581803 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-2018-02-17 11:01:25.581898 symfony [info] {videofileActions} Call "videofileActions->executeNew()"
-2018-02-17 11:01:25.610106 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/newSuccess.php"
-2018-02-17 11:01:25.789066 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /videofile/new with parameters array (  'module' => 'videofile',  'action' => 'new',)
-2018-02-17 11:01:25.808799 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
-2018-02-17 11:01:25.808927 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-2018-02-17 11:01:25.809056 symfony [info] {videofileActions} Call "videofileActions->executeNew()"
-2018-02-17 11:01:25.830183 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/newSuccess.php"
-2018-02-17 11:01:31.449789 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /videofile/new with parameters array (  'module' => 'videofile',  'action' => 'new',)
-2018-02-17 11:01:31.490163 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
-2018-02-17 11:01:31.490325 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-2018-02-17 11:01:31.490475 symfony [info] {videofileActions} Call "videofileActions->executeNew()"
-2018-02-17 11:01:31.523648 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/newSuccess.php"
-2018-02-17 11:01:31.533782 symfony [info] {sfPHPView} Decorate content with "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
-2018-02-17 11:01:31.534535 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
-2018-02-17 11:01:31.537158 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
-2018-02-17 11:01:31.537384 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
-2018-02-17 11:01:31.538158 symfony [info] {sfWebDebugLogger} Configuration 16.07 ms (9)
-2018-02-17 11:01:31.538320 symfony [info] {sfWebDebugLogger} Factories 47.46 ms (1)
-2018-02-17 11:01:31.538428 symfony [info] {sfWebDebugLogger} Action "videofile/new" 26.85 ms (1)
-2018-02-17 11:01:31.538558 symfony [info] {sfWebDebugLogger} View "Success" for "videofile/new" 18.24 ms (1)
-2018-02-17 11:01:31.548912 symfony [info] {sfWebResponse} Send content (46339 o)
-2018-02-17 11:01:32.346111 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /videofile/new with parameters array (  'module' => 'videofile',  'action' => 'new',)
-2018-02-17 11:01:32.359586 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
-2018-02-17 11:01:32.359668 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-2018-02-17 11:01:32.359743 symfony [info] {videofileActions} Call "videofileActions->executeNew()"
-2018-02-17 11:01:32.374787 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/newSuccess.php"
-2018-02-17 11:01:32.379390 symfony [info] {sfPHPView} Decorate content with "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
-2018-02-17 11:01:32.379698 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
-2018-02-17 11:01:32.380423 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
-2018-02-17 11:01:32.380505 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
-2018-02-17 11:01:32.380582 symfony [info] {sfWebDebugLogger} Configuration 5.11 ms (9)
-2018-02-17 11:01:32.380625 symfony [info] {sfWebDebugLogger} Factories 19.21 ms (1)
-2018-02-17 11:01:32.380665 symfony [info] {sfWebDebugLogger} Action "videofile/new" 12.41 ms (1)
-2018-02-17 11:01:32.380702 symfony [info] {sfWebDebugLogger} View "Success" for "videofile/new" 7.88 ms (1)
-2018-02-17 11:01:32.386715 symfony [info] {sfWebResponse} Send content (46335 o)
-2018-02-17 11:03:33.350339 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /videofile/new with parameters array (  'module' => 'videofile',  'action' => 'new',)
-2018-02-17 11:03:33.370282 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
-2018-02-17 11:03:33.370368 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-2018-02-17 11:03:33.370441 symfony [info] {videofileActions} Call "videofileActions->executeNew()"
-2018-02-17 11:03:33.390682 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/newSuccess.php"
-2018-02-17 11:03:33.835467 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /videofile/new with parameters array (  'module' => 'videofile',  'action' => 'new',)
-2018-02-17 11:03:33.874522 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
-2018-02-17 11:03:33.874675 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-2018-02-17 11:03:33.874768 symfony [info] {videofileActions} Call "videofileActions->executeNew()"
-2018-02-17 11:03:33.930856 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/newSuccess.php"
-2018-02-17 11:03:35.053636 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /videofile/new with parameters array (  'module' => 'videofile',  'action' => 'new',)
-2018-02-17 11:03:35.075587 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
-2018-02-17 11:03:35.075670 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-2018-02-17 11:03:35.075742 symfony [info] {videofileActions} Call "videofileActions->executeNew()"
-2018-02-17 11:03:35.096193 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/newSuccess.php"
-2018-02-17 11:03:39.376516 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /videofile/new with parameters array (  'module' => 'videofile',  'action' => 'new',)
-2018-02-17 11:03:39.398628 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
-2018-02-17 11:03:39.398718 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-2018-02-17 11:03:39.398792 symfony [info] {videofileActions} Call "videofileActions->executeNew()"
-2018-02-17 11:03:39.421236 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/newSuccess.php"
-2018-02-17 11:04:02.033351 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /videofile/new with parameters array (  'module' => 'videofile',  'action' => 'new',)
-2018-02-17 11:04:02.055103 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
-2018-02-17 11:04:02.055187 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-2018-02-17 11:04:02.055260 symfony [info] {videofileActions} Call "videofileActions->executeNew()"
-2018-02-17 11:04:02.081897 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/newSuccess.php"
-2018-02-17 11:07:38.286250 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /videofile with parameters array (  'module' => 'videofile',  'action' => 'index',)
-2018-02-17 11:07:38.306741 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
-2018-02-17 11:07:38.306835 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-2018-02-17 11:07:38.306915 symfony [info] {videofileActions} Call "videofileActions->executeIndex()"
-2018-02-17 11:07:38.323932 symfony [debug] {sfPropelLogger} time:  0.001 sec | slow:  NO | mem:    4.0 MB | mempeak:    4.0 MB | memdelta:      0.0 B | SET NAMES 'utf8'
+2018-02-19 19:18:02.022201 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/indexSuccess.php"
+2018-02-19 19:18:02.027874 symfony [info] {sfPHPView} Decorate content with "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
+2018-02-19 19:18:02.028363 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
+2018-02-19 19:18:02.029237 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+2018-02-19 19:18:02.029330 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+2018-02-19 19:18:02.029417 symfony [info] {sfWebDebugLogger} Configuration 7.34 ms (9)
+2018-02-19 19:18:02.029479 symfony [info] {sfWebDebugLogger} Factories 21.85 ms (1)
+2018-02-19 19:18:02.029525 symfony [info] {sfWebDebugLogger} Action "videofile/index" 18.94 ms (1)
+2018-02-19 19:18:02.029572 symfony [info] {sfWebDebugLogger} View "Success" for "videofile/index" 9.59 ms (1)
+2018-02-19 19:18:02.035335 symfony [info] {sfWebResponse} Send content (65658 o)
+2018-02-19 19:18:05.260123 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\vendor\vadimdol\symfony1\lib\request\sfWebRequest.class.php on line 257 (Undefined index: QUERY_STRING)
+2018-02-19 19:18:05.263128 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\vendor\vadimdol\symfony1\lib\request\sfWebRequest.class.php on line 257 (Undefined index: QUERY_STRING)
+2018-02-19 19:18:05.268038 symfony [notice] {sfWebDebugLogger}  Notice at C:\Users\DavidOS\PhpstormProjects\video-server\vendor\vadimdol\symfony1\lib\request\sfWebRequest.class.php on line 257 (Undefined index: QUERY_STRING)
+2018-02-19 19:18:05.268546 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'videofile',  'action' => 'index',)
+2018-02-19 19:18:05.286890 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+2018-02-19 19:18:05.287076 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+2018-02-19 19:18:05.288472 symfony [info] {VideoFileActions} Call "VideoFileActions->executeIndex()"
+2018-02-19 19:18:05.305061 symfony [debug] {sfPropelLogger} time:  0.001 sec | slow:  NO | mem:    2.0 MB | mempeak:    2.0 MB | memdelta:      0.0 B | SET NAMES 'utf8'
 Query Time: 0.001
-2018-02-17 11:07:38.327740 symfony [debug] {sfPropelLogger} SELECT videofile.ID, videofile.TYPE, videofile.URL, videofile.TITLE, videofile.DESCRIPTION, videofile.CREATED_AT, videofile.UPDATED_AT FROM `videofile`
-Query Time: 0.002
-2018-02-17 11:07:38.331348 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/indexSuccess.php"
-2018-02-17 11:07:38.338460 symfony [info] {sfPHPView} Decorate content with "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
-2018-02-17 11:07:38.338927 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
-2018-02-17 11:07:38.339745 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
-2018-02-17 11:07:38.339829 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
-2018-02-17 11:07:38.339906 symfony [info] {sfWebDebugLogger} Configuration 16.26 ms (9)
-2018-02-17 11:07:38.339951 symfony [info] {sfWebDebugLogger} Factories 28.18 ms (1)
-2018-02-17 11:07:38.339996 symfony [info] {sfWebDebugLogger} Action "videofile/index" 20.95 ms (1)
-2018-02-17 11:07:38.340034 symfony [info] {sfWebDebugLogger} View "Success" for "videofile/index" 11.40 ms (1)
-2018-02-17 11:07:38.346697 symfony [info] {sfWebResponse} Send content (64889 o)
-2018-02-17 11:07:39.844290 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /videofile/new with parameters array (  'module' => 'videofile',  'action' => 'new',)
-2018-02-17 11:07:39.858273 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
-2018-02-17 11:07:39.858356 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-2018-02-17 11:07:39.858426 symfony [info] {videofileActions} Call "videofileActions->executeNew()"
-2018-02-17 11:07:39.876599 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/newSuccess.php"
-2018-02-17 11:09:39.164098 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /videofile/show with parameters array (  'module' => 'videofile',  'action' => 'show',)
-2018-02-17 11:09:39.187376 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
-2018-02-17 11:09:39.187463 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-2018-02-17 11:09:39.187542 symfony [info] {videofileActions} Call "videofileActions->executeShow()"
-2018-02-17 11:09:39.195157 symfony [err] {sfError404Exception} This request has been forwarded to a 404 error page by the action "videofile/show".
-2018-02-17 11:09:39.213912 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
-2018-02-17 11:09:39.214059 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
-2018-02-17 11:09:39.215071 symfony [info] {sfWebDebugLogger} Configuration 8.53 ms (8)
-2018-02-17 11:09:39.215168 symfony [info] {sfWebDebugLogger} Factories 29.97 ms (1)
-2018-02-17 11:09:39.215244 symfony [info] {sfWebDebugLogger} Action "videofile/show" 27.50 ms (1)
-2018-02-17 11:09:40.627171 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /videofile/show with parameters array (  'module' => 'videofile',  'action' => 'show',)
-2018-02-17 11:09:40.642080 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
-2018-02-17 11:09:40.642183 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-2018-02-17 11:09:40.642280 symfony [info] {videofileActions} Call "videofileActions->executeShow()"
-2018-02-17 11:09:40.647737 symfony [err] {sfError404Exception} This request has been forwarded to a 404 error page by the action "videofile/show".
-2018-02-17 11:09:40.661274 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
-2018-02-17 11:09:40.661448 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
-2018-02-17 11:09:40.661947 symfony [info] {sfWebDebugLogger} Configuration 4.53 ms (8)
-2018-02-17 11:09:40.662003 symfony [info] {sfWebDebugLogger} Factories 19.82 ms (1)
-2018-02-17 11:09:40.662046 symfony [info] {sfWebDebugLogger} Action "videofile/show" 19.67 ms (1)
-2018-02-17 11:09:41.506337 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /videofile/show with parameters array (  'module' => 'videofile',  'action' => 'show',)
-2018-02-17 11:09:41.520004 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
-2018-02-17 11:09:41.520087 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-2018-02-17 11:09:41.520157 symfony [info] {videofileActions} Call "videofileActions->executeShow()"
-2018-02-17 11:09:41.525656 symfony [err] {sfError404Exception} This request has been forwarded to a 404 error page by the action "videofile/show".
-2018-02-17 11:09:41.538767 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
-2018-02-17 11:09:41.538866 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
-2018-02-17 11:09:41.539293 symfony [info] {sfWebDebugLogger} Configuration 4.24 ms (8)
-2018-02-17 11:09:41.539350 symfony [info] {sfWebDebugLogger} Factories 18.21 ms (1)
-2018-02-17 11:09:41.539392 symfony [info] {sfWebDebugLogger} Action "videofile/show" 19.13 ms (1)
-2018-02-17 11:09:47.770148 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /videofile with parameters array (  'module' => 'videofile',  'action' => 'index',)
-2018-02-17 11:09:47.789484 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
-2018-02-17 11:09:47.789568 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-2018-02-17 11:09:47.789638 symfony [info] {videofileActions} Call "videofileActions->executeIndex()"
-2018-02-17 11:09:47.804373 symfony [debug] {sfPropelLogger} time:  0.001 sec | slow:  NO | mem:    4.0 MB | mempeak:    4.0 MB | memdelta:      0.0 B | SET NAMES 'utf8'
-Query Time: 0.001
-2018-02-17 11:09:47.807636 symfony [debug] {sfPropelLogger} SELECT videofile.ID, videofile.TYPE, videofile.URL, videofile.TITLE, videofile.DESCRIPTION, videofile.CREATED_AT, videofile.UPDATED_AT FROM `videofile`
-Query Time: 0.001
-2018-02-17 11:09:47.813671 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/indexSuccess.php"
-2018-02-17 11:09:47.821914 symfony [info] {sfPHPView} Decorate content with "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
-2018-02-17 11:09:47.822422 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
-2018-02-17 11:09:47.823492 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
-2018-02-17 11:09:47.823582 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
-2018-02-17 11:09:47.823673 symfony [info] {sfWebDebugLogger} Configuration 9.35 ms (9)
-2018-02-17 11:09:47.823764 symfony [info] {sfWebDebugLogger} Factories 32.85 ms (1)
-2018-02-17 11:09:47.823807 symfony [info] {sfWebDebugLogger} Action "videofile/index" 18.31 ms (1)
-2018-02-17 11:09:47.823848 symfony [info] {sfWebDebugLogger} View "Success" for "videofile/index" 14.95 ms (1)
-2018-02-17 11:09:47.832015 symfony [info] {sfWebResponse} Send content (64887 o)
-2018-02-17 11:13:45.593245 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /videofile with parameters array (  'module' => 'videofile',  'action' => 'index',)
-2018-02-17 11:13:45.622973 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
-2018-02-17 11:13:45.623081 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-2018-02-17 11:13:45.623215 symfony [info] {videofileActions} Call "videofileActions->executeIndex()"
-2018-02-17 11:13:45.638164 symfony [debug] {sfPropelLogger} time:  0.001 sec | slow:  NO | mem:    6.0 MB | mempeak:    6.0 MB | memdelta:      0.0 B | SET NAMES 'utf8'
-Query Time: 0.001
-2018-02-17 11:13:45.641334 symfony [debug] {sfPropelLogger} SELECT videofile.ID, videofile.TYPE, videofile.URL, videofile.TITLE, videofile.DESCRIPTION, videofile.CREATED_AT, videofile.UPDATED_AT FROM `videofile`
-Query Time: 0.001
-2018-02-17 11:13:45.646323 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/indexSuccess.php"
-2018-02-17 11:13:45.653290 symfony [info] {sfPHPView} Decorate content with "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
-2018-02-17 11:13:45.653738 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
-2018-02-17 11:13:45.654638 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
-2018-02-17 11:13:45.654721 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
-2018-02-17 11:13:45.654798 symfony [info] {sfWebDebugLogger} Configuration 56.23 ms (10)
-2018-02-17 11:13:45.654843 symfony [info] {sfWebDebugLogger} Factories 76.58 ms (1)
-2018-02-17 11:13:45.654891 symfony [info] {sfWebDebugLogger} Action "videofile/index" 18.30 ms (1)
-2018-02-17 11:13:45.654931 symfony [info] {sfWebDebugLogger} View "Success" for "videofile/index" 12.56 ms (1)
-2018-02-17 11:13:45.662703 symfony [info] {sfWebResponse} Send content (64874 o)
-2018-02-17 11:13:46.597902 symfony [err] {sfError404Exception} Empty module and/or action after parsing the URL "/favicon.ico" (/).
-2018-02-17 11:13:46.605236 symfony [info] {sfWebResponse} Send status "HTTP/1.1 404 Not Found"
-2018-02-17 11:13:46.605345 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
-2018-02-17 11:13:46.606148 symfony [info] {sfWebDebugLogger} Configuration 6.49 ms (5)
-2018-02-17 11:13:46.606208 symfony [info] {sfWebDebugLogger} Factories 21.89 ms (1)
-2018-02-18 11:22:31.019540 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /videofile with parameters array (  'module' => 'videofile',  'action' => 'index',)
-2018-02-18 11:22:31.183664 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
-2018-02-18 11:22:31.183757 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
-2018-02-18 11:22:31.183906 symfony [info] {videofileActions} Call "videofileActions->executeIndex()"
-2018-02-18 11:22:31.247109 symfony [debug] {sfPropelLogger} time:  0.001 sec | slow:  NO | mem:    4.0 MB | mempeak:    4.0 MB | memdelta:      0.0 B | SET NAMES 'utf8'
-Query Time: 0.001
-2018-02-18 11:22:31.251477 symfony [debug] {sfPropelLogger} SELECT videofile.ID, videofile.TYPE, videofile.URL, videofile.TITLE, videofile.DESCRIPTION, videofile.CREATED_AT, videofile.UPDATED_AT FROM `videofile`
-Query Time: 0.002
-2018-02-18 11:22:31.274781 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/indexSuccess.php"
-2018-02-18 11:22:31.283375 symfony [err] {InvalidArgumentException} The "/videofile/new/:type/:title/:description" route has some missing mandatory parameters (:type, :title, :description).
-2018-02-18 11:22:31.331717 symfony [info] {sfWebResponse} Send status "HTTP/1.1 500 Internal Server Error"
-2018-02-18 11:22:31.331815 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
-2018-02-18 11:22:31.348150 symfony [info] {sfWebDebugLogger} Configuration 226.95 ms (9)
-2018-02-18 11:22:31.348227 symfony [info] {sfWebDebugLogger} Factories 230.61 ms (1)
-2018-02-18 11:22:31.348272 symfony [info] {sfWebDebugLogger} Action "videofile/index" 67.72 ms (1)
-2018-02-18 11:22:31.348313 symfony [info] {sfWebDebugLogger} View "Success" for "videofile/index" 96.48 ms (1)
+2018-02-19 19:18:05.310631 symfony [debug] {sfPropelLogger} SELECT video_file.ID, video_file.TYPE, video_file.URL, video_file.TITLE, video_file.DESCRIPTION, video_file.CREATED_AT, video_file.UPDATED_AT FROM `video_file`
+Query Time: 0.003
+2018-02-19 19:18:05.318289 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\modules/videofile/templates/indexSuccess.php"
+2018-02-19 19:18:05.331219 symfony [info] {sfPHPView} Decorate content with "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
+2018-02-19 19:18:05.331970 symfony [info] {sfPHPView} Render "C:\Users\DavidOS\PhpstormProjects\video-server\apps\frontend\templates/layout.php"
+2018-02-19 19:18:05.334470 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+2018-02-19 19:18:05.334650 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+2018-02-19 19:18:05.335000 symfony [info] {sfWebDebugLogger} Configuration 10.48 ms (9)
+2018-02-19 19:18:05.335128 symfony [info] {sfWebDebugLogger} Factories 27.42 ms (1)
+2018-02-19 19:18:05.335206 symfony [info] {sfWebDebugLogger} Action "videofile/index" 25.40 ms (1)
+2018-02-19 19:18:05.335283 symfony [info] {sfWebDebugLogger} View "Success" for "videofile/index" 19.23 ms (1)
+2018-02-19 19:18:05.346551 symfony [info] {sfWebResponse} Send content (65661 o)

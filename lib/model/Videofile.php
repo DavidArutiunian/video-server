@@ -1,6 +1,6 @@
 <?php
 
-class Videofile extends BaseVideofile
+class VideoFile extends BaseVideoFile
 {
 
 }

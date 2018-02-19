@@ -1,25 +1,24 @@
 <?php
 
-class VideofileTableMap extends TableMap
+class VideoFileTableMap extends TableMap
 {
     /**
      * The (dot-path) name of this class
      */
-    const CLASS_NAME = 'lib.model.map.VideofileTableMap';
+    const CLASS_NAME = 'lib.model.map.VideoFileTableMap';
 
     /**
      * Initialize the table attributes, columns and validators
      * Relations are not initialized by this method since they are lazy loaded
      *
      * @return     void
-     * @throws     PropelException
      */
     public function initialize()
     {
         // attributes
-        $this->setName('videofile');
-        $this->setPhpName('Videofile');
-        $this->setClassname('Videofile');
+        $this->setName('VideoFile');
+        $this->setPhpName('VideoFile');
+        $this->setClassname('VideoFile');
         $this->setPackage('lib.model');
         $this->setUseIdGenerator(true);
         // columns

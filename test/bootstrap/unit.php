@@ -20,7 +20,11 @@ $autoload->loadConfiguration(sfFinder::type('file')->name('autoload.yml')->in(ar
     sfConfig::get('sf_symfony_lib_dir') . '/config/config',
     sfConfig::get('sf_config_dir'),
 )));
-$autoload->register();
+try {
+    $autoload->register();
+} catch (sfException $e) {
+    echo "Error: " . $e->getMessage();
+}
 
 // lime
 include $configuration->getSymfonyLibDir() . '/vendor/lime/lime.php';

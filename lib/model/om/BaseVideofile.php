@@ -1,12 +1,12 @@
 <?php
 
-abstract class BaseVideofile extends BaseObject implements Persistent
+abstract class BaseVideoFile extends BaseObject implements Persistent
 {
     /**
      * The Peer class.
      * Instance provides a convenient way of calling static methods on a class
      * that calling code may not be able to identify.
-     * @var        VideofilePeer
+     * @var        VideoFilePeer
      */
     protected static $peer;
 
@@ -66,7 +66,7 @@ abstract class BaseVideofile extends BaseObject implements Persistent
      */
     protected $alreadyInValidation = false;
 
-    const PEER = 'VideofilePeer';
+    const PEER = 'VideoFilePeer';
 
     /**
      * Get the [id] column value.
@@ -198,7 +198,7 @@ abstract class BaseVideofile extends BaseObject implements Persistent
      * Set the value of [id] column.
      *
      * @param      int $v new value
-     * @return     Videofile The current object (for fluent API support)
+     * @return BaseVideoFile
      */
     public function setId($v)
     {
@@ -208,7 +208,7 @@ abstract class BaseVideofile extends BaseObject implements Persistent
 
         if ($this->id !== $v) {
             $this->id = $v;
-            $this->modifiedColumns[] = VideofilePeer::ID;
+            $this->modifiedColumns[] = VideoFilePeer::ID;
         }
 
         return $this;
@@ -218,7 +218,7 @@ abstract class BaseVideofile extends BaseObject implements Persistent
      * Set the value of [type] column.
      *
      * @param      string $v new value
-     * @return     Videofile The current object (for fluent API support)
+     * @return BaseVideoFile
      */
     public function setType($v)
     {
@@ -228,7 +228,7 @@ abstract class BaseVideofile extends BaseObject implements Persistent
 
         if ($this->type !== $v) {
             $this->type = $v;
-            $this->modifiedColumns[] = VideofilePeer::TYPE;
+            $this->modifiedColumns[] = VideoFilePeer::TYPE;
         }
 
         return $this;
@@ -238,7 +238,7 @@ abstract class BaseVideofile extends BaseObject implements Persistent
      * Set the value of [url] column.
      *
      * @param      string $v new value
-     * @return     Videofile The current object (for fluent API support)
+     * @return BaseVideoFile
      */
     public function setUrl($v)
     {
@@ -248,7 +248,7 @@ abstract class BaseVideofile extends BaseObject implements Persistent
 
         if ($this->url !== $v) {
             $this->url = $v;
-            $this->modifiedColumns[] = VideofilePeer::URL;
+            $this->modifiedColumns[] = VideoFilePeer::URL;
         }
 
         return $this;
@@ -258,7 +258,7 @@ abstract class BaseVideofile extends BaseObject implements Persistent
      * Set the value of [title] column.
      *
      * @param      string $v new value
-     * @return     Videofile The current object (for fluent API support)
+     * @return BaseVideoFile
      */
     public function setTitle($v)
     {
@@ -268,7 +268,7 @@ abstract class BaseVideofile extends BaseObject implements Persistent
 
         if ($this->title !== $v) {
             $this->title = $v;
-            $this->modifiedColumns[] = VideofilePeer::TITLE;
+            $this->modifiedColumns[] = VideoFilePeer::TITLE;
         }
 
         return $this;
@@ -278,7 +278,7 @@ abstract class BaseVideofile extends BaseObject implements Persistent
      * Set the value of [description] column.
      *
      * @param      string $v new value
-     * @return     Videofile The current object (for fluent API support)
+     * @return BaseVideoFile
      */
     public function setDescription($v)
     {
@@ -288,7 +288,7 @@ abstract class BaseVideofile extends BaseObject implements Persistent
 
         if ($this->description !== $v) {
             $this->description = $v;
-            $this->modifiedColumns[] = VideofilePeer::DESCRIPTION;
+            $this->modifiedColumns[] = VideoFilePeer::DESCRIPTION;
         }
 
         return $this;
@@ -299,7 +299,8 @@ abstract class BaseVideofile extends BaseObject implements Persistent
      *
      * @param      mixed $v string, integer (timestamp), or DateTime value.  Empty string will
      *                        be treated as NULL for temporal objects.
-     * @return     Videofile The current object (for fluent API support)
+     * @return BaseVideoFile
+     * @throws PropelException
      */
     public function setCreatedAt($v)
     {
@@ -335,7 +336,7 @@ abstract class BaseVideofile extends BaseObject implements Persistent
             if (($currNorm !== $newNorm) // normalized values don't match
             ) {
                 $this->created_at = ($dt ? $dt->format('Y-m-d H:i:s') : null);
-                $this->modifiedColumns[] = VideofilePeer::CREATED_AT;
+                $this->modifiedColumns[] = VideoFilePeer::CREATED_AT;
             }
         } // if either are not null
 
@@ -347,7 +348,8 @@ abstract class BaseVideofile extends BaseObject implements Persistent
      *
      * @param      mixed $v string, integer (timestamp), or DateTime value.  Empty string will
      *                        be treated as NULL for temporal objects.
-     * @return     Videofile The current object (for fluent API support)
+     * @return BaseVideoFile
+     * @throws PropelException
      */
     public function setUpdatedAt($v)
     {
@@ -383,7 +385,7 @@ abstract class BaseVideofile extends BaseObject implements Persistent
             if (($currNorm !== $newNorm) // normalized values don't match
             ) {
                 $this->updated_at = ($dt ? $dt->format('Y-m-d H:i:s') : null);
-                $this->modifiedColumns[] = VideofilePeer::UPDATED_AT;
+                $this->modifiedColumns[] = VideoFilePeer::UPDATED_AT;
             }
         } // if either are not null
 
@@ -438,7 +440,7 @@ abstract class BaseVideofile extends BaseObject implements Persistent
             }
 
             // FIXME - using NUM_COLUMNS may be clearer.
-            return $startcol + 7; // 7 = VideofilePeer::NUM_COLUMNS - VideofilePeer::NUM_LAZY_LOAD_COLUMNS).
+            return $startcol + 7; // 7 = VideoFilePeer::NUM_COLUMNS - VideoFilePeer::NUM_LAZY_LOAD_COLUMNS).
 
         } catch (Exception $e) {
             throw new PropelException("Error populating Videofile object", $e);
@@ -456,7 +458,6 @@ abstract class BaseVideofile extends BaseObject implements Persistent
      * the base method from the overridden method (i.e. parent::ensureConsistency()),
      * in case your model changes.
      *
-     * @throws     PropelException
      */
     public function ensureConsistency()
     {
@@ -484,23 +485,19 @@ abstract class BaseVideofile extends BaseObject implements Persistent
         }
 
         if ($con === null) {
-            $con = Propel::getConnection(VideofilePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+            $con = Propel::getConnection(VideoFilePeer::DATABASE_NAME, Propel::CONNECTION_READ);
         }
 
         // We don't need to alter the object instance pool; we're just modifying this instance
         // already in the pool.
 
-        $stmt = VideofilePeer::doSelectStmt($this->buildPkeyCriteria(), $con);
+        $stmt = VideoFilePeer::doSelectStmt($this->buildPkeyCriteria(), $con);
         $row = $stmt->fetch(PDO::FETCH_NUM);
         $stmt->closeCursor();
         if (!$row) {
             throw new PropelException('Cannot find matching row in the database to reload object values.');
         }
         $this->hydrate($row, 0, true); // rehydrate
-
-        if ($deep) {  // also de-associate any related objects?
-
-        } // if (deep)
     }
 
     /**
@@ -519,22 +516,22 @@ abstract class BaseVideofile extends BaseObject implements Persistent
         }
 
         if ($con === null) {
-            $con = Propel::getConnection(VideofilePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+            $con = Propel::getConnection(VideoFilePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
         }
 
         $con->beginTransaction();
         try {
             $ret = $this->preDelete($con);
-            foreach (sfMixer::getCallables('BaseVideofile:delete:pre') as $callable) {
+            foreach (sfMixer::getCallables('BaseVideoFile:delete:pre') as $callable) {
                 if ($ret = call_user_func($callable, $this, $con)) {
                     return;
                 }
             }
 
             if ($ret) {
-                VideofilePeer::doDelete($this, $con);
+                VideoFilePeer::doDelete($this, $con);
                 $this->postDelete($con);
-                foreach (sfMixer::getCallables('BaseVideofile:delete:post') as $callable) {
+                foreach (sfMixer::getCallables('BaseVideoFile:delete:post') as $callable) {
                     call_user_func($callable, $this, $con);
                 }
 
@@ -567,25 +564,25 @@ abstract class BaseVideofile extends BaseObject implements Persistent
         }
 
         if ($con === null) {
-            $con = Propel::getConnection(VideofilePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+            $con = Propel::getConnection(VideoFilePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
         }
 
         $con->beginTransaction();
         $isInsert = $this->isNew();
         try {
             $ret = $this->preSave($con);
-            foreach (sfMixer::getCallables('BaseVideofile:save:pre') as $callable) {
+            foreach (sfMixer::getCallables('BaseVideoFile:save:pre') as $callable) {
                 if (is_integer($affectedRows = call_user_func($callable, $this, $con))) {
                     return $affectedRows;
                 }
             }
-            if ($this->isModified() && !$this->isColumnModified(VideofilePeer::UPDATED_AT)) {
+            if ($this->isModified() && !$this->isColumnModified(VideoFilePeer::UPDATED_AT)) {
                 $this->setUpdatedAt(time());
             }
 
             if ($isInsert) {
                 $ret = $ret && $this->preInsert($con);
-                if (!$this->isColumnModified(VideofilePeer::CREATED_AT)) {
+                if (!$this->isColumnModified(VideoFilePeer::CREATED_AT)) {
                     $this->setCreatedAt(time());
                 }
 
@@ -600,18 +597,19 @@ abstract class BaseVideofile extends BaseObject implements Persistent
                     $this->postUpdate($con);
                 }
                 $this->postSave($con);
-                foreach (sfMixer::getCallables('BaseVideofile:save:post') as $callable) {
+                foreach (sfMixer::getCallables('BaseVideoFile:save:post') as $callable) {
                     call_user_func($callable, $this, $con, $affectedRows);
                 }
 
                 $con->commit();
-                VideofilePeer::addInstanceToPool($this);
+                VideoFilePeer::addInstanceToPool($this);
                 return $affectedRows;
             }
         } catch (PropelException $e) {
             $con->rollBack();
             throw $e;
         }
+        return 0;
     }
 
     /**
@@ -632,13 +630,13 @@ abstract class BaseVideofile extends BaseObject implements Persistent
             $this->alreadyInSave = true;
 
             if ($this->isNew()) {
-                $this->modifiedColumns[] = VideofilePeer::ID;
+                $this->modifiedColumns[] = VideoFilePeer::ID;
             }
 
             // If this object has been modified, then save it to the database.
             if ($this->isModified()) {
                 if ($this->isNew()) {
-                    $pk = VideofilePeer::doInsert($this, $con);
+                    $pk = VideoFilePeer::doInsert($this, $con);
                     $affectedRows += 1; // we are assuming that there is only 1 row per doInsert() which
                     // should always be true here (even though technically
                     // BasePeer::doInsert() can insert multiple rows).
@@ -647,7 +645,7 @@ abstract class BaseVideofile extends BaseObject implements Persistent
 
                     $this->setNew(false);
                 } else {
-                    $affectedRows += VideofilePeer::doUpdate($this, $con);
+                    $affectedRows += VideoFilePeer::doUpdate($this, $con);
                 }
 
                 $this->resetModified(); // [HL] After being saved an object is no longer 'modified'
@@ -687,6 +685,7 @@ abstract class BaseVideofile extends BaseObject implements Persistent
      * @return     boolean Whether all columns pass validation.
      * @see        doValidate()
      * @see        getValidationFailures()
+     * @throws PropelException
      */
     public function validate($columns = null)
     {
@@ -709,6 +708,7 @@ abstract class BaseVideofile extends BaseObject implements Persistent
      *
      * @param      array $columns Array of column names to validate.
      * @return     mixed <code>true</code> if all validations pass; array of <code>ValidationFailed</code> objets otherwise.
+     * @throws PropelException
      */
     protected function doValidate($columns = null)
     {
@@ -718,7 +718,7 @@ abstract class BaseVideofile extends BaseObject implements Persistent
 
             $failureMap = array();
 
-            if (($retval = VideofilePeer::doValidate($this, $columns)) !== true) {
+            if (($retval = VideoFilePeer::doValidate($this, $columns)) !== true) {
                 $failureMap = array_merge($failureMap, $retval);
             }
 
@@ -736,10 +736,11 @@ abstract class BaseVideofile extends BaseObject implements Persistent
      *                     one of the class type constants BasePeer::TYPE_PHPNAME, BasePeer::TYPE_STUDLYPHPNAME
      *                     BasePeer::TYPE_COLNAME, BasePeer::TYPE_FIELDNAME, BasePeer::TYPE_NUM
      * @return     mixed Value of field.
+     * @throws PropelException
      */
     public function getByName($name, $type = BasePeer::TYPE_PHPNAME)
     {
-        $pos = VideofilePeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+        $pos = VideoFilePeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
         $field = $this->getByPosition($pos);
         return $field;
     }
@@ -750,6 +751,7 @@ abstract class BaseVideofile extends BaseObject implements Persistent
      *
      * @param      int $pos position in xml schema
      * @return     mixed Value of field at $pos
+     * @throws PropelException
      */
     public function getByPosition($pos)
     {
@@ -791,10 +793,11 @@ abstract class BaseVideofile extends BaseObject implements Persistent
      *                        BasePeer::TYPE_COLNAME, BasePeer::TYPE_FIELDNAME, BasePeer::TYPE_NUM. Defaults to BasePeer::TYPE_PHPNAME.
      * @param      boolean $includeLazyLoadColumns (optional) Whether to include lazy loaded columns.  Defaults to TRUE.
      * @return     array an associative array containing the field names (as keys) and field values
+     * @throws PropelException
      */
     public function toArray($keyType = BasePeer::TYPE_PHPNAME, $includeLazyLoadColumns = true)
     {
-        $keys = VideofilePeer::getFieldNames($keyType);
+        $keys = VideoFilePeer::getFieldNames($keyType);
         $result = array(
             $keys[0] => $this->getId(),
             $keys[1] => $this->getType(),
@@ -816,11 +819,16 @@ abstract class BaseVideofile extends BaseObject implements Persistent
      *                     one of the class type constants BasePeer::TYPE_PHPNAME, BasePeer::TYPE_STUDLYPHPNAME
      *                     BasePeer::TYPE_COLNAME, BasePeer::TYPE_FIELDNAME, BasePeer::TYPE_NUM
      * @return     void
+     * @throws PropelException
      */
     public function setByName($name, $value, $type = BasePeer::TYPE_PHPNAME)
     {
-        $pos = VideofilePeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
-        return $this->setByPosition($pos, $value);
+        $pos = VideoFilePeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+        try {
+            $this->setByPosition($pos, $value);
+        } catch (PropelException $e) {
+            echo "Error: " . $e->getMessage();
+        }
     }
 
     /**
@@ -830,6 +838,7 @@ abstract class BaseVideofile extends BaseObject implements Persistent
      * @param      int $pos position in xml schema
      * @param      mixed $value field value
      * @return     void
+     * @throws PropelException
      */
     public function setByPosition($pos, $value)
     {
@@ -874,10 +883,11 @@ abstract class BaseVideofile extends BaseObject implements Persistent
      * @param      array $arr An array to populate the object from.
      * @param      string $keyType The type of keys the array uses.
      * @return     void
+     * @throws PropelException
      */
     public function fromArray($arr, $keyType = BasePeer::TYPE_PHPNAME)
     {
-        $keys = VideofilePeer::getFieldNames($keyType);
+        $keys = VideoFilePeer::getFieldNames($keyType);
 
         if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
         if (array_key_exists($keys[1], $arr)) $this->setType($arr[$keys[1]]);
@@ -895,15 +905,15 @@ abstract class BaseVideofile extends BaseObject implements Persistent
      */
     public function buildCriteria()
     {
-        $criteria = new Criteria(VideofilePeer::DATABASE_NAME);
+        $criteria = new Criteria(VideoFilePeer::DATABASE_NAME);
 
-        if ($this->isColumnModified(VideofilePeer::ID)) $criteria->add(VideofilePeer::ID, $this->id);
-        if ($this->isColumnModified(VideofilePeer::TYPE)) $criteria->add(VideofilePeer::TYPE, $this->type);
-        if ($this->isColumnModified(VideofilePeer::URL)) $criteria->add(VideofilePeer::URL, $this->url);
-        if ($this->isColumnModified(VideofilePeer::TITLE)) $criteria->add(VideofilePeer::TITLE, $this->title);
-        if ($this->isColumnModified(VideofilePeer::DESCRIPTION)) $criteria->add(VideofilePeer::DESCRIPTION, $this->description);
-        if ($this->isColumnModified(VideofilePeer::CREATED_AT)) $criteria->add(VideofilePeer::CREATED_AT, $this->created_at);
-        if ($this->isColumnModified(VideofilePeer::UPDATED_AT)) $criteria->add(VideofilePeer::UPDATED_AT, $this->updated_at);
+        if ($this->isColumnModified(VideoFilePeer::ID)) $criteria->add(VideoFilePeer::ID, $this->id);
+        if ($this->isColumnModified(VideoFilePeer::TYPE)) $criteria->add(VideoFilePeer::TYPE, $this->type);
+        if ($this->isColumnModified(VideoFilePeer::URL)) $criteria->add(VideoFilePeer::URL, $this->url);
+        if ($this->isColumnModified(VideoFilePeer::TITLE)) $criteria->add(VideoFilePeer::TITLE, $this->title);
+        if ($this->isColumnModified(VideoFilePeer::DESCRIPTION)) $criteria->add(VideoFilePeer::DESCRIPTION, $this->description);
+        if ($this->isColumnModified(VideoFilePeer::CREATED_AT)) $criteria->add(VideoFilePeer::CREATED_AT, $this->created_at);
+        if ($this->isColumnModified(VideoFilePeer::UPDATED_AT)) $criteria->add(VideoFilePeer::UPDATED_AT, $this->updated_at);
 
         return $criteria;
     }
@@ -918,9 +928,9 @@ abstract class BaseVideofile extends BaseObject implements Persistent
      */
     public function buildPkeyCriteria()
     {
-        $criteria = new Criteria(VideofilePeer::DATABASE_NAME);
+        $criteria = new Criteria(VideoFilePeer::DATABASE_NAME);
 
-        $criteria->add(VideofilePeer::ID, $this->id);
+        $criteria->add(VideoFilePeer::ID, $this->id);
 
         return $criteria;
     }
@@ -951,9 +961,8 @@ abstract class BaseVideofile extends BaseObject implements Persistent
      * If desired, this method can also make copies of all associated (fkey referrers)
      * objects.
      *
-     * @param      object $copyObj An object of Videofile (or compatible) type.
+     * @param      object $copyObj An object of VideoFile (or compatible) type.
      * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
-     * @throws     PropelException
      */
     public function copyInto($copyObj, $deepCopy = false)
     {
@@ -979,8 +988,7 @@ abstract class BaseVideofile extends BaseObject implements Persistent
      * objects.
      *
      * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
-     * @return     Videofile Clone of current object.
-     * @throws     PropelException
+     * @return     VideoFile Clone of current object.
      */
     public function copy($deepCopy = false)
     {
@@ -998,12 +1006,12 @@ abstract class BaseVideofile extends BaseObject implements Persistent
      * same instance for all member of this class. The method could therefore
      * be static, but this would prevent one from overriding the behavior.
      *
-     * @return     VideofilePeer
+     * @return     VideoFilePeer
      */
     public function getPeer()
     {
         if (self::$peer === null) {
-            self::$peer = new VideofilePeer();
+            self::$peer = new VideoFilePeer();
         }
         return self::$peer;
     }
@@ -1019,18 +1027,16 @@ abstract class BaseVideofile extends BaseObject implements Persistent
      */
     public function clearAllReferences($deep = false)
     {
-        if ($deep) {
-        } // if ($deep)
-
     }
 
     /**
      * Calls methods defined via {@link sfMixer}.
+     * @throws sfException
      */
     public function __call($method, $arguments)
     {
-        if (!$callable = sfMixer::getCallable('BaseVideofile:' . $method)) {
-            throw new sfException(sprintf('Call to undefined method BaseVideofile::%s', $method));
+        if (!$callable = sfMixer::getCallable('BaseVideoFile:' . $method)) {
+            throw new sfException(sprintf('Call to undefined method BaseVideoFile::%s', $method));
         }
 
         array_unshift($arguments, $this);
