@@ -1,10 +1,11 @@
 <?php
 
 require_once dirname(__FILE__) . '/..\vendor\vadimdol\symfony1\lib/autoload/sfCoreAutoload.class.php';
+
 try {
     sfCoreAutoload::register();
 } catch (sfException $e) {
-    echo "Error: " . $e->getMessage();
+    error_log($e->getMessage());
 }
 
 class ProjectConfiguration extends sfProjectConfiguration

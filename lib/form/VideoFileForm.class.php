@@ -19,7 +19,7 @@ class VideoFileForm extends BaseVideoFileForm
         $this->useFields(array('title', 'description'));
 
         $this->setWidgets(array(
-            'title' => new sfWidgetFormInputText(),
+            'title' => new sfWidgetFormInputText(array(), array('autocomplete' => 'off')),
             'description' => new sfWidgetFormTextarea(),
             'file' => new sfWidgetFormInputFile(),
         ));

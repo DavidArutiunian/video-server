@@ -12,5 +12,5 @@ $configuration = ProjectConfiguration::getApplicationConfiguration('frontend', '
 try {
     sfContext::createInstance($configuration)->dispatch();
 } catch (sfFactoryException $e) {
-    echo "Error: " . $e->getMessage();
+    error_log($e->getMessage());
 }

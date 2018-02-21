@@ -19,6 +19,6 @@
 VideoFile:
   video_file:
     type: mp4
-    url: http://test-video.com/file.mp4
+    url: TEST_URL
     title: TEST_VIDEO
     description: TEST_VIDEO_DESCRIPTION

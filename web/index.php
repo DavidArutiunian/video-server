@@ -4,8 +4,9 @@
 require_once(dirname(__FILE__) . '/../config/ProjectConfiguration.class.php');
 
 $configuration = ProjectConfiguration::getApplicationConfiguration('frontend', 'prod', false);
+
 try {
     sfContext::createInstance($configuration)->dispatch();
 } catch (sfFactoryException $e) {
-    echo "Error: " . $e->getMessage();
+    error_log($e->getMessage());
 }

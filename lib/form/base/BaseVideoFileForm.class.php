@@ -45,6 +45,4 @@ abstract class BaseVideoFileForm extends BaseFormPropel
     {
         return 'VideoFile';
     }
-
-
 }

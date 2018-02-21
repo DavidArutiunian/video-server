@@ -20,6 +20,9 @@ use_javascripts_for_form($form);
         </tr>
     <?php endif; ?>
     <tr>
+        <td>
+            <a href="<?php echo url_for('homepage') ?>">List</a>
+        </td>
         <td colspan="2">
             <input type="submit" value="Upload video"/>
         </td>

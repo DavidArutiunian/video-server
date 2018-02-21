@@ -443,7 +443,7 @@ abstract class BaseVideoFile extends BaseObject implements Persistent
             return $startcol + 7; // 7 = VideoFilePeer::NUM_COLUMNS - VideoFilePeer::NUM_LAZY_LOAD_COLUMNS).
 
         } catch (Exception $e) {
-            throw new PropelException("Error populating Videofile object", $e);
+            throw new PropelException("Error populating VideoFile object", $e);
         }
     }
 
@@ -827,7 +827,7 @@ abstract class BaseVideoFile extends BaseObject implements Persistent
         try {
             $this->setByPosition($pos, $value);
         } catch (PropelException $e) {
-            echo "Error: " . $e->getMessage();
+            error_log($e->getMessage());
         }
     }
 

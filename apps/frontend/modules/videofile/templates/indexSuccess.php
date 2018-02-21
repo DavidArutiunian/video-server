@@ -8,23 +8,21 @@
 <table>
     <thead>
     <tr>
-        <th>Type</th>
         <th>Title</th>
         <th>Description</th>
-        <th>URL</th>
+        <th>Type</th>
     </tr>
     </thead>
     <tbody>
     <?php foreach ($VideoFiles as $videoFile): ?>
         <tr>
-            <td><?php echo $videoFile->getType() ?></td>
-            <td><?php echo $videoFile->getTitle() ?></td>
-            <td><?php echo $videoFile->getDescription() ?></td>
             <td>
-                <a href="<?php echo $videoFile->getUrl() ?>" target="_blank">
-                    <?php echo $videoFile->getUrl() ?>
+                <a href="<?php echo "videofile/show?id={$videoFile->getId()}" ?>">
+                    <?php echo $videoFile->getTitle() ?>
                 </a>
             </td>
+            <td><?php echo $videoFile->getDescription() ?></td>
+            <td><?php echo $videoFile->getType() ?></td>
         </tr>
     <?php endforeach; ?>
     </tbody>

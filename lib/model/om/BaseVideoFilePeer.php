@@ -6,7 +6,7 @@ abstract class BaseVideoFilePeer
     const DATABASE_NAME = 'propel';
 
     /** the table name for this class */
-    const TABLE_NAME = 'VideoFile';
+    const TABLE_NAME = 'video_file';
 
     /** the related Propel class for this table */
     const OM_CLASS = 'VideoFile';
@@ -866,6 +866,6 @@ abstract class BaseVideoFilePeer
 try {
     BaseVideoFilePeer::buildTableMap();
 } catch (PropelException $e) {
-    echo "Error: " . $e->getMessage();
+    error_log($e->getMessage());
 }
 

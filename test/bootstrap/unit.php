@@ -20,10 +20,11 @@ $autoload->loadConfiguration(sfFinder::type('file')->name('autoload.yml')->in(ar
     sfConfig::get('sf_symfony_lib_dir') . '/config/config',
     sfConfig::get('sf_config_dir'),
 )));
+
 try {
     $autoload->register();
 } catch (sfException $e) {
-    echo "Error: " . $e->getMessage();
+    error_log($e->getMessage());
 }
 
 // lime
