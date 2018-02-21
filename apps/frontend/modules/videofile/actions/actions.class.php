@@ -5,7 +5,7 @@
  *
  * @package    video-server
  * @subpackage videofile
- * @author     Your name here
+ * @author     David Arutiunian
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
 class VideoFileActions extends sfActions
@@ -26,13 +26,13 @@ class VideoFileActions extends sfActions
         } catch (PropelException $e) {
             echo "Error: " . $e->getMessage();
         }
-//        $this->forward404Unless($this->VideoFile);
     }
 
     public function executeNew(sfWebRequest $request)
     {
         try {
             $this->form = new VideoFileForm();
+            $this->form->getWidgetSchema()->setNameFormat('video_file[%s]');
         } catch (sfException $e) {
             echo "Error: " . $e->getMessage();
         }
@@ -65,12 +65,12 @@ class VideoFileActions extends sfActions
 
     protected function processForm(sfWebRequest $request, sfForm $form)
     {
-        $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
+        $form->bind($request->getParameter('video_file'), $request->getFiles('video_file'));
         if ($form->isValid()) {
-            $VideoFile = $form->save();
+            $form->save();
 
             try {
-                $this->redirect('videofile/edit?id=' . $VideoFile->getId());
+                $this->redirect('homepage');
             } catch (sfStopException $e) {
                 echo "Error: " . $e->getMessage();
             }

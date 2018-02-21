@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Videofile form.
+ * VideoFile form.
  *
  * @package    video-server
  * @subpackage form
@@ -10,28 +10,28 @@
  */
 class VideoFileForm extends BaseVideoFileForm
 {
-    static public $types = array(
-        'mp4' => 'mp4',
-        'wav' => 'wav',
-    );
+    static private $allowedTypes = array('video/mp4', 'video/mpeg', 'video/webm');
+
+    static private $maxSize = 104857600;
 
     public function configure(): void
     {
-        $this->useFields(array('type', 'title', 'description'));
+        $this->useFields(array('title', 'description'));
 
         $this->setWidgets(array(
-            'type' => new sfWidgetFormChoice(array(
-                'choices' => VideoFileForm::$types,
-                'expanded' => true,
-            )),
             'title' => new sfWidgetFormInputText(),
             'description' => new sfWidgetFormTextarea(),
+            'file' => new sfWidgetFormInputFile(),
         ));
 
         $this->setValidators(array(
             'title' => new sfValidatorString(array('max_length' => 45)),
             'description' => new sfValidatorString(array('max_length' => 280)),
-            'type' => new sfValidatorChoice(array('choices' => array_keys(VideoFileForm::$types))),
+            'file' => new sfValidatorFile(array(
+                'path' => sfConfig::get('sf_upload_dir') . './files',
+                'mime_types' => VideoFileForm::$allowedTypes,
+                'max_size' => VideoFileForm::$maxSize,
+            ))
         ));
     }
 }

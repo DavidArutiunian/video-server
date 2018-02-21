@@ -6,22 +6,14 @@ homepage:
   url:   /
   param: { module: videofile, action: index }
 
-videofile_new:
-  url: /videofile/new/:type/:title/:description
+videofile_create:
+  url: /videofile/create
   class: sfRequestRoute
   options: { model: VideoFile, type: object }
-  param: { module: videofile, action: new }
+  param: { module: videofile, action: create }
   requirements:
     sf_method: [post]
 
-
-videofile_show:
-  url: /videofile/show/:id
-  class: sfRequestRoute
-  param: { module: videofile, action: show }
-  options: { model: Videoile, type: object }
-  requirements:
-    sf_method: [get]
 
 # generic rules
 # please, remove them by adding more specific rules
