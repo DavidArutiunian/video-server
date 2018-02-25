@@ -10,9 +10,25 @@
  */
 class VideoFileForm extends BaseVideoFileForm
 {
-    static private $allowedTypes = array('video/mp4', 'video/mpeg', 'video/webm');
+    private const ALLOWED_TYPES = array(
+        'video/mp4',
+        'video/mpeg',
+        'video/webm'
+    );
+    private const MAX_SIZE = 104857600; // 100 MB
 
-    static private $maxSize = 104857600;
+    private $uploadPath;
+
+    public function __construct($object = null, array $options = array(), $CSRFSecret = null)
+    {
+        try {
+            parent::__construct($object, $options, $CSRFSecret);
+        } catch (sfException $e) {
+            error_log($e->getMessage());
+        }
+        $this->uploadPath = sfConfig::get('sf_upload_dir') . './files';
+    }
+
 
     public function configure(): void
     {
@@ -28,10 +44,12 @@ class VideoFileForm extends BaseVideoFileForm
             'title' => new sfValidatorString(array('max_length' => 45)),
             'description' => new sfValidatorString(array('max_length' => 280)),
             'file' => new sfValidatorFile(array(
-                'path' => sfConfig::get('sf_upload_dir') . './files',
-                'mime_types' => VideoFileForm::$allowedTypes,
-                'max_size' => VideoFileForm::$maxSize,
+                'path' => $this->uploadPath,
+                'mime_types' => VideoFileForm::ALLOWED_TYPES,
+                'max_size' => VideoFileForm::MAX_SIZE,
             ))
         ));
     }
+
+
 }

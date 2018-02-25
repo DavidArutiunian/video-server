@@ -7,6 +7,9 @@ class VideoFileTableMap extends TableMap
      */
     const CLASS_NAME = 'lib.model.map.VideoFileTableMap';
 
+    private const TABLE_NAME = "video_file";
+    private const PHP_NAME = "VideoFile";
+
     /**
      * Initialize the table attributes, columns and validators
      * Relations are not initialized by this method since they are lazy loaded
@@ -16,9 +19,9 @@ class VideoFileTableMap extends TableMap
     public function initialize()
     {
         // attributes
-        $this->setName('VideoFile');
-        $this->setPhpName('VideoFile');
-        $this->setClassname('VideoFile');
+        $this->setName(VideoFileTableMap::TABLE_NAME);
+        $this->setPhpName(VideoFileTableMap::PHP_NAME);
+        $this->setClassname(VideoFileTableMap::PHP_NAME);
         $this->setPackage('lib.model');
         $this->setUseIdGenerator(true);
         // columns

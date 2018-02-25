@@ -6,8 +6,8 @@ default:
     content-type: text/html
 
   metas:
-    title:        Video Server project
-    description:  video server project
+    title:        Video Server
+    description:  Video Server project
     keywords:     video, server, upload
     language:     en
     robots:       index, follow
