@@ -14,6 +14,14 @@ video_file_create:
   requirements:
     sf_method: [post]
 
+video_file_new:
+  url: /videofile/new
+  class: sfRequestRoute
+  options: { model: VideoFile, type: object }
+  param: { module: videofile, action: new }
+  requirements:
+      sf_method: [get]
+
 video_file_show:
   url: /videofile/show/:id
   class: sfRequestRoute

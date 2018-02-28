@@ -33,7 +33,11 @@ class VideoFileActions extends sfActions
 
     public function executeNew(): void
     {
-        $this->form = new VideoFileForm();
+        try {
+            $this->form = new VideoFileForm();
+        } catch (sfException $e) {
+            error_log($e->getMessage());
+        }
         $this->form->getWidgetSchema()->setNameFormat(VideoFileActions::FORM_NAME . '[%s]');
     }
 
@@ -46,7 +50,11 @@ class VideoFileActions extends sfActions
             return;
         }
 
-        $this->form = new VideoFileForm();
+        try {
+            $this->form = new VideoFileForm();
+        } catch (sfException $e) {
+            error_log($e->getMessage());
+        }
 
         $this->processForm($request, $this->form);
 
@@ -67,15 +75,16 @@ class VideoFileActions extends sfActions
         );
         if ($form->isValid()) {
 
-            try {
-                $form->save();
-            } catch (sfValidatorError $e) {
-                error_log($e->getMessage());
-                return;
-            }
+            $videoFile = $form->save();
 
             try {
-                $this->redirect('homepage');
+                $this->redirect('video_file_show', array('id' => $videoFile->getId()));
+            } catch (sfStopException $e) {
+                error_log($e->getMessage());
+            }
+        } else {
+            try {
+                $this->redirect($this->generateUrl('video_file_new'));
             } catch (sfStopException $e) {
                 error_log($e->getMessage());
             }
@@ -101,7 +110,11 @@ class VideoFileActions extends sfActions
             return;
         }
 
-        $this->form = new VideoFileForm($videoFile);
+        try {
+            $this->form = new VideoFileForm($videoFile);
+        } catch (sfException $e) {
+            error_log($e->getMessage());
+        }
     }
 
     public function executeUpdate(sfWebRequest $request): void
@@ -130,7 +143,11 @@ class VideoFileActions extends sfActions
             return;
         }
 
-        $this->form = new VideoFileForm($videoFile);
+        try {
+            $this->form = new VideoFileForm($videoFile);
+        } catch (sfException $e) {
+            error_log($e->getMessage());
+        }
 
         $this->processForm($request, $this->form);
 
