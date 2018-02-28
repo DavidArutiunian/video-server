@@ -2,6 +2,20 @@
 
 Symfony 1.4 video uploading server
 
+## Installation
+
+Set up models and create table in DB:
+```php
+$ php symfony propel:build --model
+$ php symfony propel:build --sql
+$ php symfony propel:insert-sql
+```
+
+Load initial data:
+```php
+$ php symfony propel:data-load
+```
+
 ## Requirements
 
 * [PHP 7.1](http://php.net/) - language
