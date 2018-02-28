@@ -17,7 +17,7 @@
     <tr>
         <td><?php echo $VideoFile->getTitle() ?></td>
         <td><?php echo $VideoFile->getDescription() ?></td>
-        <td><?php echo $VideoFile->getType() ?></td>
+        <td><?php echo VideoFileForm::getMimeType($VideoFile->getType()) ?></td>
     </tr>
     </tbody>
 </table>

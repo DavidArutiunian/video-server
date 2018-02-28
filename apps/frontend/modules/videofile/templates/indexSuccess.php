@@ -22,7 +22,7 @@
                 </a>
             </td>
             <td><?php echo $videoFile->getDescription() ?></td>
-            <td><?php echo $videoFile->getType() ?></td>
+            <td><?php echo VideoFileForm::getMimeType($videoFile->getType()) ?></td>
         </tr>
     <?php endforeach; ?>
     </tbody>

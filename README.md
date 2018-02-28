@@ -16,6 +16,17 @@ Load initial data:
 $ php symfony propel:data-load
 ```
 
+Enable plugins in `ProjectConfiguration.class.php` like this:
+
+```php
+    public function setup()
+    {
+        $this->enablePlugins('sfPropelPlugin');
+        $this->enablePlugins('isoOptimizerPlugin');
+        $this->enablePlugins('isoCommonPartialPlugin');
+    }
+```
+
 ## Requirements
 
 * [PHP 7.1](http://php.net/) - language

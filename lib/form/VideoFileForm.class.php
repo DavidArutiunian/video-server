@@ -46,7 +46,7 @@ class VideoFileForm extends BaseVideoFileForm
 
         $file = $this->getValue('file');
         $type = $file->getType();
-        $this->values['type'] = $type;
+        $this->values['type'] = array_search($type, VideoFileForm::ALLOWED_TYPES);
         try {
             return parent::save($con);
         } catch (sfValidatorError $e) {
@@ -55,5 +55,9 @@ class VideoFileForm extends BaseVideoFileForm
         }
     }
 
+    public static function getMimeType(int $index): string
+    {
+        return VideoFileForm::ALLOWED_TYPES[$index];
+    }
 
 }

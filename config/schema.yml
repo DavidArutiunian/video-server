@@ -1,9 +1,10 @@
 propel:
   video_file:
     id:           ~
-    type:         { type: varchar(255) }
+    type:         { type: integer }
+    preview:      { type: varchar(255) }
     url:          { type: varchar(255) }
     title:        { type: varchar(255) }
-    description:  { type: longvarchar, required: true }
+    description:  { type: longvarchar }
     created_at:   ~
     updated_at:   ~
