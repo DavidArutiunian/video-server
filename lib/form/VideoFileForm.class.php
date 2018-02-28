@@ -16,10 +16,11 @@ class VideoFileForm extends BaseVideoFileForm
         'video/webm'
     );
     private const MAX_SIZE = 104857600; // 100 MB
+    private const ABSOLUTE_URL = 'http:/localhost/';
 
     public function configure(): void
     {
-        $this->useFields(array('title', 'type', 'description'));
+        $this->useFields(array('title', 'type', 'url', 'preview', 'description'));
 
         $this->setWidgets(array(
             'title' => new sfWidgetFormInputText(array(), array('autocomplete' => 'off')),
@@ -40,19 +41,46 @@ class VideoFileForm extends BaseVideoFileForm
 
     public function save($con = null)
     {
-        /**
-         * @var sfValidatedFile $file
-         */
-
-        $file = $this->getValue('file');
-        $type = $file->getType();
-        $this->values['type'] = array_search($type, VideoFileForm::ALLOWED_TYPES);
+        $this->saveFormFile();
+        $this->setFormTypeField();
+        $this->setFormUrlField();
         try {
             return parent::save($con);
         } catch (sfValidatorError $e) {
             error_log($e->getMessage());
             return $this->getObject();
         }
+    }
+
+    private function saveFormFile()
+    {
+        /**
+         * @var sfValidatedFile $file
+         */
+        $file = $this->getValue('file');
+        try {
+            $file->save(sfConfig::get('sf_upload_dir') . '\\' . $file->generateFilename());
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+        }
+    }
+
+    private function setFormTypeField(): void
+    {
+        /**
+         * @var sfValidatedFile $file
+         */
+        $file = $this->getValue('file');
+        $this->values['type'] = array_search($type = $file->getType(), VideoFileForm::ALLOWED_TYPES);
+    }
+
+    private function setFormUrlField(): void
+    {
+        /**
+         * @var sfValidatedFile $file
+         */
+        $file = $this->getValue('file');
+        $this->values['url'] = VideoFileForm::ABSOLUTE_URL . basename($file->getSavedName());
     }
 
     public static function getMimeType(int $index): string

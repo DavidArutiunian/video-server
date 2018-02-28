@@ -17,6 +17,7 @@ abstract class BaseVideoFileForm extends BaseFormPropel
         $this->setWidgets(array(
             'id' => new sfWidgetFormInputHidden(),
             'type' => new sfWidgetFormInputText(),
+            'preview' => new sfWidgetFormInputText(),
             'url' => new sfWidgetFormInputText(),
             'title' => new sfWidgetFormInputText(),
             'description' => new sfWidgetFormTextarea(),
@@ -27,6 +28,7 @@ abstract class BaseVideoFileForm extends BaseFormPropel
         $this->setValidators(array(
             'id' => new sfValidatorPropelChoice(array('model' => 'VideoFile', 'column' => 'id', 'required' => false)),
             'type' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+            'preview' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
             'url' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
             'title' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
             'description' => new sfValidatorString(),
