@@ -18,7 +18,18 @@
 
 VideoFile:
   video_file:
-    type: mp4
-    url: TEST_URL
+    type: 0
+    filename: TEST_FILENAME
     title: TEST_VIDEO
     description: TEST_VIDEO_DESCRIPTION
+    duration: 255
+    size: 65535
+
+Thumb:
+  thumb:
+    filename: TEST_THUMB
+
+VideoThumb:
+  video_thumb:
+    video_file_id: ~
+    thumb_id: ~

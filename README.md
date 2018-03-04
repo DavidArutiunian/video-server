@@ -16,6 +16,16 @@ Load initial data:
 $ php symfony propel:data-load
 ```
 
+Update form base:
+```php
+$ php symfony propel:build --forms
+```
+
+Or do it in another way:
+```php
+$ php symfony propel:build --all --and-load --no-confirmation
+```
+
 Enable plugins in `ProjectConfiguration.class.php` like this:
 
 ```php

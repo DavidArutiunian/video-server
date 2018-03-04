@@ -20,7 +20,13 @@ class VideoFileForm extends BaseVideoFileForm
 
     public function configure(): void
     {
-        $this->useFields(array('title', 'type', 'url', 'preview', 'description'));
+        $this->useFields(array(
+                'title',
+                'type',
+                'size',
+                'filename',
+                'description')
+        );
 
         $this->setWidgets(array(
             'title' => new sfWidgetFormInputText(array(), array('autocomplete' => 'off')),
@@ -43,7 +49,7 @@ class VideoFileForm extends BaseVideoFileForm
     {
         $this->saveFormFile();
         $this->setFormTypeField();
-        $this->setFormUrlField();
+        $this->setFormFilenameField();
         try {
             return parent::save($con);
         } catch (sfValidatorError $e) {
@@ -74,13 +80,13 @@ class VideoFileForm extends BaseVideoFileForm
         $this->values['type'] = array_search($type = $file->getType(), VideoFileForm::ALLOWED_TYPES);
     }
 
-    private function setFormUrlField(): void
+    private function setFormFilenameField(): void
     {
         /**
          * @var sfValidatedFile $file
          */
         $file = $this->getValue('file');
-        $this->values['url'] = VideoFileForm::ABSOLUTE_URL . basename($file->getSavedName());
+        $this->values['filename'] = basename($file->getSavedName());
     }
 
     public static function getMimeType(int $index): string

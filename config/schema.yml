@@ -2,9 +2,18 @@ propel:
   video_file:
     id:           ~
     type:         { type: integer }
-    preview:      { type: varchar(255) }
-    url:          { type: varchar(255) }
+    filename:     { type: varchar(255) }
+    duration:     { type: integer }
+    size:         { type: integer }
     title:        { type: varchar(255) }
     description:  { type: longvarchar }
     created_at:   ~
     updated_at:   ~
+
+  video_thumb:
+    video_file_id: { type: integer, foreignTable: video_file, foreignReference: id }
+    thumb_id: { type: integer, foreignTable: thumb, foreignReference: id }
+
+  thumb:
+    id:           ~
+    filename:     { type: varchar(255) }
