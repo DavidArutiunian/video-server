@@ -33,7 +33,7 @@
         >
             <source
                 src="<?php echo $VideoFile->getAbsoluteUrlToFile() ?>"
-                type="<?php VideoFile::getMimeType($VideoFile->getType()) ?>">
+                type="<?php echo VideoFile::getMimeType($VideoFile->getType()) ?>">
         </video>
     </div>
 </div>
