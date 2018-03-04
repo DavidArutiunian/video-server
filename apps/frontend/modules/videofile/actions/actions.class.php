@@ -40,24 +40,17 @@ class VideoFileActions extends sfActions
     {
         try {
             $this->forward404Unless($request->isMethod(sfRequest::POST));
-        } catch (sfError404Exception $e) {
-            error_log($e->getMessage());
-            return;
-        }
 
-        try {
             $this->form = new VideoFileForm();
-        } catch (sfException $e) {
-            error_log($e->getMessage());
-        }
 
-        $this->processForm($request, $this->form);
+            $this->processForm($request, $this->form);
 
-        $this->setTemplate('new');
+            $this->setTemplate('new');
 
-        try {
             $this->redirect($this->generateUrl('homepage'));
         } catch (sfStopException $e) {
+            error_log($e->getMessage());
+        } catch (sfException $e) {
             error_log($e->getMessage());
         }
     }
@@ -68,21 +61,17 @@ class VideoFileActions extends sfActions
             $request->getParameter(VideoFileActions::FORM_NAME),
             $request->getFiles(VideoFileActions::FORM_NAME)
         );
-        if ($form->isValid()) {
+        try {
+            if ($form->isValid()) {
 
-            $videoFile = $form->save();
+                $videoFile = $form->save();
 
-            try {
                 $this->redirect('video_file_show', array('id' => $videoFile->getId()));
-            } catch (sfStopException $e) {
-                error_log($e->getMessage());
-            }
-        } else {
-            try {
+            } else {
                 $this->redirect($this->generateUrl('video_file_new'));
-            } catch (sfStopException $e) {
-                error_log($e->getMessage());
             }
+        } catch (sfStopException $e) {
+            error_log($e->getMessage());
         }
     }
 
@@ -94,13 +83,10 @@ class VideoFileActions extends sfActions
         $videoFile = VideoFilePeer::retrieveByPk($request->getParameter('id'));
 
         try {
-            $this->forward404Unless($videoFile, sprintf('Object videoFile does not exist (%s).', $request->getParameter('id')));
-        } catch (sfError404Exception $e) {
-            error_log($e->getMessage());
-            return;
-        }
+            $str = 'Object videoFile does not exist (%s).';
+            $message = sprintf($str, $request->getParameter('id'));
+            $this->forward404Unless($videoFile, $message);
 
-        try {
             $this->form = new VideoFileForm($videoFile);
         } catch (sfException $e) {
             error_log($e->getMessage());
@@ -113,22 +99,16 @@ class VideoFileActions extends sfActions
          * @var bool | VideoFile $videoFile
          */
         try {
-            $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
-        } catch (sfError404Exception $e) {
-            error_log($e->getMessage());
-            return;
-        }
+            $isMethodPost = $request->isMethod(sfRequest::POST);
+            $isMethodPut = $request->isMethod(sfRequest::PUT);
+            $this->forward404Unless($isMethodPost || $isMethodPut);
 
-        $videoFile = VideoFilePeer::retrieveByPk($request->getParameter('id'));
+            $videoFile = VideoFilePeer::retrieveByPk($request->getParameter('id'));
 
-        try {
-            $this->forward404Unless($videoFile, sprintf('Object videoFile does not exist (%s).', $request->getParameter('id')));
-        } catch (sfError404Exception $e) {
-            error_log($e->getMessage());
-            return;
-        }
+            $str = 'Object videoFile does not exist (%s).';
+            $message = sprintf($str, $request->getParameter('id'));
+            $this->forward404Unless($videoFile, $message);
 
-        try {
             $this->form = new VideoFileForm($videoFile);
         } catch (sfException $e) {
             error_log($e->getMessage());
@@ -146,30 +126,23 @@ class VideoFileActions extends sfActions
          */
         try {
             $request->checkCSRFProtection();
+
+            $videoFile = VideoFilePeer::retrieveByPk($request->getParameter('id'));
+
+            $str = 'Object videoFile does not exist (%s).';
+            $message = sprintf($str, $request->getParameter('id'));
+            $this->forward404Unless($videoFile, $message);
+
+            $videoFile->delete();
+
+            $this->redirect('homepage');
+        } catch (sfStopException $e) {
+            error_log($e->getMessage());
         } catch (sfValidatorErrorSchema $e) {
             error_log($e->getMessage());
-            return;
-        }
-
-        $videoFile = VideoFilePeer::retrieveByPk($request->getParameter('id'));
-
-        try {
-            $this->forward404Unless($videoFile, sprintf('Object videoFile does not exist (%s).', $request->getParameter('id')));
         } catch (sfError404Exception $e) {
             error_log($e->getMessage());
-            return;
-        }
-
-        try {
-            $videoFile->delete();
         } catch (PropelException $e) {
-            error_log($e->getMessage());
-            return;
-        }
-
-        try {
-            $this->redirect('videofile/index');
-        } catch (sfStopException $e) {
             error_log($e->getMessage());
         }
     }
