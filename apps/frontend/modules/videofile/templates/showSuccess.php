@@ -1,6 +1,6 @@
 <?php
 /**
- * @var VideoFile | null $VideoFile
+ * @var VideoFile $VideoFile
  */
 ?>
 <div class="navbar">
@@ -33,7 +33,8 @@
         >
             <source
                 src="<?php echo $VideoFile->getAbsoluteUrlToFile() ?>"
-                type="<?php echo VideoFile::getMimeType($VideoFile->getType()) ?>">
+                type="<?php echo VideoFile::getMimeType($VideoFile->getType()) ?>"
+            >
         </video>
     </div>
 </div>
