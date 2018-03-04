@@ -17,16 +17,17 @@
     <?php foreach ($VideoFiles as $videoFile): ?>
         <tr>
             <td>
-                <a href="<?php echo "videofile/show?id={$videoFile->getId()}" ?>">
+                <!-- TODO: fix routing error -->
+                <a href="<?php echo "videofile/show/{$videoFile->getId()}" ?>">
                     <?php echo $videoFile->getTitle() ?>
                 </a>
             </td>
             <td><?php echo $videoFile->getDescription() ?></td>
-            <td><?php echo VideoFileForm::getMimeType($videoFile->getType()) ?></td>
+            <td><?php echo VideoFile::getMimeType($videoFile->getType()) ?></td>
         </tr>
     <?php endforeach; ?>
     </tbody>
 </table>
 <br>
 
-<a href="<?php echo url_for('videofile/new') ?>">Upload video</a>
+<a href="<?php echo url_for('video_file_new') ?>">Upload video</a>

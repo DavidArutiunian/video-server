@@ -23,12 +23,7 @@ class VideoFileActions extends sfActions
 
     public function executeShow(sfWebRequest $request): void
     {
-        try {
-            // TODO: fix mysql connection issue
-            $this->VideoFile = VideoFilePeer::retrieveByPk($request->getParameter('id'));
-        } catch (PropelException $e) {
-            error_log($e->getMessage());
-        }
+        $this->VideoFile = VideoFilePeer::retrieveByPk($request->getParameter('id'));
     }
 
     public function executeNew(): void
