@@ -25,7 +25,12 @@
 </div>
 <div class="video__wrapper">
     <div class="video__frame">
-        <video class="video__frame__item" poster="#" controls tabindex="0" preload="auto">
+        <!-- TODO: put thumb to poster -->
+        <video
+            class="video__frame__item"
+            poster="http://via.placeholder.com/640x360"
+            controls tabindex="0" preload="auto"
+        >
             <source
                 src="<?php echo $VideoFile->getAbsoluteUrlToFile() ?>"
                 type="<?php VideoFile::getMimeType($VideoFile->getType()) ?>">

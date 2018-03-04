@@ -31,6 +31,7 @@
             title="<?php echo $videoFile->getTitle() ?>"
         >
             <div class="video__item__poster">
+                <!-- TODO: put thumb to src -->
                 <img
                     class="poster__img"
                     src="http://via.placeholder.com/640x360"
