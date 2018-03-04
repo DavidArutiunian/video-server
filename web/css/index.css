@@ -1,0 +1,39 @@
+:root {
+    /* POSTER */
+    --poster-width: 210px;
+    --poster-height: 120px;
+    --poster-background-color: #666666;
+
+    /* VIDEO ITEM */
+    --video-table-item-color: #000000;
+    --video-title-font-size: 1.25em;
+}
+
+.video__item__poster {
+    width: var(--poster-width);
+    height: var(--poster-height);
+    background-color: var(--poster-background-color);
+}
+
+.poster__img {
+    width: var(--poster-width);
+    height: var(--poster-height);
+}
+
+.video__table__item {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--video-table-item-color);
+    margin-right: 4px;
+    margin-bottom: 24px;
+}
+
+.video__table {
+    padding: 20px;
+}
+
+.video__item__title {
+    padding-right: 20px;
+    margin: 8px 0;
+    font-size: var(--video-title-font-size);
+}

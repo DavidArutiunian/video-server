@@ -18,3 +18,15 @@ default:
 
   has_layout:     true
   layout:         layout
+
+showSuccess:
+  stylesheets: [show.css]
+
+indexSuccess:
+  stylesheets: [index.css]
+
+newSuccess:
+    stylesheets: [new.css]
+
+editSuccess:
+    stylesheets: [edit.css]

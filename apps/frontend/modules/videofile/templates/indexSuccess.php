@@ -3,31 +3,43 @@
  * @var $VideoFiles VideoFile[]
  */
 ?>
-<h1>Videos</h1>
-<br>
-<table>
-    <thead>
-    <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Type</th>
-    </tr>
-    </thead>
-    <tbody>
+<div class="navbar">
+    <div class="brand">
+        <a
+            href="<?php echo url_for('homepage') ?>"
+            class="brand__title link"
+            title="Video Server"
+        >
+            <span>Video Server</span>
+        </a>
+    </div>
+    <div class="upload__btn">
+        <a
+            title="Upload video"
+            href="<?php echo url_for('video_file_new') ?>"
+            class="upload__btn__title link"
+        >
+            <span>+</span>
+        </a>
+    </div>
+</div>
+<div class="video__table">
     <?php foreach ($VideoFiles as $videoFile): ?>
-        <tr>
-            <td>
-                <!-- TODO: fix routing error -->
-                <a href="<?php echo "videofile/show/{$videoFile->getId()}" ?>">
-                    <?php echo $videoFile->getTitle() ?>
-                </a>
-            </td>
-            <td><?php echo $videoFile->getDescription() ?></td>
-            <td><?php echo VideoFile::getMimeType($videoFile->getType()) ?></td>
-        </tr>
+        <a
+            href="<?php echo "videofile/show/{$videoFile->getId()}" ?>"
+            class="video__table__item"
+            title="<?php echo $videoFile->getTitle() ?>"
+        >
+            <div class="video__item__poster">
+                <img
+                    class="poster__img"
+                    src="http://via.placeholder.com/640x360"
+                    alt="<?php echo $videoFile->getTitle() ?>"
+                >
+            </div>
+            <div class="video__item__title">
+                <span><?php echo $videoFile->getTitle() ?></span>
+            </div>
+        </a>
     <?php endforeach; ?>
-    </tbody>
-</table>
-<br>
-
-<a href="<?php echo url_for('video_file_new') ?>">Upload video</a>
+</div>

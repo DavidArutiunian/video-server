@@ -39,6 +39,6 @@ class VideoFile extends BaseVideoFile
 
     public function getAbsoluteUrlToFile(): string
     {
-        return VideoServer::getAbsoluteUrl() . VideoFile::UPLOADS_DIR . $this->getFilename();
+        return VideoFile::UPLOADS_DIR . $this->getFilename();
     }
 }

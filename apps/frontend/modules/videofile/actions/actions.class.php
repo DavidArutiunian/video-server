@@ -91,12 +91,7 @@ class VideoFileActions extends sfActions
         /**
          * @var bool | VideoFile $videoFile
          */
-        try {
-            $videoFile = VideoFilePeer::retrieveByPk($request->getParameter('id'));
-        } catch (PropelException $e) {
-            error_log($e->getMessage());
-            return;
-        }
+        $videoFile = VideoFilePeer::retrieveByPk($request->getParameter('id'));
 
         try {
             $this->forward404Unless($videoFile, sprintf('Object videoFile does not exist (%s).', $request->getParameter('id')));
@@ -124,12 +119,7 @@ class VideoFileActions extends sfActions
             return;
         }
 
-        try {
-            $videoFile = VideoFilePeer::retrieveByPk($request->getParameter('id'));
-        } catch (PropelException $e) {
-            error_log($e->getMessage());
-            return;
-        }
+        $videoFile = VideoFilePeer::retrieveByPk($request->getParameter('id'));
 
         try {
             $this->forward404Unless($videoFile, sprintf('Object videoFile does not exist (%s).', $request->getParameter('id')));
@@ -161,12 +151,7 @@ class VideoFileActions extends sfActions
             return;
         }
 
-        try {
-            $videoFile = VideoFilePeer::retrieveByPk($request->getParameter('id'));
-        } catch (PropelException $e) {
-            error_log($e->getMessage());
-            return;
-        }
+        $videoFile = VideoFilePeer::retrieveByPk($request->getParameter('id'));
 
         try {
             $this->forward404Unless($videoFile, sprintf('Object videoFile does not exist (%s).', $request->getParameter('id')));

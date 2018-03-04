@@ -1,0 +1,43 @@
+:root {
+    /* VIDEO ITEM */
+    --video-border-color: hsl(0, 0%, 93.3%);
+    --video-title: 2em;
+
+    /* VIDEO FRAME */
+    --frame-background-color: #000000;
+    --frame-max-width: 864px;
+}
+
+.video__wrapper {
+    width: 100%;
+}
+
+.video__frame {
+    width: 100%;
+    background-color: var(--frame-background-color);
+}
+
+.video__frame__item {
+    width: 100%;
+    max-width: var(--frame-max-width);
+    margin: auto;
+    display: block;
+}
+
+.video__title,
+.video__description {
+    padding: 20px 0 10px;
+    border-bottom: 1px solid var(--video-border-color);
+}
+
+.video__title {
+    font-size: var(--video-title);
+}
+
+.video__description {
+    border-bottom: none;
+}
+
+.video__meta {
+    padding: 0 30px 20px;
+}
