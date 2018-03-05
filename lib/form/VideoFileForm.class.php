@@ -63,7 +63,7 @@ class VideoFileForm extends BaseVideoFileForm
          */
         $file = $this->getValue('file');
         try {
-            $pathToFile = sfConfig::get('sf_upload_dir') . '\\' . $file->generateFilename();
+            $pathToFile = sfConfig::get('sf_upload_dir') . '/' . $file->generateFilename();
             $file->save($pathToFile);
         } catch (Exception $e) {
             error_log($e->getMessage());
