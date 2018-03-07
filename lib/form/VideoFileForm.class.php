@@ -45,29 +45,36 @@ class VideoFileForm extends BaseVideoFileForm
 
     public function save($con = null)
     {
-        $this->saveFormFile();
-        $this->setFormTypeField();
-        $this->setFormFilenameField();
         try {
+            $dirName = $this->saveFormFile();
+            $this->setFormTypeField();
+            $this->setFormFilenameField($dirName);
             return parent::save($con);
         } catch (sfValidatorError $e) {
+            error_log($e->getMessage());
+            return $this->getObject();
+        } catch (Exception $e) {
             error_log($e->getMessage());
             return $this->getObject();
         }
     }
 
-    private function saveFormFile()
+    /**
+     * @return string
+     * @throws Exception
+     */
+    private function saveFormFile(): string
     {
         /**
          * @var sfValidatedFile $file
          */
         $file = $this->getValue('file');
-        try {
-            $pathToFile = sfConfig::get('sf_upload_dir') . '/' . $file->generateFilename();
-            $file->save($pathToFile);
-        } catch (Exception $e) {
-            error_log($e->getMessage());
-        }
+        $dirName = uniqid('', true);
+        mkdir(sfConfig::get('sf_upload_dir') . '/' . $dirName);
+        $relativePathToFile = $dirName . '/' . $file->generateFilename();
+        $pathToFile = sfConfig::get('sf_upload_dir') . '/' . $relativePathToFile;
+        $file->save($pathToFile);
+        return $dirName;
     }
 
     private function setFormTypeField(): void
@@ -79,12 +86,12 @@ class VideoFileForm extends BaseVideoFileForm
         $this->values['type'] = array_search($file->getType(), VideoFile::getAllowedTypes());
     }
 
-    private function setFormFilenameField(): void
+    private function setFormFilenameField(string $dirName): void
     {
         /**
          * @var sfValidatedFile $file
          */
         $file = $this->getValue('file');
-        $this->values['filename'] = basename($file->getSavedName());
+        $this->values['filename'] = $dirName . '/' . basename($file->getSavedName());
     }
 }
