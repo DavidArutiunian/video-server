@@ -1,5 +1,19 @@
 {
-  "require": {
-    "vadimdol/symfony1": "1.1"
-  }
+    "require": {
+        "DavidArutiunian/symfony-1.4": "1.1"
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "DavidArutiunian/symfony-1.4",
+                "version": "1.1",
+                "source": {
+                    "url": "https://github.com/DavidArutiunian/symfony-1.4.git",
+                    "type": "git",
+                    "reference": "v1.1"
+                }
+            }
+        }
+    ]
 }

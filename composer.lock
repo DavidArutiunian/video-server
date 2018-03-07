@@ -4,35 +4,17 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3cbff49f49e9de967bec19ba82484f3c",
+    "content-hash": "358ad26219e25e643e1ba9d264a88191",
     "packages": [
         {
-            "name": "vadimdol/symfony1",
-            "version": "v1.1",
+            "name": "DavidArutiunian/symfony-1.4",
+            "version": "1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/vadimDol/symfony1.git",
-                "reference": "65e9756af68b7b5b89c09d58cc3b284768339f97"
+                "url": "https://github.com/DavidArutiunian/symfony-1.4.git",
+                "reference": "v1.1"
             },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/vadimDol/symfony1/zipball/65e9756af68b7b5b89c09d58cc3b284768339f97",
-                "reference": "65e9756af68b7b5b89c09d58cc3b284768339f97",
-                "shasum": ""
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                }
-            ],
-            "description": "Symfony is a complete framework designed to optimize the development of web applications by way of several key features. For starters, it separates a web application's business rules, server logic, and presentation views. It contains numerous tools and classes aimed at shortening the development time of a complex web application. Additionally, it automates common tasks so that the developer can focus entirely on the specifics of an application. The end result of these advantages means there is no need to reinvent the wheel every time a new web application is built!",
-            "time": "2017-12-05T18:29:35+00:00"
+            "type": "library"
         }
     ],
     "packages-dev": [],
