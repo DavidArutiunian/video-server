@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "358ad26219e25e643e1ba9d264a88191",
+    "content-hash": "7211261f95bb402c55764cf5e0d35c1c",
     "packages": [
         {
             "name": "DavidArutiunian/symfony-1.4",
@@ -12,7 +12,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/DavidArutiunian/symfony-1.4.git",
-                "reference": "v1.1"
+                "reference": "master"
             },
             "type": "library"
         }

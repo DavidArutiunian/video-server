@@ -1,12 +1,28 @@
+mysql:
+    image: mysql:latest
+    container_name: videoserver_mysql
+    ports:
+        - 3306:3306
+    expose:
+        - 3306
+    environment:
+        MYSQL_DATABASE: video-server
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_USER: root
+        MYSQL_PASSWORD: root
+
 php:
-    dockerfile: ./Dockerfile
+    dockerfile: ./containers/php/Dockerfile
     build: ./
     container_name: videoserver_php
+    links:
+        - mysql
     volumes:
         - ./:/var/www:rw
 
 web:
-    image: nginx:latest
+    dockerfile: Dockerfile
+    build: ./containers/nginx
     ports:
         - 80:80
     environment:
@@ -20,15 +36,3 @@ web:
         - php:rw
     volumes:
         - ./log:/etc/logs/nginx
-        # TODO: mount only nginx.conf file
-        - ./config:/etc/nginx/conf.d
-
-mysql:
-    image: mysql:latest
-    container_name: videoserver_mysql
-    ports:
-        - 3306:3306
-    environment:
-        MYSQL_ROOT_PASSWORD: root
-        MYSQL_USER: root
-        MYSQL_PASSWORD: root

@@ -11,7 +11,7 @@
                 "source": {
                     "url": "https://github.com/DavidArutiunian/symfony-1.4.git",
                     "type": "git",
-                    "reference": "v1.1"
+                    "reference": "master"
                 }
             }
         }
