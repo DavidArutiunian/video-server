@@ -5,12 +5,22 @@ class VideoFile extends BaseVideoFile
     private const ALLOWED_TYPES = array(
         'video/mp4',
         'video/mpeg',
-        'video/webm'
+        'video/webm',
+    );
+    private const STATES = array(
+        'processing',
+        'ready',
+        'error'
     );
     private const MAX_SIZE = 104857600; // 100 MB
     private const UPLOADS_DIR = '/uploads/';
     private const MAX_TITLE_LENGTH = 45;
     private const MAX_DESCRIPTION_LENGTH = 280;
+
+    public static function getStates(): array
+    {
+        return VideoFile::STATES;
+    }
 
     public static function getMimeType(int $index): string
     {
@@ -39,6 +49,6 @@ class VideoFile extends BaseVideoFile
 
     public function getAbsoluteUrlToFile(): string
     {
-        return VideoFile::UPLOADS_DIR . $this->getFilename();
+        return VideoFile::UPLOADS_DIR . $this->getDir() . '/' . $this->getFilename();
     }
 }

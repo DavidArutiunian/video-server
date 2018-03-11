@@ -16,6 +16,7 @@ class VideoFileForm extends BaseVideoFileForm
             'title',
             'type',
             'size',
+            'dir',
             'filename',
             'description'
         ));
@@ -46,9 +47,10 @@ class VideoFileForm extends BaseVideoFileForm
     public function save($con = null)
     {
         try {
-            $dirName = $this->saveFormFile();
+            $this->setFormDirName();
+            $this->saveFormFile();
             $this->setFormTypeField();
-            $this->setFormFilenameField($dirName);
+            $this->setFormFilenameField();
             return parent::save($con);
         } catch (sfValidatorError $e) {
             error_log($e->getMessage());
@@ -60,21 +62,19 @@ class VideoFileForm extends BaseVideoFileForm
     }
 
     /**
-     * @return string
+     * @return void
      * @throws Exception
      */
-    private function saveFormFile(): string
+    private function saveFormFile(): void
     {
         /**
          * @var sfValidatedFile $file
          */
         $file = $this->getValue('file');
-        $dirName = uniqid('', true);
-        mkdir(sfConfig::get('sf_upload_dir') . '/' . $dirName);
-        $relativePathToFile = $dirName . '/' . $file->generateFilename();
+        mkdir(sfConfig::get('sf_upload_dir') . '/' . $this->values['dir']);
+        $relativePathToFile = $this->values['dir'] . '/' . $file->generateFilename();
         $pathToFile = sfConfig::get('sf_upload_dir') . '/' . $relativePathToFile;
         $file->save($pathToFile);
-        return $dirName;
     }
 
     private function setFormTypeField(): void
@@ -86,12 +86,20 @@ class VideoFileForm extends BaseVideoFileForm
         $this->values['type'] = array_search($file->getType(), VideoFile::getAllowedTypes());
     }
 
-    private function setFormFilenameField(string $dirName): void
+    private function setFormDirName(): void
+    {
+        /**
+         * @var sfValidatedFile $file
+         */
+        $this->values['dir'] = uniqid('', true);
+    }
+
+    private function setFormFilenameField(): void
     {
         /**
          * @var sfValidatedFile $file
          */
         $file = $this->getValue('file');
-        $this->values['filename'] = $dirName . '/' . basename($file->getSavedName());
+        $this->values['filename'] = basename($file->getSavedName());
     }
 }

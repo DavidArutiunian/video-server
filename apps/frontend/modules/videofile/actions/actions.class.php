@@ -24,6 +24,11 @@ class VideoFileActions extends sfActions
     public function executeShow(sfWebRequest $request): void
     {
         $this->VideoFile = VideoFilePeer::retrieveByPk($request->getParameter('id'));
+        try {
+            $this->forward404Unless($this->VideoFile);
+        } catch (sfError404Exception $e) {
+            error_log($e);
+        }
     }
 
     public function executeNew(): void

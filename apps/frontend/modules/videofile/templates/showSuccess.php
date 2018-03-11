@@ -23,28 +23,34 @@
         </a>
     </div>
 </div>
-<div class="video__wrapper">
-    <div class="video__frame">
-        <!-- TODO: put thumb to poster -->
-        <video
-            class="video__frame__item"
-            poster="http://via.placeholder.com/640x360"
-            controls tabindex="0" preload="auto"
-        >
-            <source
-                src="<?php echo $VideoFile->getAbsoluteUrlToFile() ?>"
-                type="<?php echo VideoFile::getMimeType($VideoFile->getType()) ?>"
+<?php if ($VideoFile) { ?>
+    <div class="video__wrapper">
+        <div class="video__frame">
+            <!-- TODO: put thumb to poster -->
+            <video
+                class="video__frame__item"
+                poster="http://via.placeholder.com/640x360"
+                controls tabindex="0" preload="auto"
             >
-        </video>
+                <source
+                    src="<?php echo $VideoFile->getAbsoluteUrlToFile() ?>"
+                    type="<?php echo VideoFile::getMimeType($VideoFile->getType()) ?>"
+                >
+            </video>
+        </div>
     </div>
-</div>
-<div class="video__meta">
-    <div class="video__title">
-        <span><?php echo $VideoFile->getTitle() ?></span>
+    <div class="video__meta">
+        <div class="video__title">
+            <span><?php echo $VideoFile->getTitle() ?></span>
+        </div>
+        <div class="video__description">
+            <p>
+                <?php echo $VideoFile->getDescription() ?>
+            </p>
+        </div>
     </div>
-    <div class="video__description">
-        <p>
-            <?php echo $VideoFile->getDescription() ?>
-        </p>
+<?php } else { ?>
+    <div class="error">
+        <span>Some error happened :(</span>
     </div>
-</div>
+<?php } ?>
