@@ -27,7 +27,7 @@ class VideoFileActions extends sfActions
         try {
             $this->forward404Unless($this->VideoFile);
         } catch (sfError404Exception $e) {
-            error_log($e);
+            error_log($e->getMessage());
         }
     }
 
