@@ -33,8 +33,3 @@ VideoThumb:
   video_thumb:
     video_file_id: ~
     thumb_id: ~
-
-VideoDir:
-  video_dir:
-    video_file_id: ~
-    dir: TEST_DIR
