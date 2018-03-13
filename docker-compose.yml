@@ -11,6 +11,14 @@ mysql:
         MYSQL_USER: root
         MYSQL_PASSWORD: root
 
+rabbitmq:
+    image: rabbitmq:latest
+    container_name: videoserver_rabbitmq
+    ports:
+        - 5672:5672
+    expose:
+        - 5672
+
 php:
     dockerfile: ./containers/php/Dockerfile
     build: ./
@@ -31,6 +39,7 @@ web:
     links:
         - mysql
         - php
+        - rabbitmq
     container_name: videoserver_nginx
     volumes_from:
         - php:rw

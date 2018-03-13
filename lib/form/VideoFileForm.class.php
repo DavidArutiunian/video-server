@@ -46,12 +46,17 @@ class VideoFileForm extends BaseVideoFileForm
 
     public function save($con = null)
     {
+        /**
+         * @var VideoFile $videoFile
+         */
         try {
             $this->setFormDirName();
             $this->saveFormFile();
             $this->setFormTypeField();
             $this->setFormFilenameField();
-            return parent::save($con);
+            $videoFile = parent::save($con);
+            VideoFileQueue::send($videoFile->getId());
+            return $videoFile;
         } catch (sfValidatorError $e) {
             error_log($e->getMessage());
             return $this->getObject();
