@@ -1,14 +1,14 @@
 propel:
   video_file:
     id:           ~
-    type:         { type: integer }
+    type:         { type: tinyint }
     dir:          { type: varchar(255) }
     filename:     { type: varchar(255) }
-    duration:     { type: integer }
-    size:         { type: integer }
+    duration:     { type: float }
+    size:         { type: bigint }
     title:        { type: varchar(255) }
     description:  { type: longvarchar }
-    state:        { type: integer, default: 0 }
+    state:        { type: tinyint, default: 0 }
     created_at:   ~
     updated_at:   ~
 
@@ -19,3 +19,4 @@ propel:
   thumb:
     id:           ~
     filename:     { type: varchar(255) }
+    dir:          { type: varchar(255) }

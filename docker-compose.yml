@@ -12,7 +12,7 @@ mysql:
         MYSQL_PASSWORD: root
 
 rabbitmq:
-    image: rabbitmq:latest
+    image: rabbitmq:management
     container_name: videoserver_rabbitmq
     ports:
         - 5672:5672

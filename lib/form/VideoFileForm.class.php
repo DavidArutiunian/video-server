@@ -55,7 +55,7 @@ class VideoFileForm extends BaseVideoFileForm
             $this->setFormTypeField();
             $this->setFormFilenameField();
             $videoFile = parent::save($con);
-            VideoFileQueue::send($videoFile->getId());
+            ProcessVideoFileQueue::push($videoFile->getId());
             return $videoFile;
         } catch (sfValidatorError $e) {
             error_log($e->getMessage());

@@ -29,7 +29,18 @@
             <!-- TODO: put thumb to poster -->
             <video
                 class="video__frame__item"
-                poster="http://via.placeholder.com/640x360"
+                poster="<?php
+                /**
+                 * @var VideoThumb $videoThumb
+                 */
+                $videoThumb = $VideoFile->getVideoThumbsJoinThumb()[0];
+                if ($videoThumb != null) {
+                    $thumb = ThumbPeer::retrieveByPK($videoThumb->getThumbId());
+                    echo $thumb->getAbsoluteUrlToFile();
+                } else {
+                    echo 'http://via.placeholder.com/640x360';
+                }
+                ?>"
                 controls tabindex="0" preload="auto"
             >
                 <source

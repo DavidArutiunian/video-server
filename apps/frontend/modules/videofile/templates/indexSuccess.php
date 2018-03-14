@@ -31,10 +31,20 @@
             title="<?php echo $videoFile->getTitle() ?>"
         >
             <div class="video__item__poster">
-                <!-- TODO: put thumb to src -->
                 <img
                     class="poster__img"
-                    src="http://via.placeholder.com/640x360"
+                    src="<?php
+                    /**
+                     * @var VideoThumb $videoThumb
+                     */
+                    $videoThumb = $videoFile->getVideoThumbsJoinThumb()[0];
+                    if ($videoThumb != null) {
+                        $thumb = ThumbPeer::retrieveByPK($videoThumb->getThumbId());
+                        echo $thumb->getAbsoluteUrlToFile();
+                    } else {
+                        echo 'http://via.placeholder.com/640x360';
+                    }
+                    ?>"
                     alt="<?php echo $videoFile->getTitle() ?>"
                 >
             </div>

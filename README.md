@@ -37,6 +37,11 @@ Enable plugins in `ProjectConfiguration.class.php` like this:
     }
 ```
 
+Run `consumer.php`
+```php
+$ php consumer.php
+```
+
 ## Requirements
 
 * [PHP 7.1](http://php.net/) - language
@@ -44,6 +49,7 @@ Enable plugins in `ProjectConfiguration.class.php` like this:
 ## Built With
 
 * [Symfony 1.4](http://symfony.com/legacy) - web framework
+* [RabbitMQ](https://www.rabbitmq.com/) - message broker
 
 ## License
 
