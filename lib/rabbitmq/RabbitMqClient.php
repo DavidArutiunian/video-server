@@ -12,7 +12,7 @@ use PhpAmqpLib\Channel\AMQPChannel;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
-class RabbitMqClient
+class RabbitMqClient implements IRabbitMqClient
 {
     private const HOST = 'localhost';
     private const PORT = 5672;
@@ -20,32 +20,49 @@ class RabbitMqClient
     private const PASSWORD = 'guest';
     private const QUEUE_NAME = 'video_file';
 
-    public function getConnection(): AMQPStreamConnection
+    /**
+     * @var AMQPStreamConnection $connection
+     */
+    private $connection;
+    /**
+     * @var AMQPChannel $channel
+     */
+    private $channel;
+
+    public function __construct()
     {
-        return new AMQPStreamConnection(
+        $this->setConnection();
+        $this->setChannel();
+    }
+
+    private function setConnection(): void
+    {
+        $this->connection = new  AMQPStreamConnection(
             RabbitMqClient::HOST,
             RabbitMqClient::PORT,
             RabbitMqClient::USER,
             RabbitMqClient::PASSWORD
         );
+        return;
     }
 
-    public function getChannel(AMQPStreamConnection $connection): AMQPChannel
+    private function setChannel(): void
     {
-        $channel = $connection->channel();
-        $channel->queue_declare(
+        $this->channel->queue_declare(
             RabbitMqClient::QUEUE_NAME,
             false,
             false,
             false,
             false
         );
-        return $channel;
+        return;
     }
 
-    public function consume(Closure $callback, AMQPChannel $channel): void
+    public function consume(Closure $callback): void
     {
-        $channel->basic_consume(
+        $this->setConnection();
+        $this->setChannel();
+        $this->channel->basic_consume(
             RabbitMqClient::QUEUE_NAME,
             '',
             false,
@@ -57,16 +74,27 @@ class RabbitMqClient
         return;
     }
 
-    public function publish(AMQPMessage $message, AMQPChannel $channel): void
+    public function getCallbackCount(): int
     {
-        $channel->basic_publish($message, '', RabbitMqClient::QUEUE_NAME);
+        return count($this->channel->callbacks);
+    }
+
+    public function publish(AMQPMessage $message): void
+    {
+        $this->channel->basic_publish($message, '', RabbitMqClient::QUEUE_NAME);
         return;
     }
 
-    public function closeConnection(AMQPChannel $channel, AMQPStreamConnection $connection): void
+    public function wait(): void
     {
-        $channel->close();
-        $connection->close();
+        $this->channel->wait();
+        return;
+    }
+
+    public function closeConnection(): void
+    {
+        $this->channel->close();
+        $this->connection->close();
         return;
     }
 }

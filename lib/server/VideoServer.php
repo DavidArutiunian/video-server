@@ -6,7 +6,7 @@
  * Time: 4:33 PM
  */
 
-class VideoServer
+class VideoServer implements IVideoServer
 {
     private const PROTOCOL = 'http';
     private const PORT = '80';

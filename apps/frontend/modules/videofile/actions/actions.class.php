@@ -19,6 +19,7 @@ class VideoFileActions extends sfActions
         } catch (PropelException $e) {
             error_log($e->getMessage());
         }
+        return;
     }
 
     public function executeShow(sfWebRequest $request): void
@@ -29,6 +30,7 @@ class VideoFileActions extends sfActions
         } catch (sfError404Exception $e) {
             error_log($e->getMessage());
         }
+        return;
     }
 
     public function executeNew(): void
@@ -39,25 +41,23 @@ class VideoFileActions extends sfActions
             error_log($e->getMessage());
         }
         $this->form->getWidgetSchema()->setNameFormat(VideoFileActions::FORM_NAME . '[%s]');
+        return;
     }
 
     public function executeCreate(sfWebRequest $request): void
     {
         try {
             $this->forward404Unless($request->isMethod(sfRequest::POST));
-
             $this->form = new VideoFileForm();
-
             $this->processForm($request, $this->form);
-
             $this->setTemplate('new');
-
             $this->redirect($this->generateUrl('homepage'));
         } catch (sfStopException $e) {
             error_log($e->getMessage());
         } catch (sfException $e) {
             error_log($e->getMessage());
         }
+        return;
     }
 
     protected function processForm(sfWebRequest $request, VideoFileForm $form): void
@@ -68,9 +68,7 @@ class VideoFileActions extends sfActions
         );
         try {
             if ($form->isValid()) {
-
                 $videoFile = $form->save();
-
                 $this->redirect('video_file_show', array('id' => $videoFile->getId()));
             } else {
                 $this->redirect($this->generateUrl('video_file_new'));
@@ -78,6 +76,7 @@ class VideoFileActions extends sfActions
         } catch (sfStopException $e) {
             error_log($e->getMessage());
         }
+        return;
     }
 
     public function executeEdit(sfWebRequest $request): void
@@ -86,16 +85,15 @@ class VideoFileActions extends sfActions
          * @var bool | VideoFile $videoFile
          */
         $videoFile = VideoFilePeer::retrieveByPk($request->getParameter('id'));
-
         try {
             $str = 'Object videoFile does not exist (%s).';
             $message = sprintf($str, $request->getParameter('id'));
             $this->forward404Unless($videoFile, $message);
-
             $this->form = new VideoFileForm($videoFile);
         } catch (sfException $e) {
             error_log($e->getMessage());
         }
+        return;
     }
 
     public function executeUpdate(sfWebRequest $request): void
@@ -107,21 +105,17 @@ class VideoFileActions extends sfActions
             $isMethodPost = $request->isMethod(sfRequest::POST);
             $isMethodPut = $request->isMethod(sfRequest::PUT);
             $this->forward404Unless($isMethodPost || $isMethodPut);
-
             $videoFile = VideoFilePeer::retrieveByPk($request->getParameter('id'));
-
             $str = 'Object videoFile does not exist (%s).';
             $message = sprintf($str, $request->getParameter('id'));
             $this->forward404Unless($videoFile, $message);
-
             $this->form = new VideoFileForm($videoFile);
         } catch (sfException $e) {
             error_log($e->getMessage());
         }
-
         $this->processForm($request, $this->form);
-
         $this->setTemplate('edit');
+        return;
     }
 
     public function executeDelete(sfWebRequest $request): void
@@ -131,15 +125,11 @@ class VideoFileActions extends sfActions
          */
         try {
             $request->checkCSRFProtection();
-
             $videoFile = VideoFilePeer::retrieveByPk($request->getParameter('id'));
-
             $str = 'Object videoFile does not exist (%s).';
             $message = sprintf($str, $request->getParameter('id'));
             $this->forward404Unless($videoFile, $message);
-
             $videoFile->delete();
-
             $this->redirect('homepage');
         } catch (sfStopException $e) {
             error_log($e->getMessage());
@@ -150,5 +140,6 @@ class VideoFileActions extends sfActions
         } catch (PropelException $e) {
             error_log($e->getMessage());
         }
+        return;
     }
 }

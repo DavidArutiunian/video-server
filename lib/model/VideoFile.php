@@ -3,14 +3,14 @@
 class VideoFile extends BaseVideoFile
 {
     private const ALLOWED_TYPES = array(
-        'video/mp4',
-        'video/mpeg',
-        'video/webm',
+        EVideoFileTypes::MP4,
+        EVideoFileTypes::MPEG,
+        EVideoFileTypes::WEBM,
     );
     private const STATES = array(
-        'processing',
-        'ready',
-        'error'
+        EVideoFileStates::PROCESSING,
+        EVideoFileStates::READY,
+        EVideoFileStates::ERROR,
     );
     private const MAX_SIZE = 104857600; // 100 MB
     private const UPLOADS_DIR = '/uploads/';

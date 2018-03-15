@@ -8,29 +8,50 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/lib/rabbitmq/RabbitMqClient.php';
+require_once __DIR__ . '/lib/ffmpeg/FFMpeg.php';
 require_once __DIR__ . '/web/index.php';
 
 $callback = function ($message) {
     $videoFile = getVideoFile($message->body);
-    logVideoFile($videoFile);
-    execFFmpeg($videoFile);
+    execFFMpeg($videoFile);
     setReadyState($videoFile);
 };
 
+/**
+ * @var IRabbitMqClient $client
+ */
 $client = new RabbitMqClient();
-$connection = $client->getConnection();
-$channel = $client->getChannel($connection);
-$client->consume($callback, $channel);
+$client->consume($callback);
 
-while (count($channel->callbacks)) {
-    $channel->wait();
+while ($client->getCallbackCount()) {
+    $client->wait();
 }
 
-$client->closeConnection($channel, $connection);
+$client->closeConnection();
+
+function execFFMpeg(VideoFile $videoFile): void
+{
+    $relativePathToFile = $videoFile->getDir() . '/' . $videoFile->getFilename();
+    $pathToFile = sfConfig::get('sf_upload_dir') . '/' . $relativePathToFile;
+    /**
+     * @var IFFMpeg $ffmpeg
+     */
+    $ffmpeg = new FFMpeg($pathToFile);
+    try {
+        $duration = $ffmpeg->getDuration();
+        setDuration($videoFile, $duration);
+        $size = $ffmpeg->getSize();
+        setSize($videoFile, $size);
+        $ffmpeg->generateThumbs($videoFile);
+    } catch (Error $e) {
+        error_log($e->getMessage());
+    }
+    return;
+}
 
 function setReadyState(VideoFile $videoFile): void
 {
-    $videoFile->setState(array_search('ready', VideoFile::getStates()));
+    $videoFile->setState(array_search(EVideoFileStates::READY, VideoFile::getStates()));
     try {
         $videoFile->save();
     } catch (PropelException $e) {
@@ -39,27 +60,9 @@ function setReadyState(VideoFile $videoFile): void
     return;
 }
 
-function logVideoFile(VideoFile $videoFile): void
-{
-    error_log('VideoFile to process: ' . $videoFile->getFilename());
-    return;
-}
-
 function getVideoFile(int $id): VideoFile
 {
     return VideoFilePeer::retrieveByPK($id);
-}
-
-function execFFmpeg(VideoFile $videoFile): void
-{
-    $relativePathToFile = $videoFile->getDir() . '/' . $videoFile->getFilename();
-    $pathToFile = sfConfig::get('sf_upload_dir') . '/' . $relativePathToFile;
-    exec('ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 ' . realpath($pathToFile), $durationOutput);
-    setDuration($videoFile, array_pop($durationOutput));
-    exec('ffprobe -v error -show_entries format=size -of default=noprint_wrappers=1:nokey=1 ' . realpath($pathToFile), $sizeOutput);
-    setSize($videoFile, array_pop($sizeOutput));
-    generateThumbnails($videoFile, $pathToFile);
-    return;
 }
 
 function setDuration(VideoFile $videoFile, float $duration): void
@@ -77,37 +80,6 @@ function setSize(VideoFile $videoFile, int $size): void
 {
     $videoFile->setSize($size);
     try {
-        $videoFile->save();
-    } catch (PropelException $e) {
-        error_log($e->getMessage());
-    }
-    return;
-}
-
-function generateThumbnails(VideoFile $videoFile, string $pathToFile): void
-{
-    $dirName = pathinfo($pathToFile)['dirname'];
-    $fileName = pathinfo($pathToFile)['filename'];
-    $pathToThumb = $dirName . '/' . $fileName . '.png';
-    exec('ffmpeg -i ' . $pathToFile . ' -ss 00:00:00 -vframes 1 ' . $pathToThumb);
-    $thumb = new Thumb();
-    $thumb->setFilename(basename($pathToThumb));
-    $thumb->setDir(basename($dirName));
-    try {
-        $thumb->save();
-    } catch (PropelException $e) {
-        error_log($e->getMessage());
-    }
-    $videoThumb = new VideoThumb();
-    $videoThumb->setVideoFileId($videoFile->getId());
-    $videoThumb->setThumbId($thumb->getId());
-    try {
-        $videoThumb->save();
-    } catch (PropelException $e) {
-        error_log($e->getMessage());
-    }
-    try {
-        $videoFile->addVideoThumb($videoThumb);
         $videoFile->save();
     } catch (PropelException $e) {
         error_log($e->getMessage());
