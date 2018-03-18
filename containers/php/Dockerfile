@@ -21,4 +21,4 @@ COPY ./composer.lock /var/www/
 
 RUN php composer.phar install --no-plugins --no-scripts --no-interaction --ansi
 
-RUN php symfony propel:build --all --and-load --no-confirmation
+RUN php symfony propel:build --all --no-confirmation
