@@ -1,0 +1,7 @@
+host: localhost
+port: 5672
+user: guest
+password: guest
+queue_name: video_file
+args:
+  -x-max-length: 5

@@ -7,6 +7,8 @@ Symfony 1.4 video uploading server
 Set up models and create table in DB:
 ```php
 $ php symfony propel:build --model
+$ php symfony propel:build --forms
+$ php symfony propel:build --filters
 $ php symfony propel:build --sql
 $ php symfony propel:insert-sql
 ```
@@ -14,11 +16,6 @@ $ php symfony propel:insert-sql
 Load initial data:
 ```php
 $ php symfony propel:data-load
-```
-
-Update form base:
-```php
-$ php symfony propel:build --forms
 ```
 
 Or do it in another way:

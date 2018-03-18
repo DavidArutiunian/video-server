@@ -8,20 +8,15 @@
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 require_once __DIR__ . '/IRabbitMqClient.php';
+require_once __DIR__ . '/RabbitMqConfig.php';
 
 use PhpAmqpLib\Channel\AMQPChannel;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
+use PhpAmqpLib\Wire\AMQPTable;
 
 class RabbitMqClient implements IRabbitMqClient
 {
-    private const HOST = 'localhost';
-    private const PORT = 5672;
-    private const USER = 'guest';
-    private const PASSWORD = 'guest';
-    private const QUEUE_NAME = 'video_file';
-    private const ARGS = array("x-max-length", 10);
-
     /**
      * @var AMQPStreamConnection $connection
      */
@@ -30,44 +25,57 @@ class RabbitMqClient implements IRabbitMqClient
      * @var AMQPChannel $channel
      */
     private $channel;
+    /**
+     * @var RabbitMqConfig $config
+     */
+    private $config;
+
+    private const CONFIG_PATH = '/config/rabbitmq.yml';
 
     public function __construct()
     {
+        $this->parseConfig();
         $this->setConnection();
         $this->setChannel();
     }
 
+    private function parseConfig(): void
+    {
+        // TODO: handle error
+        $input = sfConfig::get('sf_root_dir') . RabbitMqClient::CONFIG_PATH;
+        $this->config = (object)sfYaml::load($input);
+    }
+
     private function setConnection(): void
     {
-        $this->connection = new  AMQPStreamConnection(
-            RabbitMqClient::HOST,
-            RabbitMqClient::PORT,
-            RabbitMqClient::USER,
-            RabbitMqClient::PASSWORD
+        $this->connection = new AMQPStreamConnection(
+            $this->config->host,
+            $this->config->port,
+            $this->config->user,
+            $this->config->password
         );
         return;
     }
 
     private function setChannel(): void
     {
+        $this->channel = $this->connection->channel();
         $this->channel->queue_declare(
-            RabbitMqClient::QUEUE_NAME,
+            $this->config->queue_name,
             false,
             false,
             false,
             false,
             false,
-            RabbitMqClient::ARGS
+            new AMQPTable($this->config->args)
         );
         return;
     }
 
     public function consume(Closure $callback): void
     {
-        $this->setConnection();
-        $this->setChannel();
         $this->channel->basic_consume(
-            RabbitMqClient::QUEUE_NAME,
+            $this->config->queue_name,
             '',
             false,
             true,
@@ -85,7 +93,7 @@ class RabbitMqClient implements IRabbitMqClient
 
     public function publish(AMQPMessage $message): void
     {
-        $this->channel->basic_publish($message, '', RabbitMqClient::QUEUE_NAME);
+        $this->channel->basic_publish($message, '', $this->config->queue_name);
         return;
     }
 

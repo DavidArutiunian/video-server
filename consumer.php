@@ -47,7 +47,6 @@ function execFFMpeg(VideoFile $videoFile): void
         onError($videoFile);
         error_log($e->getMessage());
     } catch (PropelException $e) {
-        onError($videoFile);
         error_log($e->getMessage());
     }
     return;
