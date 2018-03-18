@@ -14,7 +14,7 @@ require_once __DIR__ . '/web/index.php';
 $callback = function ($message) {
     $videoFile = getVideoFile($message->body);
     execFFMpeg($videoFile);
-    setReadyState($videoFile);
+    setVideoState($videoFile, EVideoFileStates::READY);
 };
 
 /**
@@ -44,17 +44,22 @@ function execFFMpeg(VideoFile $videoFile): void
         setSize($videoFile, $size);
         $ffmpeg->generateThumbs($videoFile);
     } catch (Error $e) {
+        onError($videoFile);
+        error_log($e->getMessage());
+    } catch (PropelException $e) {
+        onError($videoFile);
         error_log($e->getMessage());
     }
     return;
 }
 
-function setReadyState(VideoFile $videoFile): void
+function setVideoState(VideoFile $videoFile, string $state = EVideoFileStates::READY): void
 {
-    $videoFile->setState(array_search(EVideoFileStates::READY, VideoFile::getStates()));
+    $videoFile->setState(array_search($state, VideoFile::getStates()));
     try {
         $videoFile->save();
     } catch (PropelException $e) {
+        onError($videoFile);
         error_log($e->getMessage());
     }
     return;
@@ -71,6 +76,7 @@ function setDuration(VideoFile $videoFile, float $duration): void
     try {
         $videoFile->save();
     } catch (PropelException $e) {
+        onError($videoFile);
         error_log($e->getMessage());
     }
     return;
@@ -82,7 +88,14 @@ function setSize(VideoFile $videoFile, int $size): void
     try {
         $videoFile->save();
     } catch (PropelException $e) {
+        onError($videoFile);
         error_log($e->getMessage());
     }
+    return;
+}
+
+function onError(VideoFile $videoFile): void
+{
+    setVideoState($videoFile, EVideoFileStates::ERROR);
     return;
 }
