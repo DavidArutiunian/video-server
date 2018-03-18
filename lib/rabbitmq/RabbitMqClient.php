@@ -7,6 +7,7 @@
  */
 
 require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/IRabbitMqClient.php';
 
 use PhpAmqpLib\Channel\AMQPChannel;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
@@ -19,6 +20,7 @@ class RabbitMqClient implements IRabbitMqClient
     private const USER = 'guest';
     private const PASSWORD = 'guest';
     private const QUEUE_NAME = 'video_file';
+    private const ARGS = array("x-max-length", 10);
 
     /**
      * @var AMQPStreamConnection $connection
@@ -53,7 +55,9 @@ class RabbitMqClient implements IRabbitMqClient
             false,
             false,
             false,
-            false
+            false,
+            false,
+            RabbitMqClient::ARGS
         );
         return;
     }

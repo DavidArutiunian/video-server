@@ -6,6 +6,8 @@
  * Time: 4:33 PM
  */
 
+require_once __DIR__ . '/IVideoServer.php';
+
 class VideoServer implements IVideoServer
 {
     private const PROTOCOL = 'http';

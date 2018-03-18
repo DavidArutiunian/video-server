@@ -6,6 +6,7 @@
  * Time: 7:14 PM
  */
 
+require_once __DIR__ . '/IProcessVideoFileQueue.php';
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use PhpAmqpLib\Message\AMQPMessage;

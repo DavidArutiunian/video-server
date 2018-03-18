@@ -6,12 +6,6 @@
  * Time: 5:34 PM
  */
 
-/**
- * Created by PhpStorm.
- * User: DavidOS
- * Date: 15-Mar-18
- * Time: 5:05 PM
- */
 interface IFFMpeg
 {
     /**

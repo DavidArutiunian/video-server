@@ -6,6 +6,8 @@
  * Time: 5:05 PM
  */
 
+require_once __DIR__ . '/IFFMpeg.php';
+
 class FFMpeg implements IFFMpeg
 {
     private $pathToFile;
