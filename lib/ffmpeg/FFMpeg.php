@@ -63,8 +63,8 @@ class FFMpeg implements IFFMpeg
         $pathToThumb = $dirName . '/' . $fileName . '.png';
         $output = $this->getExec('ffmpeg -i ' . $this->pathToFile . ' -ss 00:00:00 -vframes 1 ' . $pathToThumb);
         $result = array_pop($output);
-        if (!$result) {
-            throw new Error('FFMpeg generateThumbs() error');
+        if ($result) {
+            throw new Error('FFMpeg generateThumbs() error: ' . $result);
         }
         $this->createThumbDocument($videoFile, $pathToThumb, $dirName);
         return;
@@ -81,12 +81,12 @@ class FFMpeg implements IFFMpeg
         $thumb = new Thumb();
         $thumb->setFilename(basename($pathToThumb));
         $thumb->setDir(basename($dirName));
+        $thumb->save();
         $videoThumb = new VideoThumb();
         $videoThumb->setVideoFileId($videoFile->getId());
         $videoThumb->setThumbId($thumb->getId());
-        $videoFile->addVideoThumb($videoThumb);
-        $thumb->save();
         $videoThumb->save();
+        $videoFile->addVideoThumb($videoThumb);
         $videoFile->save();
         return;
     }

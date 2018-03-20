@@ -34,9 +34,9 @@ Enable plugins in `ProjectConfiguration.class.php` like this:
     }
 ```
 
-Run `consumer.php`
+Run `consumer` task
 ```php
-$ php consumer.php
+$ php symfony consumer
 ```
 
 ## Requirements

@@ -2,6 +2,15 @@
 /**
  * @var VideoFile $VideoFile
  */
+/**
+ * @var VideoThumb | null $videoThumb
+ */
+/**
+ * @var Thumb | null $thumb
+ */
+/**
+ * @var sfOutputEscaperArrayDecorator $videoThumbs
+ */
 ?>
 <div class="navbar">
     <div class="brand">
@@ -30,13 +39,15 @@
             <video
                 class="video__frame__item"
                 poster="<?php
-                /**
-                 * @var VideoThumb $videoThumb
-                 */
-                $videoThumb = $VideoFile->getVideoThumbsJoinThumb()[0];
-                if ($videoThumb != null) {
+                $videoThumbs = $VideoFile->getVideoThumbsJoinThumb();
+                $videoThumb = $videoThumbs->current();
+                if ($videoThumb) {
                     $thumb = ThumbPeer::retrieveByPK($videoThumb->getThumbId());
-                    echo $thumb->getAbsoluteUrlToFile();
+                    if ($thumb) {
+                        echo $thumb->getAbsoluteUrlToFile();
+                    } else {
+                        echo 'http://via.placeholder.com/640x360';
+                    }
                 } else {
                     echo 'http://via.placeholder.com/640x360';
                 }
