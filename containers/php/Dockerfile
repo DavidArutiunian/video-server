@@ -7,6 +7,9 @@ apt-get install -y --no-install-recommends git zip unzip libxslt1.1 libxslt1-dev
 
 COPY ./ /var/www/
 
+RUN mkdir -p /var/www/web/uploads
+RUN chmod -R 777 /var/www/web/uploads
+
 RUN docker-php-ext-install xsl
 RUN docker-php-ext-install pdo_mysql
 RUN docker-php-ext-install bcmath
@@ -24,3 +27,5 @@ RUN php symfony propel:build --model && \
 php symfony propel:build --forms && \
 php symfony propel:build --filters && \
 php symfony propel:build --sql
+
+CMD php symfony propel:insert-sql --no-confirmation && php-fpm

@@ -1,15 +1,15 @@
 FROM php:7.1-fpm
 
-RUN mkdir -p /var/log/supervisor/
 WORKDIR /var/www/
+
+RUN docker-php-ext-install pdo_mysql
 
 RUN apt-get update && \
 apt-get install -y --no-install-recommends supervisor
 
-RUN touch /var/run/supervisor.sock && \
-chmod 777 /var/run/supervisor.sock
-
 COPY --from=videoserver_php /var/www/ /var/www/
 COPY supervisord.conf /etc/supervisor/conf.d
 
-RUN /etc/init.d/supervisor restart
+RUN rm -rf /var/www/cache /var/www/logs
+
+CMD supervisord -c /etc/supervisor/conf.d/supervisord.conf

@@ -1,6 +1,10 @@
 php:
     dockerfile: ./containers/php/Dockerfile
     build: ./
+    links:
+        - mysql
+    expose:
+        - 9000
     container_name: videoserver_php
 
 nginx:
@@ -15,7 +19,6 @@ nginx:
         - mysql
         - php
         - rabbitmq
-        - supervisor
     container_name: videoserver_nginx
     volumes:
         - ./log:/etc/logs/nginx
@@ -38,16 +41,16 @@ supervisor:
         - ./log:/var/log/
     links:
         - rabbitmq
+        - mysql
         - php
     container_name: videoserver_supervisor
     ports:
-        - 9001:9001
+        - 9010:9010
 
 rabbitmq:
     image: rabbitmq:management
     container_name: videoserver_rabbitmq
     ports:
-        - 5672:5672
         - 15672:15672
     expose:
         - 5672
