@@ -60,7 +60,7 @@ class FFMpeg implements IFFMpeg
     {
         $dirName = pathinfo($this->pathToFile)['dirname'];
         $fileName = pathinfo($this->pathToFile)['filename'];
-        $pathToThumb = $dirName . '/' . $fileName . '.png';
+        $pathToThumb = $dirName . DIRECTORY_SEPARATOR . $fileName . '.png';
         $output = $this->getExec('ffmpeg -i ' . $this->pathToFile . ' -ss 00:00:00 -vframes 1 ' . $pathToThumb);
         $result = array_pop($output);
         if ($result) {

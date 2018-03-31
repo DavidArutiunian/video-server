@@ -7,6 +7,6 @@ class Thumb extends BaseThumb
 
     public function getAbsoluteUrlToFile(): string
     {
-        return Thumb::UPLOADS_DIR . $this->getDir() . '/' . $this->getFilename();
+        return Thumb::UPLOADS_DIR . $this->getDir() . DIRECTORY_SEPARATOR . $this->getFilename();
     }
 }
