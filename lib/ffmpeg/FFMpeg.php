@@ -10,6 +10,9 @@ require_once __DIR__ . '/IFFMpeg.php';
 
 class FFMpeg implements IFFMpeg
 {
+    private const ALLOWED_PROBE_FORMAT = array('size', 'duration');
+    private const THUMB_EXT = '.png';
+
     private $pathToFile;
 
     public function __construct(string $pathToFile)
@@ -19,16 +22,35 @@ class FFMpeg implements IFFMpeg
 
     /**
      * @return float
-     * @throws Error
+     * @throws Exception
      */
     public function getDuration(): float
     {
-        $output = $this->getExec('ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 ' . $this->pathToFile);
+        $command = $this->getFFProbeCommandFormat('duration') . $this->pathToFile;
+        $output = $this->getExec($command);
         $result = (float)array_pop($output);
         if (!$result) {
-            throw new Error('FFMpeg getDuration() error');
+            throw new Exception('FFMpeg getDuration() error');
         }
         return $result;
+    }
+
+    /**
+     * @param string $format
+     * @return string
+     * @throws Exception
+     */
+    private function getFFProbeCommandFormat(string $format): string
+    {
+        if (!in_array($format, FFMpeg::ALLOWED_PROBE_FORMAT)) {
+            throw new Exception("Invalid format type");
+        }
+        return 'ffprobe -v error -show_entries format=' . $format . ' -of default=noprint_wrappers=1:nokey=1 ';
+    }
+
+    private function getFFMpegCommand(string $pathToFile, string $pathToThumb): string
+    {
+        return 'ffmpeg -i ' . $pathToFile . ' -ss 00:00:00 -vframes 1 ' . $pathToThumb;
     }
 
     private function getExec(string $command): array
@@ -39,32 +61,34 @@ class FFMpeg implements IFFMpeg
 
     /**
      * @return int
-     * @throws Error
+     * @throws Exception
      */
     public function getSize(): int
     {
-        $output = $this->getExec('ffprobe -v error -show_entries format=size -of default=noprint_wrappers=1:nokey=1 ' . $this->pathToFile);
+        $command = $this->getFFProbeCommandFormat('size') . $this->pathToFile;
+        $output = $this->getExec($command);
         $result = (int)array_pop($output);
         if (!$result) {
-            throw new Error('FFMpeg getSize() error');
+            throw new Exception('FFMpeg getSize() error');
         }
         return $result;
     }
 
     /**
      * @param VideoFile $videoFile
-     * @throws Error
      * @throws PropelException
+     * @throws Exception
      */
     public function generateThumbs(VideoFile $videoFile): void
     {
-        $dirName = pathinfo($this->pathToFile)['dirname'];
-        $fileName = pathinfo($this->pathToFile)['filename'];
-        $pathToThumb = $dirName . DIRECTORY_SEPARATOR . $fileName . '.png';
-        $output = $this->getExec('ffmpeg -i ' . $this->pathToFile . ' -ss 00:00:00 -vframes 1 ' . $pathToThumb);
+        $pathInfo = pathinfo($this->pathToFile);
+        $dirName = $pathInfo['dirname'];
+        $fileName = $pathInfo['filename'];
+        $pathToThumb = $dirName . DIRECTORY_SEPARATOR . $fileName . FFMpeg::THUMB_EXT;
+        $output = $this->getExec($this->getFFMpegCommand($this->pathToFile, $pathToThumb));
         $result = array_pop($output);
         if ($result) {
-            throw new Error('FFMpeg generateThumbs() error: ' . $result);
+            throw new Exception('FFMpeg generateThumbs() error: ' . $result);
         }
         $this->createThumbDocument($videoFile, $pathToThumb, $dirName);
     }

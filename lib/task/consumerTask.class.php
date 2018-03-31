@@ -52,19 +52,15 @@ class consumerTask extends sfBaseTask
     {
         $this->callback = function ($message) {
             $videoFile = $this->getVideoFile($message->body);
-            try {
-                $this->execFFMpeg($videoFile);
-                $this->setVideoState($videoFile, EVideoFileStates::READY);
-            } catch (PropelException $e) {
-                $this->onError($videoFile);
-                error_log($e->getMessage());
-            }
+            $this->execFFMpeg($videoFile);
+            $this->setVideoState($videoFile, EVideoFileStates::READY);
         };
     }
 
     /**
      * @param VideoFile $videoFile
      * @throws PropelException
+     * @throws Exception
      */
     private function execFFMpeg(VideoFile $videoFile): void
     {

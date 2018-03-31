@@ -10,19 +10,19 @@ interface IFFMpeg
 {
     /**
      * @return float
-     * @throws Error
+     * @throws Exception
      */
     public function getDuration(): float;
 
     /**
      * @return int
-     * @throws Error
+     * @throws Exception
      */
     public function getSize(): int;
 
     /**
      * @param VideoFile $videoFile
-     * @throws Error
+     * @throws Exception
      * @throws PropelException
      */
     public function generateThumbs(VideoFile $videoFile): void;
