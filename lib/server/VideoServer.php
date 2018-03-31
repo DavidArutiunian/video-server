@@ -16,6 +16,6 @@ class VideoServer implements IVideoServer
 
     public static function getAbsoluteUrl(): string
     {
-        return VideoServer::PROTOCOL . ":/" . VideoServer::URL . ":" . VideoServer::PORT;
+        return VideoServer::PROTOCOL . ":" . DIRECTORY_SEPARATOR . VideoServer::URL . ":" . VideoServer::PORT;
     }
 }

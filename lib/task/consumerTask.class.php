@@ -68,8 +68,8 @@ class consumerTask extends sfBaseTask
      */
     private function execFFMpeg(VideoFile $videoFile): void
     {
-        $relativePathToFile = $videoFile->getDir() . '/' . $videoFile->getFilename();
-        $pathToFile = sfConfig::get('sf_upload_dir') . '/' . $relativePathToFile;
+        $relativePathToFile = $videoFile->getDir() . DIRECTORY_SEPARATOR . $videoFile->getFilename();
+        $pathToFile = sfConfig::get('sf_upload_dir') . DIRECTORY_SEPARATOR . $relativePathToFile;
         /**
          * @var IFFMpeg $ffmpeg
          */
