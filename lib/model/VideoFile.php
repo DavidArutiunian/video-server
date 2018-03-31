@@ -49,6 +49,6 @@ class VideoFile extends BaseVideoFile
 
     public function getAbsoluteUrlToFile(): string
     {
-        return VideoFile::UPLOADS_DIR . $this->getDir() . '/' . $this->getFilename();
+        return VideoFile::UPLOADS_DIR . $this->getDir() . DIRECTORY_SEPARATOR . $this->getFilename();
     }
 }

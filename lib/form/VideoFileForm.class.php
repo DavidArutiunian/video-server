@@ -76,9 +76,9 @@ class VideoFileForm extends BaseVideoFileForm
          * @var sfValidatedFile $file
          */
         $file = $this->getValue('file');
-        mkdir(sfConfig::get('sf_upload_dir') . '/' . $this->values['dir']);
-        $relativePathToFile = $this->values['dir'] . '/' . $file->generateFilename();
-        $pathToFile = sfConfig::get('sf_upload_dir') . '/' . $relativePathToFile;
+        mkdir(sfConfig::get('sf_upload_dir') . DIRECTORY_SEPARATOR . $this->values['dir']);
+        $relativePathToFile = $this->values['dir'] . DIRECTORY_SEPARATOR . $file->generateFilename();
+        $pathToFile = sfConfig::get('sf_upload_dir') . DIRECTORY_SEPARATOR . $relativePathToFile;
         $file->save($pathToFile);
     }
 
