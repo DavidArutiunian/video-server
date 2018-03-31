@@ -41,9 +41,12 @@ class RabbitMqClient implements IRabbitMqClient
 
     private function parseConfig(): void
     {
-        // TODO: handle error
         $input = sfConfig::get('sf_root_dir') . RabbitMqClient::CONFIG_PATH;
-        $this->config = (object)sfYaml::load($input);
+        try {
+            $this->config = (object)sfYaml::load($input);
+        } catch (InvalidArgumentException $e) {
+            error_log($e->getMessage());
+        }
     }
 
     private function setConnection(): void
