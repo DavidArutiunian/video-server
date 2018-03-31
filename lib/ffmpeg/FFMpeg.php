@@ -81,11 +81,9 @@ class FFMpeg implements IFFMpeg
         $thumb = new Thumb();
         $thumb->setFilename(basename($pathToThumb));
         $thumb->setDir(basename($dirName));
-        $thumb->save();
         $videoThumb = new VideoThumb();
-        $videoThumb->setVideoFileId($videoFile->getId());
-        $videoThumb->setThumbId($thumb->getId());
-        $videoThumb->save();
+        $videoThumb->setThumb($thumb);
+        $videoThumb->setVideoFile($videoFile);
         $videoFile->addVideoThumb($videoThumb);
         $videoFile->save();
         return;
