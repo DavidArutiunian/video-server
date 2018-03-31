@@ -24,7 +24,7 @@ class FFMpeg implements IFFMpeg
     public function getDuration(): float
     {
         $output = $this->getExec('ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 ' . $this->pathToFile);
-        $result = floatval(array_pop($output));
+        $result = (float)array_pop($output);
         if (!$result) {
             throw new Error('FFMpeg getDuration() error');
         }
@@ -44,7 +44,7 @@ class FFMpeg implements IFFMpeg
     public function getSize(): int
     {
         $output = $this->getExec('ffprobe -v error -show_entries format=size -of default=noprint_wrappers=1:nokey=1 ' . $this->pathToFile);
-        $result = intval(array_pop($output));
+        $result = (int)array_pop($output);
         if (!$result) {
             throw new Error('FFMpeg getSize() error');
         }
