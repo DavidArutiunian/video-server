@@ -7,18 +7,17 @@ apt-get install -y --no-install-recommends git zip unzip libxslt1.1 libxslt1-dev
 
 COPY ./ /var/www/
 
-RUN rm -rf /var/www/cache /var/www/logs
-RUN mkdir -p /var/www/web/uploads
-RUN chmod -R 777 /var/www/web/uploads
+RUN rm -rf /var/www/cache /var/www/logs && \
+ mkdir -p /var/www/web/uploads && \
+ chmod -R 777 /var/www/web/uploads
 
-RUN docker-php-ext-install xsl
-RUN docker-php-ext-install pdo_mysql
-RUN docker-php-ext-install bcmath
-RUN docker-php-ext-install sockets
+RUN docker-php-ext-install xsl && \
+ docker-php-ext-install pdo_mysql && \
+ docker-php-ext-install bcmath && \
+ docker-php-ext-install sockets
 
-RUN curl --silent --show-error https://getcomposer.org/installer | php
-
-RUN COMPOSER_ALLOW_SUPERUSER=1 php composer.phar install --no-plugins --no-scripts --no-interaction --ansi
+RUN curl --silent --show-error https://getcomposer.org/installer | php && \
+ COMPOSER_ALLOW_SUPERUSER=1 php composer.phar install --no-plugins --no-scripts --no-interaction --ansi
 
 # xDebug configuration
 RUN yes | pecl install xdebug \
