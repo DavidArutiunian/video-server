@@ -2,15 +2,6 @@
 /**
  * @var $VideoFiles VideoFile[]
  */
-/**
- * @var VideoThumb | null $videoThumb
- */
-/**
- * @var Thumb | null $thumb
- */
-/**
- * @var sfOutputEscaperArrayDecorator $videoThumbs
- */
 ?>
 <div class="navbar">
     <div class="brand">
@@ -41,22 +32,9 @@
         >
             <div class="video__item__poster">
                 <img
-                    class="poster__img"
-                    src="<?php
-                    $videoThumbs = $videoFile->getVideoThumbsJoinThumb();
-                    $videoThumb = $videoThumbs->current();
-                    if ($videoThumb) {
-                        $thumb = ThumbPeer::retrieveByPK($videoThumb->getThumbId());
-                        if ($thumb) {
-                            echo $thumb->getAbsoluteUrlToFile();
-                        } else {
-                            echo 'http://via.placeholder.com/640x360';
-                        }
-                    } else {
-                        echo 'http://via.placeholder.com/640x360';
-                    }
-                    ?>"
-                    alt="<?php echo $videoFile->getTitle() ?>"
+                        class="poster__img"
+                        src="<?php echo Thumb::getThumbUrl($videoFile->getVideoThumbsJoinThumb()) ?>"
+                        alt="<?php echo $videoFile->getTitle() ?>"
                 >
             </div>
             <div class="video__item__title">

@@ -2,31 +2,22 @@
 /**
  * @var VideoFile $VideoFile
  */
-/**
- * @var VideoThumb | null $videoThumb
- */
-/**
- * @var Thumb | null $thumb
- */
-/**
- * @var sfOutputEscaperArrayDecorator $videoThumbs
- */
 ?>
 <div class="navbar">
     <div class="brand">
         <a
-            href="<?php echo url_for('homepage') ?>"
-            class="brand__title link"
-            title="Video Server"
+                href="<?php echo url_for('homepage') ?>"
+                class="brand__title link"
+                title="Video Server"
         >
             <span class="brand__text">Video Server</span>
         </a>
     </div>
     <div class="upload__btn">
         <a
-            title="Upload video"
-            href="<?php echo url_for('video_file_new') ?>"
-            class="upload__btn__title link"
+                title="Upload video"
+                href="<?php echo url_for('video_file_new') ?>"
+                class="upload__btn__title link"
         >
             <span class="upload__btn__text">+</span>
         </a>
@@ -37,26 +28,13 @@
         <div class="video__frame">
             <!-- TODO: put thumb to poster -->
             <video
-                class="video__frame__item"
-                poster="<?php
-                $videoThumbs = $VideoFile->getVideoThumbsJoinThumb();
-                $videoThumb = $videoThumbs->current();
-                if ($videoThumb) {
-                    $thumb = ThumbPeer::retrieveByPK($videoThumb->getThumbId());
-                    if ($thumb) {
-                        echo $thumb->getAbsoluteUrlToFile();
-                    } else {
-                        echo 'http://via.placeholder.com/640x360';
-                    }
-                } else {
-                    echo 'http://via.placeholder.com/640x360';
-                }
-                ?>"
-                controls tabindex="0" preload="auto"
+                    class="video__frame__item"
+                    poster="<?php echo Thumb::getThumbUrl($VideoFile->getVideoThumbsJoinThumb()) ?>"
+                    controls tabindex="0" preload="auto"
             >
                 <source
-                    src="<?php echo $VideoFile->getAbsoluteUrlToFile() ?>"
-                    type="<?php echo VideoFile::getMimeType($VideoFile->getType()) ?>"
+                        src="<?php echo $VideoFile->getAbsoluteUrlToFile() ?>"
+                        type="<?php echo VideoFile::getMimeType($VideoFile->getType()) ?>"
                 >
             </video>
         </div>
