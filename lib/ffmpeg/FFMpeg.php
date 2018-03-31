@@ -67,7 +67,6 @@ class FFMpeg implements IFFMpeg
             throw new Error('FFMpeg generateThumbs() error: ' . $result);
         }
         $this->createThumbDocument($videoFile, $pathToThumb, $dirName);
-        return;
     }
 
     /**
@@ -86,6 +85,5 @@ class FFMpeg implements IFFMpeg
         $videoThumb->setVideoFile($videoFile);
         $videoFile->addVideoThumb($videoThumb);
         $videoFile->save();
-        return;
     }
 }

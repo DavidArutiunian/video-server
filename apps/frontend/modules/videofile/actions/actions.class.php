@@ -19,7 +19,6 @@ class VideoFileActions extends sfActions
         } catch (PropelException $e) {
             error_log($e->getMessage());
         }
-        return;
     }
 
     public function executeShow(sfWebRequest $request): void
@@ -30,7 +29,6 @@ class VideoFileActions extends sfActions
         } catch (sfError404Exception $e) {
             error_log($e->getMessage());
         }
-        return;
     }
 
     public function executeNew(): void
@@ -41,7 +39,6 @@ class VideoFileActions extends sfActions
             error_log($e->getMessage());
         }
         $this->form->getWidgetSchema()->setNameFormat(VideoFileActions::FORM_NAME . '[%s]');
-        return;
     }
 
     public function executeCreate(sfWebRequest $request): void
@@ -57,7 +54,6 @@ class VideoFileActions extends sfActions
         } catch (sfException $e) {
             error_log($e->getMessage());
         }
-        return;
     }
 
     protected function processForm(sfWebRequest $request, VideoFileForm $form): void
@@ -75,8 +71,9 @@ class VideoFileActions extends sfActions
             }
         } catch (sfStopException $e) {
             error_log($e->getMessage());
+        } catch (sfValidatorError $e) {
+            error_log($e->getMessage());
         }
-        return;
     }
 
     public function executeEdit(sfWebRequest $request): void
@@ -93,7 +90,6 @@ class VideoFileActions extends sfActions
         } catch (sfException $e) {
             error_log($e->getMessage());
         }
-        return;
     }
 
     public function executeUpdate(sfWebRequest $request): void
@@ -115,7 +111,6 @@ class VideoFileActions extends sfActions
         }
         $this->processForm($request, $this->form);
         $this->setTemplate('edit');
-        return;
     }
 
     public function executeDelete(sfWebRequest $request): void
@@ -140,6 +135,5 @@ class VideoFileActions extends sfActions
         } catch (PropelException $e) {
             error_log($e->getMessage());
         }
-        return;
     }
 }

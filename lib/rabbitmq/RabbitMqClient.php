@@ -57,7 +57,6 @@ class RabbitMqClient implements IRabbitMqClient
             $this->config->user,
             $this->config->password
         );
-        return;
     }
 
     private function setChannel(): void
@@ -72,7 +71,6 @@ class RabbitMqClient implements IRabbitMqClient
             false,
             new AMQPTable($this->config->args)
         );
-        return;
     }
 
     public function consume(Closure $callback): void
@@ -86,7 +84,6 @@ class RabbitMqClient implements IRabbitMqClient
             false,
             $callback
         );
-        return;
     }
 
     public function getCallbackCount(): int
@@ -97,19 +94,16 @@ class RabbitMqClient implements IRabbitMqClient
     public function publish(AMQPMessage $message): void
     {
         $this->channel->basic_publish($message, '', $this->config->queue_name);
-        return;
     }
 
     public function wait(): void
     {
         $this->channel->wait();
-        return;
     }
 
     public function closeConnection(): void
     {
         $this->channel->close();
         $this->connection->close();
-        return;
     }
 }

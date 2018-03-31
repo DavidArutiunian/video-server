@@ -127,6 +127,5 @@ class consumerTask extends sfBaseTask
     private function onError(VideoFile $videoFile): void
     {
         $this->setVideoState($videoFile, EVideoFileStates::ERROR);
-        return;
     }
 }
